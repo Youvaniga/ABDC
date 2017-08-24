@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +51,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountGroup.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ledger.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeOldModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NubeOldModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeOldModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeOldModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NubeOldModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewLedger.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLedgerGroup.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLedgerJournal.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLedgerOpening.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLedgerPayment.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLedgerReceipt.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLedgerReport.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTrialBalance.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="NubeOldModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NubeOldModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="NubeOldModel.edmx.diagram">
+      <DependentUpon>NubeOldModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NubeOldModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NubeOldModel.edmx</DependentUpon>
+      <LastGenOutput>NubeOldModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NubeOldModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NubeOldModel.edmx</DependentUpon>
+      <LastGenOutput>NubeOldModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

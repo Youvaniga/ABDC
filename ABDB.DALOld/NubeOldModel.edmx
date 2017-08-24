@@ -1,0 +1,981 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Nube_Old01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountGroups">
+          <Key>
+            <PropertyRef Name="AccountGroupId" />
+          </Key>
+          <Property Name="AccountGroupId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="150" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Under" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProfitAndLoss" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.JournalDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="JournalDetails">
+          <Property Name="JDId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="JournalID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.JournalMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="JournalMaster">
+          <Property Name="JournalId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="JournalDate" Type="datetime" />
+          <Property Name="HQNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.Ledger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="nvarchar" MaxLength="5" />
+          <Property Name="CreditLimit" Type="nvarchar" MaxLength="10" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountGroupId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AccountCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="DrAmt" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.LedgerOP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="LedgerOP">
+          <Property Name="LedgerOPID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.PaymentDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PaymentDetails">
+          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.PaymentMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PaymentMaster">
+          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayAmount" Type="float" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="chequeDate" Type="datetime" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClearDate" Type="datetime" />
+          <Property Name="PayTo" Type="nvarchar" MaxLength="100" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ReceiptDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ReceiptDetails">
+          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ReceiptMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ReceiptMaster">
+          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiptAmount" Type="float" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="datetime" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClrDate" Type="datetime" />
+          <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="150" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ViewAccountGroups' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ViewAccountGroups">
+          <Property Name="AccountGroupId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Under" Type="varchar" MaxLength="5000" />
+          <Property Name="RootGroup" Type="varchar" MaxLength="5002" />
+          <Property Name="ProfitAndLoss" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+            <PropertyRef Name="Particulars" />
+            <PropertyRef Name="Narration" />
+          </Key>
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Particulars" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="Narration" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="CRAmount" Type="float" />
+          <Property Name="DRAmount" Type="float" />
+          <Property Name="GroupName" Type="varchar" MaxLength="5000" />
+          <Property Name="GroupCode" Type="varchar" MaxLength="5000" />
+          <Property Name="RootGroup" Type="varchar" MaxLength="5000" />
+          <Property Name="BillingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="nvarchar" MaxLength="5" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditLimit" Type="nvarchar" MaxLength="10" />
+          <Property Name="AccountGroupId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AccountCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AcNo" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedgerGroup">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP2" Type="nvarchar" MaxLength="101" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerJournal' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedgerJournal">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+            <PropertyRef Name="VoucherName" />
+            <PropertyRef Name="ChequeNo" />
+          </Key>
+          <Property Name="VoucherID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP2" Type="nvarchar" MaxLength="101" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerOpening' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedgerOpening">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+            <PropertyRef Name="VoucherDate" />
+            <PropertyRef Name="Narration" />
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="VoucherName" />
+            <PropertyRef Name="LedgerNameOP2" />
+            <PropertyRef Name="ChequeNo" />
+          </Key>
+          <Property Name="VoucherID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherDate" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="VoucherNo" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP2" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedgerPayment">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP2" Type="nvarchar" MaxLength="101" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerReceipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedgerReceipt">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP2" Type="nvarchar" MaxLength="101" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewLedgerReport">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="VoucherDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="GroupName" Type="varchar" MaxLength="5000" />
+          <Property Name="GroupCode" Type="varchar" MaxLength="5000" />
+          <Property Name="RootGroup" Type="varchar" MaxLength="5000" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP2" Type="nvarchar" MaxLength="101" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ViewPaymentDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ViewPaymentDetails">
+          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="4000" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ViewPaymentMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ViewPaymentMaster">
+          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayAmount" Type="float" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="chequeDate" Type="datetime" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClearDate" Type="datetime" />
+          <Property Name="PayTo" Type="nvarchar" MaxLength="100" />
+          <Property Name="DebitAC" Type="varchar" MaxLength="8000" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ViewReceiptDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ViewReceiptDetails">
+          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="DebitAc" Type="varchar" MaxLength="8000" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Nube_Old01.dbo.ViewReceiptMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ViewReceiptMaster">
+          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiptAmount" Type="float" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="datetime" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
+          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClrDate" Type="datetime" />
+          <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreditAC" Type="varchar" MaxLength="8000" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewTrialBalance">
+          <Key>
+            <PropertyRef Name="ICNO" />
+          </Key>
+          <Property Name="MEMBER_ID" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="MEMBER_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="ICNO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BankCode" Type="varchar" MaxLength="9" />
+          <Property Name="TOTALMONTHSPAID" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ACCBF" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="LASTPAYMENTDATE" Type="datetime" />
+          <Property Name="MEMBERTYPE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="MemberStatus" Type="varchar" MaxLength="9" />
+          <Property Name="NubeBanchName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="Nube_Old01ModelStoreContainer">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ledger].[LedgerId] AS [LedgerId], 
+    [Ledger].[LedgerName] AS [LedgerName], 
+    [Ledger].[BillingName] AS [BillingName], 
+    [Ledger].[Address] AS [Address], 
+    [Ledger].[Phone] AS [Phone], 
+    [Ledger].[Mobile] AS [Mobile], 
+    [Ledger].[MailId] AS [MailId], 
+    [Ledger].[CreditDays] AS [CreditDays], 
+    [Ledger].[CreditLimit] AS [CreditLimit], 
+    [Ledger].[Note] AS [Note], 
+    [Ledger].[AccountGroupId] AS [AccountGroupId], 
+    [Ledger].[AccountCode] AS [AccountCode], 
+    [Ledger].[CrAmt] AS [CrAmt], 
+    [Ledger].[DrAmt] AS [DrAmt]
+    FROM [dbo].[Ledger] AS [Ledger]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedger" EntityType="Self.ViewLedger" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedger].[LedgerId] AS [LedgerId], 
+    [ViewLedger].[LDate] AS [LDate], 
+    [ViewLedger].[LedgerName] AS [LedgerName], 
+    [ViewLedger].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedger].[Particulars] AS [Particulars], 
+    [ViewLedger].[Narration] AS [Narration], 
+    [ViewLedger].[CRAmount] AS [CRAmount], 
+    [ViewLedger].[DRAmount] AS [DRAmount], 
+    [ViewLedger].[GroupName] AS [GroupName], 
+    [ViewLedger].[GroupCode] AS [GroupCode], 
+    [ViewLedger].[RootGroup] AS [RootGroup], 
+    [ViewLedger].[BillingName] AS [BillingName], 
+    [ViewLedger].[Phone] AS [Phone], 
+    [ViewLedger].[Address] AS [Address], 
+    [ViewLedger].[Mobile] AS [Mobile], 
+    [ViewLedger].[MailId] AS [MailId], 
+    [ViewLedger].[CreditDays] AS [CreditDays], 
+    [ViewLedger].[Note] AS [Note], 
+    [ViewLedger].[CreditLimit] AS [CreditLimit], 
+    [ViewLedger].[AccountGroupId] AS [AccountGroupId], 
+    [ViewLedger].[AccountCode] AS [AccountCode], 
+    [ViewLedger].[AcNo] AS [AcNo]
+    FROM [dbo].[ViewLedger] AS [ViewLedger]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedgerGroup" EntityType="Self.ViewLedgerGroup" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedgerGroup].[VoucherID] AS [VoucherID], 
+    [ViewLedgerGroup].[VoucherType] AS [VoucherType], 
+    [ViewLedgerGroup].[VoucherDate] AS [VoucherDate], 
+    [ViewLedgerGroup].[LedgerName] AS [LedgerName], 
+    [ViewLedgerGroup].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedgerGroup].[Narration] AS [Narration], 
+    [ViewLedgerGroup].[DrAmt] AS [DrAmt], 
+    [ViewLedgerGroup].[CrAmt] AS [CrAmt], 
+    [ViewLedgerGroup].[VoucherNo] AS [VoucherNo], 
+    [ViewLedgerGroup].[VoucherName] AS [VoucherName], 
+    [ViewLedgerGroup].[Fund] AS [Fund], 
+    [ViewLedgerGroup].[LedgerNameOP2] AS [LedgerNameOP2], 
+    [ViewLedgerGroup].[ChequeNo] AS [ChequeNo]
+    FROM [dbo].[ViewLedgerGroup] AS [ViewLedgerGroup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedgerJournal" EntityType="Self.ViewLedgerJournal" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedgerJournal].[VoucherID] AS [VoucherID], 
+    [ViewLedgerJournal].[VoucherType] AS [VoucherType], 
+    [ViewLedgerJournal].[VoucherDate] AS [VoucherDate], 
+    [ViewLedgerJournal].[LedgerName] AS [LedgerName], 
+    [ViewLedgerJournal].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedgerJournal].[Narration] AS [Narration], 
+    [ViewLedgerJournal].[DrAmt] AS [DrAmt], 
+    [ViewLedgerJournal].[CrAmt] AS [CrAmt], 
+    [ViewLedgerJournal].[VoucherNo] AS [VoucherNo], 
+    [ViewLedgerJournal].[VoucherName] AS [VoucherName], 
+    [ViewLedgerJournal].[Fund] AS [Fund], 
+    [ViewLedgerJournal].[LedgerNameOP2] AS [LedgerNameOP2], 
+    [ViewLedgerJournal].[ChequeNo] AS [ChequeNo]
+    FROM [dbo].[ViewLedgerJournal] AS [ViewLedgerJournal]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedgerOpening" EntityType="Self.ViewLedgerOpening" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedgerOpening].[VoucherID] AS [VoucherID], 
+    [ViewLedgerOpening].[VoucherType] AS [VoucherType], 
+    [ViewLedgerOpening].[VoucherDate] AS [VoucherDate], 
+    [ViewLedgerOpening].[LedgerName] AS [LedgerName], 
+    [ViewLedgerOpening].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedgerOpening].[Narration] AS [Narration], 
+    [ViewLedgerOpening].[DrAmt] AS [DrAmt], 
+    [ViewLedgerOpening].[CrAmt] AS [CrAmt], 
+    [ViewLedgerOpening].[VoucherNo] AS [VoucherNo], 
+    [ViewLedgerOpening].[VoucherName] AS [VoucherName], 
+    [ViewLedgerOpening].[Fund] AS [Fund], 
+    [ViewLedgerOpening].[LedgerNameOP2] AS [LedgerNameOP2], 
+    [ViewLedgerOpening].[ChequeNo] AS [ChequeNo]
+    FROM [dbo].[ViewLedgerOpening] AS [ViewLedgerOpening]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedgerPayment" EntityType="Self.ViewLedgerPayment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedgerPayment].[VoucherID] AS [VoucherID], 
+    [ViewLedgerPayment].[VoucherType] AS [VoucherType], 
+    [ViewLedgerPayment].[VoucherDate] AS [VoucherDate], 
+    [ViewLedgerPayment].[LedgerName] AS [LedgerName], 
+    [ViewLedgerPayment].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedgerPayment].[Narration] AS [Narration], 
+    [ViewLedgerPayment].[DrAmt] AS [DrAmt], 
+    [ViewLedgerPayment].[CrAmt] AS [CrAmt], 
+    [ViewLedgerPayment].[VoucherNo] AS [VoucherNo], 
+    [ViewLedgerPayment].[VoucherName] AS [VoucherName], 
+    [ViewLedgerPayment].[Fund] AS [Fund], 
+    [ViewLedgerPayment].[LedgerNameOP2] AS [LedgerNameOP2], 
+    [ViewLedgerPayment].[ChequeNo] AS [ChequeNo]
+    FROM [dbo].[ViewLedgerPayment] AS [ViewLedgerPayment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedgerReceipt" EntityType="Self.ViewLedgerReceipt" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedgerReceipt].[VoucherID] AS [VoucherID], 
+    [ViewLedgerReceipt].[VoucherType] AS [VoucherType], 
+    [ViewLedgerReceipt].[VoucherDate] AS [VoucherDate], 
+    [ViewLedgerReceipt].[LedgerName] AS [LedgerName], 
+    [ViewLedgerReceipt].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedgerReceipt].[Narration] AS [Narration], 
+    [ViewLedgerReceipt].[DrAmt] AS [DrAmt], 
+    [ViewLedgerReceipt].[CrAmt] AS [CrAmt], 
+    [ViewLedgerReceipt].[VoucherNo] AS [VoucherNo], 
+    [ViewLedgerReceipt].[VoucherName] AS [VoucherName], 
+    [ViewLedgerReceipt].[Fund] AS [Fund], 
+    [ViewLedgerReceipt].[LedgerNameOP2] AS [LedgerNameOP2], 
+    [ViewLedgerReceipt].[ChequeNo] AS [ChequeNo]
+    FROM [dbo].[ViewLedgerReceipt] AS [ViewLedgerReceipt]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewLedgerReport" EntityType="Self.ViewLedgerReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewLedgerReport].[VoucherID] AS [VoucherID], 
+    [ViewLedgerReport].[VoucherType] AS [VoucherType], 
+    [ViewLedgerReport].[VoucherDate] AS [VoucherDate], 
+    [ViewLedgerReport].[LedgerName] AS [LedgerName], 
+    [ViewLedgerReport].[LedgerNameOP] AS [LedgerNameOP], 
+    [ViewLedgerReport].[Narration] AS [Narration], 
+    [ViewLedgerReport].[DrAmt] AS [DrAmt], 
+    [ViewLedgerReport].[CrAmt] AS [CrAmt], 
+    [ViewLedgerReport].[GroupName] AS [GroupName], 
+    [ViewLedgerReport].[GroupCode] AS [GroupCode], 
+    [ViewLedgerReport].[RootGroup] AS [RootGroup], 
+    [ViewLedgerReport].[VoucherNo] AS [VoucherNo], 
+    [ViewLedgerReport].[VoucherName] AS [VoucherName], 
+    [ViewLedgerReport].[Fund] AS [Fund], 
+    [ViewLedgerReport].[LedgerNameOP2] AS [LedgerNameOP2], 
+    [ViewLedgerReport].[ChequeNo] AS [ChequeNo]
+    FROM [dbo].[ViewLedgerReport] AS [ViewLedgerReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewTrialBalance" EntityType="Self.ViewTrialBalance" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewTrialBalance].[MEMBER_ID] AS [MEMBER_ID], 
+    [ViewTrialBalance].[MEMBER_NAME] AS [MEMBER_NAME], 
+    [ViewTrialBalance].[ICNO] AS [ICNO], 
+    [ViewTrialBalance].[BankCode] AS [BankCode], 
+    [ViewTrialBalance].[TOTALMONTHSPAID] AS [TOTALMONTHSPAID], 
+    [ViewTrialBalance].[ACCBF] AS [ACCBF], 
+    [ViewTrialBalance].[LASTPAYMENTDATE] AS [LASTPAYMENTDATE], 
+    [ViewTrialBalance].[MEMBERTYPE_NAME] AS [MEMBERTYPE_NAME], 
+    [ViewTrialBalance].[MemberStatus] AS [MemberStatus], 
+    [ViewTrialBalance].[NubeBanchName] AS [NubeBanchName]
+    FROM [dbo].[ViewTrialBalance] AS [ViewTrialBalance]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Nube_Old01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="AccountGroupId" />
+          </Key>
+          <Property Name="AccountGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Under" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProfitAndLoss" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountGroupId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AccountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="DrAmt" Type="Double" />
+        </EntityType>
+        <EntityType Name="ViewLedger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+            <PropertyRef Name="Particulars" />
+            <PropertyRef Name="Narration" />
+          </Key>
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Particulars" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Narration" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CRAmount" Type="Double" />
+          <Property Name="DRAmount" Type="Double" />
+          <Property Name="GroupName" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="GroupCode" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="RootGroup" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="BillingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AccountGroupId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AccountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AcNo" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewLedgerGroup">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP2" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewLedgerJournal">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+            <PropertyRef Name="VoucherName" />
+            <PropertyRef Name="ChequeNo" />
+          </Key>
+          <Property Name="VoucherID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP2" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewLedgerOpening">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+            <PropertyRef Name="VoucherDate" />
+            <PropertyRef Name="Narration" />
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="VoucherName" />
+            <PropertyRef Name="LedgerNameOP2" />
+            <PropertyRef Name="ChequeNo" />
+          </Key>
+          <Property Name="VoucherID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDate" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="VoucherNo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP2" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChequeNo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewLedgerPayment">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP2" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewLedgerReceipt">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP2" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewLedgerReport">
+          <Key>
+            <PropertyRef Name="VoucherType" />
+          </Key>
+          <Property Name="VoucherID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VoucherDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="GroupName" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="GroupCode" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="RootGroup" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerNameOP2" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewTrialBalance">
+          <Key>
+            <PropertyRef Name="ICNO" />
+          </Key>
+          <Property Name="MEMBER_ID" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="MEMBER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ICNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BankCode" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="TOTALMONTHSPAID" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ACCBF" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="LASTPAYMENTDATE" Type="DateTime" Precision="3" />
+          <Property Name="MEMBERTYPE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MemberStatus" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="NubeBanchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Nube_Old01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
+          <EntitySet Name="Ledgers" EntityType="Self.Ledger" />
+          <EntitySet Name="ViewLedgers" EntityType="Self.ViewLedger" />
+          <EntitySet Name="ViewLedgerGroups" EntityType="Self.ViewLedgerGroup" />
+          <EntitySet Name="ViewLedgerJournals" EntityType="Self.ViewLedgerJournal" />
+          <EntitySet Name="ViewLedgerOpenings" EntityType="Self.ViewLedgerOpening" />
+          <EntitySet Name="ViewLedgerPayments" EntityType="Self.ViewLedgerPayment" />
+          <EntitySet Name="ViewLedgerReceipts" EntityType="Self.ViewLedgerReceipt" />
+          <EntitySet Name="ViewLedgerReports" EntityType="Self.ViewLedgerReport" />
+          <EntitySet Name="ViewTrialBalances" EntityType="Self.ViewTrialBalance" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Nube_Old01ModelStoreContainer" CdmEntityContainer="Nube_Old01Entities">
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="Nube_Old01Model.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroups">
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Under" ColumnName="Under" />
+                <ScalarProperty Name="ProfitAndLoss" ColumnName="ProfitAndLoss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ledgers">
+            <EntityTypeMapping TypeName="Nube_Old01Model.Ledger">
+              <MappingFragment StoreEntitySet="Ledger">
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgers">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedger">
+              <MappingFragment StoreEntitySet="ViewLedger">
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="LDate" ColumnName="LDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="CRAmount" ColumnName="CRAmount" />
+                <ScalarProperty Name="DRAmount" ColumnName="DRAmount" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="RootGroup" ColumnName="RootGroup" />
+                <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="AcNo" ColumnName="AcNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgerGroups">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedgerGroup">
+              <MappingFragment StoreEntitySet="ViewLedgerGroup">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgerJournals">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedgerJournal">
+              <MappingFragment StoreEntitySet="ViewLedgerJournal">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgerOpenings">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedgerOpening">
+              <MappingFragment StoreEntitySet="ViewLedgerOpening">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgerPayments">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedgerPayment">
+              <MappingFragment StoreEntitySet="ViewLedgerPayment">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgerReceipts">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedgerReceipt">
+              <MappingFragment StoreEntitySet="ViewLedgerReceipt">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLedgerReports">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewLedgerReport">
+              <MappingFragment StoreEntitySet="ViewLedgerReport">
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerNameOP" ColumnName="LedgerNameOP" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="RootGroup" ColumnName="RootGroup" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewTrialBalances">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ViewTrialBalance">
+              <MappingFragment StoreEntitySet="ViewTrialBalance">
+                <ScalarProperty Name="MEMBER_ID" ColumnName="MEMBER_ID" />
+                <ScalarProperty Name="MEMBER_NAME" ColumnName="MEMBER_NAME" />
+                <ScalarProperty Name="ICNO" ColumnName="ICNO" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="TOTALMONTHSPAID" ColumnName="TOTALMONTHSPAID" />
+                <ScalarProperty Name="ACCBF" ColumnName="ACCBF" />
+                <ScalarProperty Name="LASTPAYMENTDATE" ColumnName="LASTPAYMENTDATE" />
+                <ScalarProperty Name="MEMBERTYPE_NAME" ColumnName="MEMBERTYPE_NAME" />
+                <ScalarProperty Name="MemberStatus" ColumnName="MemberStatus" />
+                <ScalarProperty Name="NubeBanchName" ColumnName="NubeBanchName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

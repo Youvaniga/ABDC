@@ -95,6 +95,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABDB.DALOld\ABDB.DALOld.csproj">
+      <Project>{d0231640-40e6-4627-8541-0a402dd47d08}</Project>
+      <Name>ABDB.DALOld</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ABDC.DALNew\ABDC.DALNew.csproj">
+      <Project>{324ff7d4-c2df-4ae4-b7a6-58b5ebe3004a}</Project>
+      <Name>ABDC.DALNew</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

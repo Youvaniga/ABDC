@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +51,215 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountGroup.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditLimitType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomFormat.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataKeyValue.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderIssue.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderIssueDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderReceived.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderReceivedDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobWorker.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Journal.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JournalDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ledger.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetailType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogMaster.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeNewModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NubeNewModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeNewModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeNewModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturn.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturnDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturn.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturnDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockGroup.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockIn.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInProcess.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInProcessDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockOut.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockOutDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockSeparated.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockSeperatedDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UOM.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeFormDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="NubeNewModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NubeNewModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="NubeNewModel.edmx.diagram">
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NubeNewModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+      <LastGenOutput>NubeNewModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NubeNewModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+      <LastGenOutput>NubeNewModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
