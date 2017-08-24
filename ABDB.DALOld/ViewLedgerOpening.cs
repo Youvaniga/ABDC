@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDB.DALOld
+namespace ABDC.DALOld
 {
     using System;
     using System.Collections.Generic;

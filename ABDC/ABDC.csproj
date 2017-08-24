@@ -106,9 +106,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ABDB.DALOld\ABDB.DALOld.csproj">
+    <ProjectReference Include="..\ABDB.DALOld\ABDC.DALOld.csproj">
       <Project>{d0231640-40e6-4627-8541-0a402dd47d08}</Project>
-      <Name>ABDB.DALOld</Name>
+      <Name>ABDC.DALOld</Name>
     </ProjectReference>
     <ProjectReference Include="..\ABDC.DALNew\ABDC.DALNew.csproj">
       <Project>{324ff7d4-c2df-4ae4-b7a6-58b5ebe3004a}</Project>

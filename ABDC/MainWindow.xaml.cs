@@ -26,9 +26,8 @@ namespace ABDC
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
-        {
+        {           
             
-
             MessageBox.Show("hi");
         }
     }
