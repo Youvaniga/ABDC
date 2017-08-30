@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ABDC
 {
@@ -24,7 +25,7 @@ namespace ABDC
 
         DALOld.Nube_Old01Entities dbOld = new DALOld.Nube_Old01Entities();
         DALNew.Nube_New01Entities dbNew = new DALNew.Nube_New01Entities();
-
+        DateTime dtStart, dtEnd;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace ABDC
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            dtStart = DateTime.Now;
             WriteLog("ABDC Start");
 
             try
@@ -39,16 +41,22 @@ namespace ABDC
                 WriteLog("Futching Fund List");
                 var lstFund = dbOld.ViewLedgerGroups.Select(x => x.Fund).Distinct().Where(x => !string.IsNullOrEmpty(x)).ToList();
                 var lstUserTypeFormDetail = dbNew.UserTypeFormDetails.ToList();
-
+                pbrFund.Maximum = lstFund.Count();
+                pbrFund.Value = 0;
                 WriteLog("Creating Company from Fund List");
                 foreach (var f in lstFund)
                 {
+                    pbrPayment.Value = 0;
+                    pbrReceipt.Value = 0;
+                    pbrJournal.Value = 0;
+
                     DALNew.CompanyDetail cm = new DALNew.CompanyDetail() { CompanyName = f, CompanyType = "Company", IsActive = true };
                     dbNew.CompanyDetails.Add(cm);
                     dbNew.SaveChanges();
                     DataKeyValue.CompanyId = cm.Id;
-                    WriteLog(string.Format("Stored Fund : {0}, Id : {1}", f,cm.Id));                                      
-
+                    WriteLog(string.Format("Stored Fund : {0}, Id : {1}", f,cm.Id));
+                    pbrFund.Value += 1;
+                    lblFund.Text = string.Format("Stored Fund : {0}, Id : {1}", f, cm.Id);
                     DALNew.UserType ut = new DALNew.UserType() { TypeOfUser= DataKeyValue.Administrator_Key };
                     cm.UserTypes.Add(ut);
                     dbNew.SaveChanges();
@@ -85,7 +93,7 @@ namespace ABDC
             {
                 WriteLog(ex.Message);
             }
-
+            
             WriteLog("ABDC End");
             MessageBox.Show("Finished");            
         }
@@ -144,10 +152,13 @@ namespace ABDC
             try
             {
                 var lstPayment = dbOld.PaymentMasters.Where(x => x.Fund == cm.CompanyName).ToList();
+                pbrPayment.Maximum = lstPayment.Count();
+                pbrPayment.Value = 0;                
                 foreach (var p in lstPayment)
                 {
                     try
                     {
+
                         DALNew.Payment pm = new DALNew.Payment()
                         {
                             LedgerId = GetLedgerId(p.Ledger.LedgerName, cm.Id),
@@ -181,6 +192,7 @@ namespace ABDC
                         dbNew.Payments.Add(pm);
                         dbNew.SaveChanges();
                         WriteLog(string.Format("Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}", pm.PaymentDate, pm.EntryNo, pm.VoucherNo));
+                        pbrPayment.Value += 1;                        
                     }
                     catch(Exception ex)
                     {
@@ -201,6 +213,8 @@ namespace ABDC
             try
             {
                 var lstReceipt = dbOld.ReceiptMasters.Where(x => x.Fund == cm.CompanyName).ToList();
+                pbrReceipt.Maximum = lstReceipt.Count();
+                pbrReceipt.Value = 0;
                 foreach (var r in lstReceipt)
                 {
 
@@ -214,7 +228,7 @@ namespace ABDC
                             ChequeNo = r.ChequeNo,
                             CleareDate = r.ClrDate,
                             VoucherNo = r.VoucherNo,
-                            EntryNo = Payment_NewRefNo(cm.Id),
+                            EntryNo = Receipt_NewRefNo(cm.Id),
                             Extracharge = Convert.ToDecimal(r.ExtraCharge),
                             Particulars = r.Narration,
                             ReceiptDate = r.ReceiptDate.Value,
@@ -238,11 +252,12 @@ namespace ABDC
 
                         dbNew.Receipts.Add(rm);
                         dbNew.SaveChanges();
-                        WriteLog(string.Format("Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}", rm.ReceiptDate, rm.EntryNo, rm.VoucherNo));
+                        WriteLog(string.Format("Stored Receipt => Date : {0}, Entry No : {1}, Voucher No : {2}", rm.ReceiptDate, rm.EntryNo, rm.VoucherNo));
+                        pbrReceipt.Value += 1;                        
                     }
                     catch(Exception ex)
                     {
-                        WriteLog(string.Format("Error on Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", r.ReceiptDate, r.EntryNo, r.VoucherNo, ex.Message));
+                        WriteLog(string.Format("Error on Stored Receipt => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", r.ReceiptDate, r.EntryNo, r.VoucherNo, ex.Message));
                     }
                     
                 }
@@ -261,6 +276,8 @@ namespace ABDC
             try
             {
                 var lstJournal = dbOld.JournalMasters.Where(x => x.Fund == cm.CompanyName).ToList();
+                pbrJournal.Maximum = lstJournal.Count();
+                pbrJournal.Value = 0;
                 foreach (var j in lstJournal)
                 {
                     try
@@ -289,11 +306,12 @@ namespace ABDC
 
                         dbNew.Journals.Add(jm);
                         dbNew.SaveChanges();
-                        WriteLog(string.Format("Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}", jm.JournalDate, jm.EntryNo, jm.VoucherNo));
+                        WriteLog(string.Format("Stored Journal => Date : {0}, Entry No : {1}, Voucher No : {2}", jm.JournalDate, jm.EntryNo, jm.VoucherNo));
+                        pbrJournal.Value += 1;                        
                     }
                     catch(Exception ex)
                     {
-                        WriteLog(string.Format("Error Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", j.JournalDate, j.EntryNo, j.VoucherNo,ex.Message));
+                        WriteLog(string.Format("Error Stored Journal => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", j.JournalDate, j.EntryNo, j.VoucherNo,ex.Message));
                     }
                     
                 }
@@ -303,7 +321,7 @@ namespace ABDC
                 WriteLog(string.Format("Error on Journal: {0}", ex.Message));
             }
             
-            WriteLog("End to Store the Receipt");
+            WriteLog("End to Store the Journal");
         }
 
         int GetLedgerId(string LedgerName,int CompanyId)
@@ -363,12 +381,21 @@ namespace ABDC
             return string.Format("{0}{1:X5}", Prefix, No + 1);
         }
 
-        public static void WriteLog(String str)
+        public  void WriteLog(String str)
         {
             using (StreamWriter writer = new StreamWriter(System.IO.Path.GetTempPath() + "ABDC_log.txt", true))
             {
                 writer.WriteLine(string.Format("{0:dd/MM/yyyy hh:mm:ss} => {1}", DateTime.Now, str));
             }
+            dtEnd = DateTime.Now;
+            TimeSpan ts = dtEnd - dtStart;
+            lblStatus.Text = string.Format("Start Time : {0:hh:mm:ss}, End Time : {1:hh:mm:ss}, Work on Mins : {2}\r\nMessage : {3}",dtStart,dtEnd, ts.TotalMinutes,str);
+            DoEvents();
+        }
+        public static void DoEvents()
+        {
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background,
+                                                  new Action(delegate { }));
         }
     }
 }

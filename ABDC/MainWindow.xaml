@@ -8,10 +8,18 @@
         Title="MainWindow" Height="600" Width="600">
     <Grid>
         <StackPanel VerticalAlignment="Top">
-            <DataGrid Name="dgvDetails" Width="500" Height="300" Margin="30">
-                
-            </DataGrid>
-            <Button Name="btnOk" Click="btnOk_Click" Width="150" Height="50" >Ok</Button>
+            <TextBlock Name="lblStatus" FontSize="22" FontWeight="Bold" Margin="20">ADBC</TextBlock>
+            
+            <TextBlock Name="lblFund" FontSize="18" FontWeight="Bold">Fund</TextBlock>
+            <ProgressBar Name="pbrFund" Height="50"></ProgressBar>
+            <TextBlock Name="lblPayment" FontSize="18" FontWeight="Bold">Payment</TextBlock>
+            <ProgressBar Name="pbrPayment" Height="50"></ProgressBar>
+            <TextBlock Name="lblReceipt" FontSize="18" FontWeight="Bold">Receipt</TextBlock>
+            <ProgressBar Name="pbrReceipt" Height="50"></ProgressBar>
+            <TextBlock Name="lblJournal" FontSize="18" FontWeight="Bold">Journal</TextBlock>
+            <ProgressBar Name="pbrJournal" Height="50"></ProgressBar>
+            
+            <Button Name="btnOk" Click="btnOk_Click" Width="150" Height="50" Margin="50" >Ok</Button>
         </StackPanel>
         
     </Grid>
