@@ -15,6 +15,23 @@
         <EntityTypeShape EntityType="Nube_Old01Model.ViewLedgerReceipt" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Nube_Old01Model.ViewLedgerReport" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Nube_Old01Model.ViewTrialBalance" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nube_Old01Model.JournalDetail" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Nube_Old01Model.JournalMaster" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Nube_Old01Model.LedgerOP" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Nube_Old01Model.PaymentDetail" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Nube_Old01Model.PaymentMaster" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Nube_Old01Model.ReceiptDetail" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Nube_Old01Model.ReceiptMaster" Width="1.5" PointX="6.75" PointY="11.75" />
+        <AssociationConnector Association="Nube_Old01Model.FK_Ledger_AccountGroups" />
+        <AssociationConnector Association="Nube_Old01Model.FK_JournalDetails_JournalMaster" />
+        <AssociationConnector Association="Nube_Old01Model.FK_JournalDetails_Ledger" />
+        <AssociationConnector Association="Nube_Old01Model.FK_PaymentDetails_Ledger" />
+        <AssociationConnector Association="Nube_Old01Model.FK_PaymentMaster_Ledger" />
+        <AssociationConnector Association="Nube_Old01Model.FK_ReceiptDetails_Ledger" />
+        <AssociationConnector Association="Nube_Old01Model.FK_ReceiptMaster_Ledger" />
+        <AssociationConnector Association="Nube_Old01Model.FK_PaymentDetails_PaymentMaster" />
+        <AssociationConnector Association="Nube_Old01Model.FK_ReceiptDetails_ReceiptMaster" />
+        <AssociationConnector Association="Nube_Old01Model.FK_LedgerOP_Ledger" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

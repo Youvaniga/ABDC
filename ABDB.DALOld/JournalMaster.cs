@@ -12,21 +12,23 @@ namespace ABDC.DALOld
     using System;
     using System.Collections.Generic;
     
-    public partial class AccountGroup
+    public partial class JournalMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AccountGroup()
+        public JournalMaster()
         {
-            this.Ledgers = new HashSet<Ledger>();
+            this.JournalDetails = new HashSet<JournalDetail>();
         }
     
-        public decimal AccountGroupId { get; set; }
-        public string GroupName { get; set; }
-        public string GroupCode { get; set; }
-        public string Under { get; set; }
-        public Nullable<decimal> ProfitAndLoss { get; set; }
+        public decimal JournalId { get; set; }
+        public Nullable<decimal> EntryNo { get; set; }
+        public Nullable<System.DateTime> JournalDate { get; set; }
+        public string HQNo { get; set; }
+        public string Fund { get; set; }
+        public string VoucherNo { get; set; }
+        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ledger> Ledgers { get; set; }
+        public virtual ICollection<JournalDetail> JournalDetails { get; set; }
     }
 }

@@ -54,7 +54,16 @@
     <Compile Include="AccountGroup.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="JournalDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JournalMaster.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ledger.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LedgerOP.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="NubeOldModel.Context.cs">
@@ -72,7 +81,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NubeOldModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PaymentDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMaster.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptMaster.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewLedger.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>

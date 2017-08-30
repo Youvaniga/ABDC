@@ -35,5 +35,12 @@ namespace ABDC.DALOld
         public virtual DbSet<ViewLedgerReceipt> ViewLedgerReceipts { get; set; }
         public virtual DbSet<ViewLedgerReport> ViewLedgerReports { get; set; }
         public virtual DbSet<ViewTrialBalance> ViewTrialBalances { get; set; }
+        public virtual DbSet<JournalDetail> JournalDetails { get; set; }
+        public virtual DbSet<JournalMaster> JournalMasters { get; set; }
+        public virtual DbSet<LedgerOP> LedgerOPs { get; set; }
+        public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public virtual DbSet<PaymentMaster> PaymentMasters { get; set; }
+        public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
+        public virtual DbSet<ReceiptMaster> ReceiptMasters { get; set; }
     }
 }

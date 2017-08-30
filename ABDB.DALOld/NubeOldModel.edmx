@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Nube_Old01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Nube_Old01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroups">
           <Key>
             <PropertyRef Name="AccountGroupId" />
@@ -15,29 +15,29 @@
           <Property Name="Under" Type="nvarchar" MaxLength="150" />
           <Property Name="ProfitAndLoss" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.JournalDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="JournalDetails">
-          <Property Name="JDId" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="JDId" />
+          </Key>
+          <Property Name="JDId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="JournalID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DrAmt" Type="float" />
           <Property Name="CrAmt" Type="float" />
           <Property Name="Narration" Type="nvarchar" MaxLength="250" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.JournalMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="JournalMaster">
-          <Property Name="JournalId" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
           <Property Name="JournalDate" Type="datetime" />
           <Property Name="HQNo" Type="nvarchar" MaxLength="50" />
           <Property Name="Fund" Type="nvarchar" MaxLength="50" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Nube_Old01.dbo.Ledger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        </EntityType>
         <EntityType Name="Ledger">
           <Key>
             <PropertyRef Name="LedgerId" />
@@ -57,28 +57,31 @@ warning 6002: The table/view 'Nube_Old01.dbo.Ledger' does not have a primary key
           <Property Name="CrAmt" Type="float" />
           <Property Name="DrAmt" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.LedgerOP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="LedgerOP">
-          <Property Name="LedgerOPID" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="LedgerOPID" />
+          </Key>
+          <Property Name="LedgerOPID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Fund" Type="nvarchar" MaxLength="50" />
           <Property Name="DrAmt" Type="float" />
           <Property Name="CrAmt" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.PaymentDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="PaymentDetails">
-          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="PDID" />
+          </Key>
+          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Narration" Type="nvarchar" MaxLength="250" />
           <Property Name="Amount" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.PaymentMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="PaymentMaster">
-          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PaymentDate" Type="datetime" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
@@ -94,20 +97,22 @@ warning 6013: The table/view 'Nube_Old01.dbo.PaymentMaster' does not have a prim
           <Property Name="ClearDate" Type="datetime" />
           <Property Name="PayTo" Type="nvarchar" MaxLength="100" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ReceiptDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="ReceiptDetails">
-          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="RDID" />
+          </Key>
+          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Narration" Type="nvarchar" MaxLength="250" />
           <Property Name="Amount" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ReceiptMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="ReceiptMaster">
-          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ReceiptDate" Type="datetime" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="ReceiptMode" Type="nvarchar" MaxLength="50" />
@@ -123,17 +128,7 @@ warning 6013: The table/view 'Nube_Old01.dbo.ReceiptMaster' does not have a prim
           <Property Name="ClrDate" Type="datetime" />
           <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="150" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ViewAccountGroups' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ViewAccountGroups">
-          <Property Name="AccountGroupId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="GroupName" Type="nvarchar" MaxLength="150" />
-          <Property Name="Under" Type="varchar" MaxLength="5000" />
-          <Property Name="RootGroup" Type="varchar" MaxLength="5002" />
-          <Property Name="ProfitAndLoss" Type="numeric" Precision="18" Scale="0" />
-        </EntityType>-->
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Nube_Old01.dbo.ViewLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewLedger">
@@ -297,75 +292,6 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewLedgerReport' does not have a p
           <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ViewPaymentDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ViewPaymentDetails">
-          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
-          <Property Name="Amount" Type="float" />
-          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="4000" />
-          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ViewPaymentMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ViewPaymentMaster">
-          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="PaymentDate" Type="datetime" />
-          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
-          <Property Name="PayAmount" Type="float" />
-          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
-          <Property Name="ExtraCharge" Type="float" />
-          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="chequeDate" Type="datetime" />
-          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
-          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
-          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClearDate" Type="datetime" />
-          <Property Name="PayTo" Type="nvarchar" MaxLength="100" />
-          <Property Name="DebitAC" Type="varchar" MaxLength="8000" />
-          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ViewReceiptDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ViewReceiptDetails">
-          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
-          <Property Name="Amount" Type="float" />
-          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
-          <Property Name="DebitAc" Type="varchar" MaxLength="8000" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Nube_Old01.dbo.ViewReceiptMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ViewReceiptMaster">
-          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ReceiptDate" Type="datetime" />
-          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ReceiptMode" Type="nvarchar" MaxLength="50" />
-          <Property Name="ReceiptAmount" Type="float" />
-          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
-          <Property Name="ExtraCharge" Type="float" />
-          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="ChequeDate" Type="datetime" />
-          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LedgerNameOP" Type="nvarchar" MaxLength="101" />
-          <Property Name="Narration" Type="nvarchar" MaxLength="250" />
-          <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Fund" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClrDate" Type="datetime" />
-          <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="150" />
-          <Property Name="CreditAC" Type="varchar" MaxLength="8000" />
-          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewTrialBalance">
           <Key>
@@ -382,26 +308,136 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a p
           <Property Name="MemberStatus" Type="varchar" MaxLength="9" />
           <Property Name="NubeBanchName" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_JournalDetails_JournalMaster">
+          <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="0..1" />
+          <End Role="JournalDetails" Type="Self.JournalDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JournalMaster">
+              <PropertyRef Name="JournalId" />
+            </Principal>
+            <Dependent Role="JournalDetails">
+              <PropertyRef Name="JournalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetails_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="JournalDetails" Type="Self.JournalDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="JournalDetails">
+              <PropertyRef Name="LedgerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ledger_AccountGroups">
+          <End Role="AccountGroups" Type="Self.AccountGroups" Multiplicity="0..1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroups">
+              <PropertyRef Name="AccountGroupId" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="AccountGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedgerOP_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="LedgerOP" Type="Self.LedgerOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="LedgerOP">
+              <PropertyRef Name="LedgerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_PaymentMaster">
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMaster_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_ReceiptMaster">
+          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="ReceiptId" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="ReceiptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptMaster_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="ReceiptMaster">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Nube_Old01ModelStoreContainer">
           <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ledger" EntityType="Self.Ledger" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Ledger].[LedgerId] AS [LedgerId], 
-    [Ledger].[LedgerName] AS [LedgerName], 
-    [Ledger].[BillingName] AS [BillingName], 
-    [Ledger].[Address] AS [Address], 
-    [Ledger].[Phone] AS [Phone], 
-    [Ledger].[Mobile] AS [Mobile], 
-    [Ledger].[MailId] AS [MailId], 
-    [Ledger].[CreditDays] AS [CreditDays], 
-    [Ledger].[CreditLimit] AS [CreditLimit], 
-    [Ledger].[Note] AS [Note], 
-    [Ledger].[AccountGroupId] AS [AccountGroupId], 
-    [Ledger].[AccountCode] AS [AccountCode], 
-    [Ledger].[CrAmt] AS [CrAmt], 
-    [Ledger].[DrAmt] AS [DrAmt]
-    FROM [dbo].[Ledger] AS [Ledger]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="JournalDetails" EntityType="Self.JournalDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalMaster" EntityType="Self.JournalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedgerOP" EntityType="Self.LedgerOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMaster" EntityType="Self.PaymentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptMaster" EntityType="Self.ReceiptMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ViewLedger" EntityType="Self.ViewLedger" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ViewLedger].[LedgerId] AS [LedgerId], 
@@ -547,9 +583,48 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a p
     [ViewTrialBalance].[NubeBanchName] AS [NubeBanchName]
     FROM [dbo].[ViewTrialBalance] AS [ViewTrialBalance]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_JournalDetails_JournalMaster" Association="Self.FK_JournalDetails_JournalMaster">
+            <End Role="JournalMaster" EntitySet="JournalMaster" />
+            <End Role="JournalDetails" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetails_Ledger" Association="Self.FK_JournalDetails_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="JournalDetails" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ledger_AccountGroups" Association="Self.FK_Ledger_AccountGroups">
+            <End Role="AccountGroups" EntitySet="AccountGroups" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedgerOP_Ledger" Association="Self.FK_LedgerOP_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="LedgerOP" EntitySet="LedgerOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Ledger" Association="Self.FK_PaymentDetails_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_PaymentMaster" Association="Self.FK_PaymentDetails_PaymentMaster">
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMaster_Ledger" Association="Self.FK_PaymentMaster_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_Ledger" Association="Self.FK_ReceiptDetails_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_ReceiptMaster" Association="Self.FK_ReceiptDetails_ReceiptMaster">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptMaster_Ledger" Association="Self.FK_ReceiptMaster_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Nube_Old01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -562,6 +637,7 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a p
           <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Under" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ProfitAndLoss" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Ledgers" Relationship="Nube_Old01Model.FK_Ledger_AccountGroups" FromRole="AccountGroup" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="Ledger">
           <Key>
@@ -581,6 +657,13 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a p
           <Property Name="AccountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CrAmt" Type="Double" />
           <Property Name="DrAmt" Type="Double" />
+          <NavigationProperty Name="AccountGroup" Relationship="Nube_Old01Model.FK_Ledger_AccountGroups" FromRole="Ledger" ToRole="AccountGroup" />
+          <NavigationProperty Name="JournalDetails" Relationship="Nube_Old01Model.FK_JournalDetails_Ledger" FromRole="Ledger" ToRole="JournalDetail" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Nube_Old01Model.FK_PaymentDetails_Ledger" FromRole="Ledger" ToRole="PaymentDetail" />
+          <NavigationProperty Name="PaymentMasters" Relationship="Nube_Old01Model.FK_PaymentMaster_Ledger" FromRole="Ledger" ToRole="PaymentMaster" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Nube_Old01Model.FK_ReceiptDetails_Ledger" FromRole="Ledger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptMasters" Relationship="Nube_Old01Model.FK_ReceiptMaster_Ledger" FromRole="Ledger" ToRole="ReceiptMaster" />
+          <NavigationProperty Name="LedgerOPs" Relationship="Nube_Old01Model.FK_LedgerOP_Ledger" FromRole="Ledger" ToRole="LedgerOP" />
         </EntityType>
         <EntityType Name="ViewLedger">
           <Key>
@@ -756,7 +839,281 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a p
           <EntitySet Name="ViewLedgerReceipts" EntityType="Self.ViewLedgerReceipt" />
           <EntitySet Name="ViewLedgerReports" EntityType="Self.ViewLedgerReport" />
           <EntitySet Name="ViewTrialBalances" EntityType="Self.ViewTrialBalance" />
+          <EntitySet Name="JournalDetails" EntityType="Nube_Old01Model.JournalDetail" />
+          <EntitySet Name="JournalMasters" EntityType="Nube_Old01Model.JournalMaster" />
+          <EntitySet Name="LedgerOPs" EntityType="Nube_Old01Model.LedgerOP" />
+          <EntitySet Name="PaymentDetails" EntityType="Nube_Old01Model.PaymentDetail" />
+          <EntitySet Name="PaymentMasters" EntityType="Nube_Old01Model.PaymentMaster" />
+          <EntitySet Name="ReceiptDetails" EntityType="Nube_Old01Model.ReceiptDetail" />
+          <EntitySet Name="ReceiptMasters" EntityType="Nube_Old01Model.ReceiptMaster" />
+          <AssociationSet Name="FK_Ledger_AccountGroups" Association="Nube_Old01Model.FK_Ledger_AccountGroups">
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetails_JournalMaster" Association="Nube_Old01Model.FK_JournalDetails_JournalMaster">
+            <End Role="JournalMaster" EntitySet="JournalMasters" />
+            <End Role="JournalDetail" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetails_Ledger" Association="Nube_Old01Model.FK_JournalDetails_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="JournalDetail" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Ledger" Association="Nube_Old01Model.FK_PaymentDetails_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMaster_Ledger" Association="Nube_Old01Model.FK_PaymentMaster_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_Ledger" Association="Nube_Old01Model.FK_ReceiptDetails_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptMaster_Ledger" Association="Nube_Old01Model.FK_ReceiptMaster_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_PaymentMaster" Association="Nube_Old01Model.FK_PaymentDetails_PaymentMaster">
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_ReceiptMaster" Association="Nube_Old01Model.FK_ReceiptDetails_ReceiptMaster">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedgerOP_Ledger" Association="Nube_Old01Model.FK_LedgerOP_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="LedgerOP" EntitySet="LedgerOPs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="JournalDetail">
+          <Key>
+            <PropertyRef Name="JDId" />
+          </Key>
+          <Property Name="JDId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="JournalID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LedgerID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JournalMaster" Relationship="Nube_Old01Model.FK_JournalDetails_JournalMaster" FromRole="JournalDetail" ToRole="JournalMaster" />
+          <NavigationProperty Name="Ledger" Relationship="Nube_Old01Model.FK_JournalDetails_Ledger" FromRole="JournalDetail" ToRole="Ledger" />
+        </EntityType>
+        <EntityType Name="JournalMaster">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="EntryNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="JournalDate" Type="DateTime" Precision="3" />
+          <Property Name="HQNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JournalDetails" Relationship="Nube_Old01Model.FK_JournalDetails_JournalMaster" FromRole="JournalMaster" ToRole="JournalDetail" />
+        </EntityType>
+        <EntityType Name="LedgerOP">
+          <Key>
+            <PropertyRef Name="LedgerOPID" />
+          </Key>
+          <Property Name="LedgerOPID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LedgerID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <NavigationProperty Name="Ledger" Relationship="Nube_Old01Model.FK_LedgerOP_Ledger" FromRole="LedgerOP" ToRole="Ledger" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PDID" />
+          </Key>
+          <Property Name="PDID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PaymentId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+          <NavigationProperty Name="Ledger" Relationship="Nube_Old01Model.FK_PaymentDetails_Ledger" FromRole="PaymentDetail" ToRole="Ledger" />
+          <NavigationProperty Name="PaymentMaster" Relationship="Nube_Old01Model.FK_PaymentDetails_PaymentMaster" FromRole="PaymentDetail" ToRole="PaymentMaster" />
+        </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayAmount" Type="Double" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Double" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EntryNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClearDate" Type="DateTime" Precision="3" />
+          <Property Name="PayTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ledger" Relationship="Nube_Old01Model.FK_PaymentMaster_Ledger" FromRole="PaymentMaster" ToRole="Ledger" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Nube_Old01Model.FK_PaymentDetails_PaymentMaster" FromRole="PaymentMaster" ToRole="PaymentDetail" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="RDID" />
+          </Key>
+          <Property Name="RDID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ReceiptId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+          <NavigationProperty Name="Ledger" Relationship="Nube_Old01Model.FK_ReceiptDetails_Ledger" FromRole="ReceiptDetail" ToRole="Ledger" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="Nube_Old01Model.FK_ReceiptDetails_ReceiptMaster" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+        </EntityType>
+        <EntityType Name="ReceiptMaster">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptAmount" Type="Double" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Double" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+          <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EntryNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClrDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceivedFrom" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ledger" Relationship="Nube_Old01Model.FK_ReceiptMaster_Ledger" FromRole="ReceiptMaster" ToRole="Ledger" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Nube_Old01Model.FK_ReceiptDetails_ReceiptMaster" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
+        </EntityType>
+        <Association Name="FK_Ledger_AccountGroups">
+          <End Type="Nube_Old01Model.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroup">
+              <PropertyRef Name="AccountGroupId" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="AccountGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetails_JournalMaster">
+          <End Type="Nube_Old01Model.JournalMaster" Role="JournalMaster" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JournalMaster">
+              <PropertyRef Name="JournalId" />
+            </Principal>
+            <Dependent Role="JournalDetail">
+              <PropertyRef Name="JournalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetails_Ledger">
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="JournalDetail">
+              <PropertyRef Name="LedgerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Ledger">
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMaster_Ledger">
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_Ledger">
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptMaster_Ledger">
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.ReceiptMaster" Role="ReceiptMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="ReceiptMaster">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_PaymentMaster">
+          <End Type="Nube_Old01Model.PaymentMaster" Role="PaymentMaster" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_ReceiptMaster">
+          <End Type="Nube_Old01Model.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="ReceiptId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="ReceiptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedgerOP_Ledger">
+          <End Type="Nube_Old01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="Nube_Old01Model.LedgerOP" Role="LedgerOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="LedgerOP">
+              <PropertyRef Name="LedgerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -952,6 +1309,108 @@ warning 6002: The table/view 'Nube_Old01.dbo.ViewTrialBalance' does not have a p
                 <ScalarProperty Name="MEMBERTYPE_NAME" ColumnName="MEMBERTYPE_NAME" />
                 <ScalarProperty Name="MemberStatus" ColumnName="MemberStatus" />
                 <ScalarProperty Name="NubeBanchName" ColumnName="NubeBanchName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalDetails">
+            <EntityTypeMapping TypeName="Nube_Old01Model.JournalDetail">
+              <MappingFragment StoreEntitySet="JournalDetails">
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="LedgerID" ColumnName="LedgerID" />
+                <ScalarProperty Name="JournalID" ColumnName="JournalID" />
+                <ScalarProperty Name="JDId" ColumnName="JDId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalMasters">
+            <EntityTypeMapping TypeName="Nube_Old01Model.JournalMaster">
+              <MappingFragment StoreEntitySet="JournalMaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="HQNo" ColumnName="HQNo" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedgerOPs">
+            <EntityTypeMapping TypeName="Nube_Old01Model.LedgerOP">
+              <MappingFragment StoreEntitySet="LedgerOP">
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerID" ColumnName="LedgerID" />
+                <ScalarProperty Name="LedgerOPID" ColumnName="LedgerOPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="Nube_Old01Model.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PDID" ColumnName="PDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMasters">
+            <EntityTypeMapping TypeName="Nube_Old01Model.PaymentMaster">
+              <MappingFragment StoreEntitySet="PaymentMaster">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="PayTo" ColumnName="PayTo" />
+                <ScalarProperty Name="ClearDate" ColumnName="ClearDate" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="RDID" ColumnName="RDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptMasters">
+            <EntityTypeMapping TypeName="Nube_Old01Model.ReceiptMaster">
+              <MappingFragment StoreEntitySet="ReceiptMaster">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="ReceivedFrom" ColumnName="ReceivedFrom" />
+                <ScalarProperty Name="ClrDate" ColumnName="ClrDate" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
+                <ScalarProperty Name="ReceiptMode" ColumnName="ReceiptMode" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

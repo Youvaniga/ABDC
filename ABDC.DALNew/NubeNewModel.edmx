@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Nube_New01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Nube_New01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -272,7 +272,7 @@
           <Property Name="ChequeDate" Type="date" />
           <Property Name="ClearDate" Type="date" />
           <Property Name="Particulars" Type="nvarchar" MaxLength="500" />
-          <Property Name="PayTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayTo" Type="nvarchar" MaxLength="500" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PaymentDetail">
@@ -423,7 +423,7 @@
           <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="ChequeDate" Type="date" />
           <Property Name="CleareDate" Type="date" />
-          <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceivedFrom" Type="nvarchar" MaxLength="500" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ReceiptDetail">
@@ -2282,8 +2282,7 @@
             <End Role="UserTypeDetail" EntitySet="UserTypeDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Nube_New01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2616,7 +2615,7 @@
           <Property Name="ChequeDate" Type="DateTime" Precision="0" />
           <Property Name="ClearDate" Type="DateTime" Precision="0" />
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="PayTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ledger" Relationship="Self.FK_Payment_Ledger" FromRole="Payment" ToRole="Ledger" />
           <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetail_Payment" FromRole="Payment" ToRole="PaymentDetail" />
@@ -2809,7 +2808,7 @@
           <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ChequeDate" Type="DateTime" Precision="0" />
           <Property Name="CleareDate" Type="DateTime" Precision="0" />
-          <Property Name="ReceivedFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedFrom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ledger" Relationship="Self.FK_Receipt_Ledger" FromRole="Receipt" ToRole="Ledger" />
           <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetail_Receipt" FromRole="Receipt" ToRole="ReceiptDetail" />

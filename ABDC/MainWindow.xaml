@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ABDC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="600">
     <Grid>
-        <Button Name="btnOk" Click="btnOk_Click" Width="150" Height="50" >Ok</Button>
+        <StackPanel VerticalAlignment="Top">
+            <DataGrid Name="dgvDetails" Width="500" Height="300" Margin="30">
+                
+            </DataGrid>
+            <Button Name="btnOk" Click="btnOk_Click" Width="150" Height="50" >Ok</Button>
+        </StackPanel>
+        
     </Grid>
 </Window>

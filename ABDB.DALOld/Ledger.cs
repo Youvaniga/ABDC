@@ -14,6 +14,17 @@ namespace ABDC.DALOld
     
     public partial class Ledger
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ledger()
+        {
+            this.JournalDetails = new HashSet<JournalDetail>();
+            this.PaymentDetails = new HashSet<PaymentDetail>();
+            this.PaymentMasters = new HashSet<PaymentMaster>();
+            this.ReceiptDetails = new HashSet<ReceiptDetail>();
+            this.ReceiptMasters = new HashSet<ReceiptMaster>();
+            this.LedgerOPs = new HashSet<LedgerOP>();
+        }
+    
         public decimal LedgerId { get; set; }
         public string LedgerName { get; set; }
         public string BillingName { get; set; }
@@ -28,5 +39,19 @@ namespace ABDC.DALOld
         public string AccountCode { get; set; }
         public Nullable<double> CrAmt { get; set; }
         public Nullable<double> DrAmt { get; set; }
+    
+        public virtual AccountGroup AccountGroup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JournalDetail> JournalDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReceiptMaster> ReceiptMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LedgerOP> LedgerOPs { get; set; }
     }
 }
