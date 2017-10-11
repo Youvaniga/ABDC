@@ -29,8 +29,8 @@ namespace ABDC.DALNew
         public Nullable<int> DigitGroupingBy { get; set; }
         public Nullable<int> CurrencyCaseSensitive { get; set; }
         public Nullable<bool> IsDisplayWithOnlyOnSuffix { get; set; }
-        public Nullable<int> CompanyId { get; set; }
+        public Nullable<int> FundMasterId { get; set; }
     
-        public virtual CompanyDetail CompanyDetail { get; set; }
+        public virtual FundMaster FundMaster { get; set; }
     }
 }

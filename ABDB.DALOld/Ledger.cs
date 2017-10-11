@@ -19,10 +19,10 @@ namespace ABDC.DALOld
         {
             this.JournalDetails = new HashSet<JournalDetail>();
             this.PaymentDetails = new HashSet<PaymentDetail>();
-            this.PaymentMasters = new HashSet<PaymentMaster>();
             this.ReceiptDetails = new HashSet<ReceiptDetail>();
-            this.ReceiptMasters = new HashSet<ReceiptMaster>();
             this.LedgerOPs = new HashSet<LedgerOP>();
+            this.PaymentMasters = new HashSet<PaymentMaster>();
+            this.ReceiptMasters = new HashSet<ReceiptMaster>();
         }
     
         public decimal LedgerId { get; set; }
@@ -46,12 +46,12 @@ namespace ABDC.DALOld
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptMaster> ReceiptMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedgerOP> LedgerOPs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReceiptMaster> ReceiptMasters { get; set; }
     }
 }

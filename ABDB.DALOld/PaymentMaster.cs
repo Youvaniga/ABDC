@@ -22,7 +22,7 @@ namespace ABDC.DALOld
     
         public decimal PaymentId { get; set; }
         public Nullable<System.DateTime> PaymentDate { get; set; }
-        public Nullable<decimal> LedgerId { get; set; }
+        public decimal LedgerId { get; set; }
         public string PaymentMode { get; set; }
         public Nullable<double> PayAmount { get; set; }
         public string RefNo { get; set; }

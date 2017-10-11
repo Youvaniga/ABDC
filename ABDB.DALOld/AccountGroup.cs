@@ -17,15 +17,19 @@ namespace ABDC.DALOld
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AccountGroup()
         {
+            this.AccountGroups1 = new HashSet<AccountGroup>();
             this.Ledgers = new HashSet<Ledger>();
         }
     
         public decimal AccountGroupId { get; set; }
         public string GroupName { get; set; }
         public string GroupCode { get; set; }
-        public string Under { get; set; }
+        public Nullable<decimal> Under { get; set; }
         public Nullable<decimal> ProfitAndLoss { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountGroup> AccountGroups1 { get; set; }
+        public virtual AccountGroup AccountGroup1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ledger> Ledgers { get; set; }
     }

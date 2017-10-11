@@ -23,8 +23,8 @@ namespace ABDC
     public partial class MainWindow : Window
     {
 
-        DALOld.Nube_Old01Entities dbOld = new DALOld.Nube_Old01Entities();
-        DALNew.Nube_New01Entities dbNew = new DALNew.Nube_New01Entities();
+        DALOld.nubebfsv1Entities dbOld = new DALOld.nubebfsv1Entities();
+        DALNew.nube_newEntities dbNew = new DALNew.nube_newEntities();
         DateTime dtStart, dtEnd;
         public MainWindow()
         {
@@ -50,8 +50,8 @@ namespace ABDC
                     pbrReceipt.Value = 0;
                     pbrJournal.Value = 0;
 
-                    DALNew.CompanyDetail cm = new DALNew.CompanyDetail() { CompanyName = f, CompanyType = "Company", IsActive = true };
-                    dbNew.CompanyDetails.Add(cm);
+                    DALNew.FundMaster cm = new DALNew.FundMaster() { FundName = f, IsActive = true };
+                    dbNew.FundMasters.Add(cm);
                     dbNew.SaveChanges();
                     DataKeyValue.CompanyId = cm.Id;
                     WriteLog(string.Format("Stored Fund : {0}, Id : {1}", f,cm.Id));
@@ -82,7 +82,7 @@ namespace ABDC
                     dbNew.SaveChanges();
                     WriteLog(string.Format("Stored User Account : {0}, Id : {1}", ua.UserName, ua.Id));
 
-                    WriteAccountGroup(cm,"1",null);
+                    WriteAccountGroup(cm,1,null);
                     WritePayment(cm);
                     WriteReceipt(cm);
                     WriteJournal(cm);
@@ -98,17 +98,17 @@ namespace ABDC
             MessageBox.Show("Finished");            
         }
 
-        void WriteAccountGroup(DALNew.CompanyDetail cm,string AGId,int? UAGId)
+        void WriteAccountGroup(DALNew.FundMaster cm,decimal AGId,int? UAGId)
         {
             WriteLog("Start to store the Accounts Group");
 
-            var lstAccountsGroup = dbOld.AccountGroups.Where(x=> x.Under==AGId && x.AccountGroupId.ToString()!=AGId).ToList();
+            var lstAccountsGroup = dbOld.AccountGroups.Where(x=> x.Under==AGId && x.AccountGroupId!=AGId).ToList();
             foreach(var ag in lstAccountsGroup)
             {
                 DALNew.AccountGroup d = new DALNew.AccountGroup() {
                     GroupName = ag.GroupName,
                     GroupCode = ag.GroupCode,
-                    CompanyId = cm.Id,
+                    FundMasterId = cm.Id,
                     UnderGroupId = UAGId                   
                 };
                 dbNew.AccountGroups.Add(d);
@@ -128,33 +128,35 @@ namespace ABDC
                        
                     //}
 
-                    DALOld.LedgerOP lop = l.LedgerOPs.Where(x => x.Fund == cm.CompanyName).FirstOrDefault();
+                    DALOld.LedgerOP lop = l.LedgerOPs.Where(x => x.Fund == cm.FundName).FirstOrDefault();
                     if (lop == null) lop = new DALOld.LedgerOP();
 
                     DALNew.Ledger dl = new DALNew.Ledger()
                     {
                         LedgerName = l.LedgerName,
-                        LedgerCode = l.AccountCode,
-                        OPDr = Convert.ToDecimal(lop.DrAmt),
-                        OPCr = Convert.ToDecimal(lop.CrAmt)
+                        LedgerCode = l.AccountCode, 
+                       
+                        //OPDr = Convert.ToDecimal(lop.DrAmt),
+                        //OPCr = Convert.ToDecimal(lop.CrAmt)
                     };
+
                     d.Ledgers.Add(dl);
                     dbNew.SaveChanges();
                     WriteLog(string.Format("Stored Ledger : {0}, Id : {1}", dl.LedgerName, dl.Id));
                 }
 
-                WriteAccountGroup(cm, ag.AccountGroupId.ToString(), d.Id);
+                WriteAccountGroup(cm, ag.AccountGroupId, d.Id);
 
             }
             WriteLog("End to store the Accounts Group");
         }
 
-        void WritePayment(DALNew.CompanyDetail cm)
+        void WritePayment(DALNew.FundMaster cm)
         {
             WriteLog("Start to store the Payment");
             try
             {
-                var lstPayment = dbOld.PaymentMasters.Where(x => x.Fund == cm.CompanyName).ToList();
+                var lstPayment = dbOld.PaymentMasters.Where(x => x.Fund == cm.FundName).ToList();
                 pbrPayment.Maximum = lstPayment.Count();
                 pbrPayment.Value = 0;                
                 foreach (var p in lstPayment)
@@ -210,12 +212,12 @@ namespace ABDC
             WriteLog("End to Store the Payment");
         }
 
-        void WriteReceipt(DALNew.CompanyDetail cm)
+        void WriteReceipt(DALNew.FundMaster cm)
         {
             WriteLog("Start to store the Receipt");
             try
             {
-                var lstReceipt = dbOld.ReceiptMasters.Where(x => x.Fund == cm.CompanyName).ToList();
+                var lstReceipt = dbOld.ReceiptMasters.Where(x => x.Fund == cm.FundName).ToList();
                 pbrReceipt.Maximum = lstReceipt.Count();
                 pbrReceipt.Value = 0;
                 foreach (var r in lstReceipt)
@@ -273,12 +275,12 @@ namespace ABDC
             WriteLog("End to Store the Receipt");
         }
 
-        void WriteJournal(DALNew.CompanyDetail cm)
+        void WriteJournal(DALNew.FundMaster cm)
         {
             WriteLog("Start to store the Journal");
             try
             {
-                var lstJournal = dbOld.JournalMasters.Where(x => x.Fund == cm.CompanyName).ToList();
+                var lstJournal = dbOld.JournalMasters.Where(x => x.Fund == cm.FundName).ToList();
                 pbrJournal.Maximum = lstJournal.Count();
                 pbrJournal.Value = 0;
                 foreach (var j in lstJournal)
@@ -327,9 +329,9 @@ namespace ABDC
             WriteLog("End to Store the Journal");
         }
 
-        int GetLedgerId(string LedgerName,int CompanyId)
+        int GetLedgerId(string LedgerName,int FundId)
         {
-            DALNew.Ledger l = dbNew.Ledgers.Where(x => x.LedgerName == LedgerName && x.AccountGroup.CompanyId == CompanyId).FirstOrDefault();
+            DALNew.Ledger l = dbNew.Ledgers.Where(x => x.LedgerName == LedgerName && x.AccountGroup.FundMasterId == FundId).FirstOrDefault();
             if (l == null)
             {
                 return 0;
@@ -339,13 +341,13 @@ namespace ABDC
             }
         }
 
-        public string Payment_NewRefNo(int CompanyId,DateTime dt)
+        public string Payment_NewRefNo(int FundId, DateTime dt)
         {
             //DateTime dt = DateTime.Now;
             string Prefix = string.Format("{0}{1:yy}{2:X}", FormPrefix.Payment, dt, dt.Month);
             long No = 0;
 
-            var d = dbNew.Payments.Where(x => x.Ledger.AccountGroup.CompanyId == CompanyId && x.EntryNo.StartsWith(Prefix))
+            var d = dbNew.Payments.Where(x => x.Ledger.AccountGroup.FundMasterId == FundId && x.EntryNo.StartsWith(Prefix))
                                      .OrderByDescending(x => x.EntryNo)
                                      .FirstOrDefault();
 
@@ -354,13 +356,13 @@ namespace ABDC
             return string.Format("{0}{1:X5}", Prefix, No + 1);
         }
 
-        public string Receipt_NewRefNo(int CompanyId, DateTime dt)
+        public string Receipt_NewRefNo(int FundId, DateTime dt)
         {
             //DateTime dt = DateTime.Now;
             string Prefix = string.Format("{0}{1:yy}{2:X}", FormPrefix.Receipt, dt, dt.Month);
             long No = 0;
 
-            var d = dbNew.Receipts.Where(x => x.Ledger.AccountGroup.CompanyId == CompanyId && x.EntryNo.StartsWith(Prefix))
+            var d = dbNew.Receipts.Where(x => x.Ledger.AccountGroup.FundMasterId == FundId && x.EntryNo.StartsWith(Prefix))
                                      .OrderByDescending(x => x.EntryNo)
                                      .FirstOrDefault();
 
@@ -369,13 +371,13 @@ namespace ABDC
             return string.Format("{0}{1:X5}", Prefix, No + 1);
         }
 
-        public string Journal_NewRefNo(int CompanyId, DateTime dt)
+        public string Journal_NewRefNo(int FundId, DateTime dt)
         {
             //DateTime dt = DateTime.Now;
             string Prefix = string.Format("{0}{1:yy}{2:X}", FormPrefix.Journal, dt, dt.Month);
             long No = 0;
 
-            var d = dbNew.Journals.Where(x => x.JournalDetails.FirstOrDefault().Ledger.AccountGroup.CompanyId == CompanyId && x.EntryNo.StartsWith(Prefix))
+            var d = dbNew.Journals.Where(x => x.JournalDetails.FirstOrDefault().Ledger.AccountGroup.FundMasterId == FundId && x.EntryNo.StartsWith(Prefix))
                                      .OrderByDescending(x => x.EntryNo)
                                      .FirstOrDefault();
 

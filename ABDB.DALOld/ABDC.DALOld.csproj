@@ -54,6 +54,18 @@
     <Compile Include="AccountGroup.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperty.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeesDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeesMaster.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="JournalDetail.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
@@ -64,6 +76,9 @@
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LedgerOP.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LedgerReport.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="NubeOldModel.Context.cs">
@@ -81,17 +96,92 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NubeOldModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PaymentDetail.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PaymentMaster.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturn.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturnDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReceiptDetail.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ReceiptMaster.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturn.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturnDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockGroup.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockReport.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxMaster.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfMeasurement.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERMASTER.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAnnualStatement.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewBankBranchAdvice.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewBranchMonthlyStatement.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewLedger.cs">
@@ -109,10 +199,67 @@
     <Compile Include="ViewLedgerPayment.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewLedgerPurchase.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewLedgerReceipt.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewLedgerReport.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMasterMember.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMemberLastPaidDate.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchase.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchaseDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchaseOrder.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchaseOrderDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchaseReturn.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchaseReturnDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPurchaseSearch.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewReceipt.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSale.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSalesDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSalesOrder.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSalesOrderDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSalesReturn.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSalesReturnDetail.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStockGroup.cs">
+      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStockReport.cs">
       <DependentUpon>NubeOldModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewTrialBalance.cs">
@@ -120,17 +267,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="NubeOldModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NubeOldModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="NubeOldModel.edmx.diagram">
       <DependentUpon>NubeOldModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NubeOldModel.Context.tt">
@@ -143,9 +291,6 @@
       <DependentUpon>NubeOldModel.edmx</DependentUpon>
       <LastGenOutput>NubeOldModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
