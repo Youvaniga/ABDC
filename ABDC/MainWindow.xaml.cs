@@ -119,25 +119,28 @@ namespace ABDC
 
                 foreach(var l in lstLedger)
                 {
-                    if(l.PaymentMasters.Where(x=> x.Fund==cm.CompanyName).Count()>0 || 
-                       l.PaymentDetails.Where(x => x.PaymentMaster.Fund == cm.CompanyName).Count() > 0 || 
-                       l.ReceiptMasters.Where(x => x.Fund == cm.CompanyName).Count()>0 || 
-                       l.ReceiptDetails.Where(x => x.ReceiptMaster.Fund == cm.CompanyName).Count()>0 
-                       || l.JournalDetails.Where(x => x.JournalMaster.Fund == cm.CompanyName).Count()>0)
-                    {
-                        DALOld.LedgerOP lop = l.LedgerOPs.Where(x => x.Fund == cm.CompanyName).FirstOrDefault();
-                        if (lop == null) lop = new DALOld.LedgerOP();
+                    //if(l.PaymentMasters.Where(x=> x.Fund==cm.CompanyName).Count()>0 || 
+                    //   l.PaymentDetails.Where(x => x.PaymentMaster.Fund == cm.CompanyName).Count() > 0 || 
+                    //   l.ReceiptMasters.Where(x => x.Fund == cm.CompanyName).Count()>0 || 
+                    //   l.ReceiptDetails.Where(x => x.ReceiptMaster.Fund == cm.CompanyName).Count()>0 
+                    //   || l.JournalDetails.Where(x => x.JournalMaster.Fund == cm.CompanyName).Count()>0)
+                    //{
+                       
+                    //}
 
-                        DALNew.Ledger dl = new DALNew.Ledger() {
-                            LedgerName = l.LedgerName,
-                            LedgerCode = l.AccountCode,
-                            OPDr = Convert.ToDecimal(lop.DrAmt),
-                            OPCr = Convert.ToDecimal(lop.CrAmt)                          
-                        };
-                        d.Ledgers.Add(dl);
-                        dbNew.SaveChanges();
-                        WriteLog(string.Format("Stored Ledger : {0}, Id : {1}",dl.LedgerName,dl.Id));
-                    }
+                    DALOld.LedgerOP lop = l.LedgerOPs.Where(x => x.Fund == cm.CompanyName).FirstOrDefault();
+                    if (lop == null) lop = new DALOld.LedgerOP();
+
+                    DALNew.Ledger dl = new DALNew.Ledger()
+                    {
+                        LedgerName = l.LedgerName,
+                        LedgerCode = l.AccountCode,
+                        OPDr = Convert.ToDecimal(lop.DrAmt),
+                        OPCr = Convert.ToDecimal(lop.CrAmt)
+                    };
+                    d.Ledgers.Add(dl);
+                    dbNew.SaveChanges();
+                    WriteLog(string.Format("Stored Ledger : {0}, Id : {1}", dl.LedgerName, dl.Id));
                 }
 
                 WriteAccountGroup(cm, ag.AccountGroupId.ToString(), d.Id);
@@ -167,7 +170,7 @@ namespace ABDC
                             ChequeNo = p.ChequeNo,
                             ClearDate = p.ClearDate,
                             VoucherNo = p.VoucherNo,
-                            EntryNo = Payment_NewRefNo(cm.Id),
+                            EntryNo = Payment_NewRefNo(cm.Id,p.PaymentDate.Value),
                             ExtraCharge = Convert.ToDecimal(p.ExtraCharge),
                             Particulars = p.Narration,
                             PaymentDate = p.PaymentDate.Value,
@@ -228,7 +231,7 @@ namespace ABDC
                             ChequeNo = r.ChequeNo,
                             CleareDate = r.ClrDate,
                             VoucherNo = r.VoucherNo,
-                            EntryNo = Receipt_NewRefNo(cm.Id),
+                            EntryNo = Receipt_NewRefNo(cm.Id,r.ReceiptDate.Value),
                             Extracharge = Convert.ToDecimal(r.ExtraCharge),
                             Particulars = r.Narration,
                             ReceiptDate = r.ReceiptDate.Value,
@@ -285,7 +288,7 @@ namespace ABDC
                         DALNew.Journal jm = new DALNew.Journal()
                         {
                             VoucherNo = j.VoucherNo,
-                            EntryNo = Journal_NewRefNo(cm.Id),
+                            EntryNo = Journal_NewRefNo(cm.Id,j.JournalDate.Value),
                             HQNo = j.HQNo,
                             JournalDate = j.JournalDate.Value,
                             Status = j.Status,
@@ -336,9 +339,9 @@ namespace ABDC
             }
         }
 
-        public string Payment_NewRefNo(int CompanyId)
+        public string Payment_NewRefNo(int CompanyId,DateTime dt)
         {
-            DateTime dt = DateTime.Now;
+            //DateTime dt = DateTime.Now;
             string Prefix = string.Format("{0}{1:yy}{2:X}", FormPrefix.Payment, dt, dt.Month);
             long No = 0;
 
@@ -351,9 +354,9 @@ namespace ABDC
             return string.Format("{0}{1:X5}", Prefix, No + 1);
         }
 
-        public string Receipt_NewRefNo(int CompanyId)
+        public string Receipt_NewRefNo(int CompanyId, DateTime dt)
         {
-            DateTime dt = DateTime.Now;
+            //DateTime dt = DateTime.Now;
             string Prefix = string.Format("{0}{1:yy}{2:X}", FormPrefix.Receipt, dt, dt.Month);
             long No = 0;
 
@@ -366,9 +369,9 @@ namespace ABDC
             return string.Format("{0}{1:X5}", Prefix, No + 1);
         }
 
-        public string Journal_NewRefNo(int CompanyId)
+        public string Journal_NewRefNo(int CompanyId, DateTime dt)
         {
-            DateTime dt = DateTime.Now;
+            //DateTime dt = DateTime.Now;
             string Prefix = string.Format("{0}{1:yy}{2:X}", FormPrefix.Journal, dt, dt.Month);
             long No = 0;
 
