@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ABDC.DALNew;
+using System.Web.Script.Serialization;
 
 namespace ABDC
 {
@@ -26,6 +28,9 @@ namespace ABDC
         DALOld.nubebfsv1Entities dbOld = new DALOld.nubebfsv1Entities();
         DALNew.nube_newEntities dbNew = new DALNew.nube_newEntities();
         DateTime dtStart, dtEnd;
+        private List<DALNew.EntityType> _entityTypeList;
+        private  List<DALNew.LogDetailType> _logDetailTypeList;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +43,7 @@ namespace ABDC
 
             try
             {                
-                WriteLog("Futching Fund List");
+                WriteLog("Fetching Fund List");
                 var lstFund = dbOld.ViewLedgerGroups.Select(x => x.Fund).Distinct().Where(x => !string.IsNullOrEmpty(x)).ToList();
                 var lstUserTypeFormDetail = dbNew.UserTypeFormDetails.ToList();
                 pbrFund.Maximum = lstFund.Count();
@@ -51,6 +56,8 @@ namespace ABDC
                     pbrJournal.Value = 0;
 
                     DALNew.FundMaster cm = new DALNew.FundMaster() { FundName = f, IsActive = true };
+                    DALNew.ACYearMaster acym = new DALNew.ACYearMaster() {ACYear="2016 - 2017", ACYearStatusId=1 };
+                    cm.ACYearMasters.Add(acym);
                     dbNew.FundMasters.Add(cm);
                     dbNew.SaveChanges();
                     DataKeyValue.CompanyId = cm.Id;
@@ -82,7 +89,7 @@ namespace ABDC
                     dbNew.SaveChanges();
                     WriteLog(string.Format("Stored User Account : {0}, Id : {1}", ua.UserName, ua.Id));
 
-                    WriteAccountGroup(cm,1,null);
+                    WriteAccountGroup(cm,1,null,acym);
                     WritePayment(cm);
                     WriteReceipt(cm);
                     WriteJournal(cm);
@@ -98,7 +105,7 @@ namespace ABDC
             MessageBox.Show("Finished");            
         }
 
-        void WriteAccountGroup(DALNew.FundMaster cm,decimal AGId,int? UAGId)
+        void WriteAccountGroup(DALNew.FundMaster cm,decimal AGId,int? UAGId,DALNew.ACYearMaster acym)
         {
             WriteLog("Start to store the Accounts Group");
 
@@ -113,39 +120,45 @@ namespace ABDC
                 };
                 dbNew.AccountGroups.Add(d);
                 dbNew.SaveChanges();
+                LogDetailStore(d, LogDetailType.INSERT,dbNew.UserAccounts.FirstOrDefault().Id);
+
                 DataKeyValue.Write(d.GroupName, d.Id);
                 WriteLog(string.Format("Stored Account Group : {0}, Id : {1}", d.GroupName, d.Id));
                 var lstLedger = dbOld.Ledgers.Where(x => x.AccountGroupId == ag.AccountGroupId).ToList();
 
                 foreach(var l in lstLedger)
                 {
-                    //if(l.PaymentMasters.Where(x=> x.Fund==cm.CompanyName).Count()>0 || 
-                    //   l.PaymentDetails.Where(x => x.PaymentMaster.Fund == cm.CompanyName).Count() > 0 || 
-                    //   l.ReceiptMasters.Where(x => x.Fund == cm.CompanyName).Count()>0 || 
-                    //   l.ReceiptDetails.Where(x => x.ReceiptMaster.Fund == cm.CompanyName).Count()>0 
-                    //   || l.JournalDetails.Where(x => x.JournalMaster.Fund == cm.CompanyName).Count()>0)
-                    //{
-                       
-                    //}
-
+                    
                     DALOld.LedgerOP lop = l.LedgerOPs.Where(x => x.Fund == cm.FundName).FirstOrDefault();
                     if (lop == null) lop = new DALOld.LedgerOP();
 
                     DALNew.Ledger dl = new DALNew.Ledger()
                     {
                         LedgerName = l.LedgerName,
-                        LedgerCode = l.AccountCode, 
-                       
-                        //OPDr = Convert.ToDecimal(lop.DrAmt),
-                        //OPCr = Convert.ToDecimal(lop.CrAmt)
+                        LedgerCode = l.AccountCode                                               
                     };
 
                     d.Ledgers.Add(dl);
                     dbNew.SaveChanges();
+                    LogDetailStore(dl, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+
+                    decimal OPDr = Convert.ToDecimal(lop.DrAmt);
+                    decimal OPCr = Convert.ToDecimal(lop.CrAmt);
+                    if(OPDr !=0 || OPCr != 0)
+                    {
+                        acym.ACYearLedgerBalances.Add(new DALNew.ACYearLedgerBalance() {
+                            DrAmt = OPDr,
+                            CrAmt =OPCr,
+                            LedgerId = dl.Id, 
+                           
+                        });
+                        dbNew.SaveChanges();
+                    }
+
                     WriteLog(string.Format("Stored Ledger : {0}, Id : {1}", dl.LedgerName, dl.Id));
                 }
 
-                WriteAccountGroup(cm, ag.AccountGroupId, d.Id);
+                WriteAccountGroup(cm, ag.AccountGroupId, d.Id, acym);
 
             }
             WriteLog("End to store the Accounts Group");
@@ -192,10 +205,14 @@ namespace ABDC
                                 Particular = pd.Narration,
                             };
                             pm.PaymentDetails.Add(pmd);
-                        }
+                          }
 
                         dbNew.Payments.Add(pm);
                         dbNew.SaveChanges();
+                        LogDetailStore(pm, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(pm.PaymentDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+
+
                         WriteLog(string.Format("Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}", pm.PaymentDate, pm.EntryNo, pm.VoucherNo));
                         pbrPayment.Value += 1;                        
                     }
@@ -257,6 +274,8 @@ namespace ABDC
 
                         dbNew.Receipts.Add(rm);
                         dbNew.SaveChanges();
+                        LogDetailStore(r, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(r.ReceiptDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
                         WriteLog(string.Format("Stored Receipt => Date : {0}, Entry No : {1}, Voucher No : {2}", rm.ReceiptDate, rm.EntryNo, rm.VoucherNo));
                         pbrReceipt.Value += 1;                        
                     }
@@ -311,6 +330,10 @@ namespace ABDC
 
                         dbNew.Journals.Add(jm);
                         dbNew.SaveChanges();
+                        LogDetailStore(j, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(j.JournalDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+
+
                         WriteLog(string.Format("Stored Journal => Date : {0}, Entry No : {1}, Voucher No : {2}", jm.JournalDate, jm.EntryNo, jm.VoucherNo));
                         pbrJournal.Value += 1;                        
                     }
@@ -399,8 +422,110 @@ namespace ABDC
         }
         public static void DoEvents()
         {
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background,
-                                                  new Action(delegate { }));
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new Action(delegate { }));
         }
+
+        enum LogDetailType
+        {
+            INSERT,
+            UPDATE,
+            DELETE
+        }
+        private  List<DALNew.EntityType> EntityTypeList
+        {
+            get
+            {
+                if (_entityTypeList == null)
+                {
+                    _entityTypeList = dbNew.EntityTypes.ToList();
+                }
+                return _entityTypeList;
+            }
+            set
+            {
+                _entityTypeList = value;
+            }
+        }
+        private  List<DALNew.LogDetailType> LogDetailTypeList
+        {
+            get
+            {
+                if (_logDetailTypeList == null) _logDetailTypeList = dbNew.LogDetailTypes.ToList();
+                return _logDetailTypeList;
+            }
+            set
+            {
+                _logDetailTypeList = value;
+            }
+        }
+        private int EntityTypeId(string Type)
+        {
+            DALNew.EntityType et = EntityTypeList.Where(x => x.Entity == Type).FirstOrDefault();
+            if (et == null)
+            {
+                et = new DALNew.EntityType();
+                dbNew.EntityTypes.Add(et);
+                EntityTypeList.Add(et);
+                et.Entity = Type;
+                dbNew.SaveChanges();
+            }
+            return et.Id;
+        }
+
+        private int LogDetailTypeId(LogDetailType Type)
+        {
+            DALNew.LogDetailType ldt = LogDetailTypeList.Where(x => x.Type == Type.ToString()).FirstOrDefault();
+            return ldt.Id;
+        }
+
+        private void LogDetailStore(object Data, LogDetailType Type, int userId)
+        {
+            try
+            {
+                Type t = Data.GetType();
+                long EntityId = Convert.ToInt64(t.GetProperty("Id").GetValue(Data));
+                int ETypeId = EntityTypeId(t.Name);
+
+                DALNew.LogMaster l = dbNew.LogMasters.Where(x => x.EntityId == EntityId && x.EntityTypeId == ETypeId).FirstOrDefault();
+                DALNew.LogDetail ld = new DALNew.LogDetail();
+                DateTime dt = DateTime.Now;
+
+
+                if (l == null)
+                {
+                    l = new DALNew.LogMaster();
+                    dbNew.LogMasters.Add(l);
+                    l.EntityId = EntityId;
+                    l.EntityTypeId = ETypeId;
+                    l.CreatedAt = dt;
+                    l.CreatedBy = userId;
+                }
+
+                if (Type == LogDetailType.UPDATE)
+                {
+                    l.UpdatedAt = dt;
+                    l.UpdatedBy = userId;
+                }
+                else if (Type == LogDetailType.DELETE)
+                {
+                    l.DeletedAt = dt;
+                    l.DeletedBy = userId;
+                }
+
+                dbNew.SaveChanges();
+
+                dbNew.LogDetails.Add(ld);
+                ld.LogMasterId = l.Id;
+                ld.RecordDetail = new JavaScriptSerializer().Serialize(Data);
+                ld.EntryBy =userId;
+                ld.EntryAt = dt;
+                ld.LogDetailTypeId = LogDetailTypeId(Type);
+                dbNew.SaveChanges();
+            }
+            catch (Exception ex) { }
+
+        }
+
+
     }
 }

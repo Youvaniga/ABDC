@@ -18,6 +18,7 @@ namespace ABDC.DALOld
         public PaymentMaster()
         {
             this.PaymentDetails = new HashSet<PaymentDetail>();
+            this.PaymentDetails1 = new HashSet<PaymentDetail>();
         }
     
         public decimal PaymentId { get; set; }
@@ -40,5 +41,7 @@ namespace ABDC.DALOld
         public virtual Ledger Ledger { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails1 { get; set; }
     }
 }

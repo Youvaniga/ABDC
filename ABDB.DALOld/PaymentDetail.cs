@@ -21,6 +21,10 @@ namespace ABDC.DALOld
         public Nullable<double> Amount { get; set; }
     
         public virtual Ledger Ledger { get; set; }
+        public virtual Ledger Ledger1 { get; set; }
+        public virtual Ledger Ledger2 { get; set; }
+        public virtual Ledger Ledger3 { get; set; }
         public virtual PaymentMaster PaymentMaster { get; set; }
+        public virtual PaymentMaster PaymentMaster1 { get; set; }
     }
 }

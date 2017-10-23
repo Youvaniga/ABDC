@@ -5,83 +5,31 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="244a69ac0ed54fb5a18edc04617762b8" Name="Diagram1">
-        <EntityTypeShape EntityType="nubebfsv1Model.AccountGroup" Width="1.5" PointX="1.5" PointY="5.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Bank" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.dtproperty" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.JournalDetail" Width="1.5" PointX="3" PointY="9.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.JournalMaster" Width="1.5" PointX="0.75" PointY="16.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Ledger" Width="1.5" PointX="0.75" PointY="10.5" />
-        <EntityTypeShape EntityType="nubebfsv1Model.LedgerOP" Width="1.5" PointX="3" PointY="18.375" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PaymentDetail" Width="1.5" PointX="5.25" PointY="12.875" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PaymentMaster" Width="1.5" PointX="3" PointY="13.125" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ReceiptDetail" Width="1.5" PointX="5.25" PointY="18.5" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ReceiptMaster" Width="1.5" PointX="3" PointY="24.375" />
-        <EntityTypeShape EntityType="nubebfsv1Model.UnitOfMeasurement" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.FeesDetail" Width="1.5" PointX="4.75" PointY="3.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.FeesMaster" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.LedgerReport" Width="1.5" PointX="6.75" PointY="3.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Payment" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Product" Width="1.5" PointX="8.75" PointY="4.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Purchase" Width="1.5" PointX="6.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PurchaseDetail" Width="1.5" PointX="8.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PurchaseOrder" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PurchaseOrderDetail" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PurchaseReturn" Width="1.5" PointX="10.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.PurchaseReturnDetail" Width="1.5" PointX="12.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Receipt" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Sale" Width="1.5" PointX="7.75" PointY="12.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.SalesDetail" Width="1.5" PointX="12.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.SalesOrder" Width="1.5" PointX="9.75" PointY="12.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.SalesOrderDetail" Width="1.5" PointX="11.75" PointY="12.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.SalesReturn" Width="1.5" PointX="13.75" PointY="12.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.SalesReturnDetail" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Staff" Width="1.5" PointX="14.75" PointY="4.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.StockGroup" Width="1.5" PointX="14.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.StockReport" Width="1.5" PointX="15.75" PointY="11.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.Supplier" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.TaxMaster" Width="1.5" PointX="16.75" PointY="4.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.USERMASTER" Width="1.5" PointX="16.75" PointY="7.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewAnnualStatement" Width="1.5" PointX="7.75" PointY="16.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewBankBranchAdvice" Width="1.5" PointX="9.75" PointY="16.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewBranchMonthlyStatement" Width="1.5" PointX="11.75" PointY="16.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedger" Width="1.5" PointX="13.75" PointY="16.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerGroup" Width="1.5" PointX="15.75" PointY="16.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerJournal" Width="1.5" PointX="17.75" PointY="10.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerOpening" Width="1.5" PointX="17.75" PointY="15.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerPayment" Width="1.5" PointX="18.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerPurchase" Width="1.5" PointX="18.75" PointY="5.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerReceipt" Width="1.5" PointX="19.75" PointY="9.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerReport" Width="1.5" PointX="19.75" PointY="14.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewMasterMember" Width="1.5" PointX="19.75" PointY="19.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewMemberLastPaidDate" Width="1.5" PointX="20.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchase" Width="1.5" PointX="20.75" PointY="3.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchaseDetail" Width="1.5" PointX="21.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchaseOrder" Width="1.5" PointX="9.75" PointY="21.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchaseOrderDetail" Width="1.5" PointX="21.75" PointY="13.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchaseReturn" Width="1.5" PointX="15.75" PointY="21.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchaseReturnDetail" Width="1.5" PointX="21.75" PointY="18.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewPurchaseSearch" Width="1.5" PointX="22.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewReceipt" Width="1.5" PointX="22.75" PointY="4.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewSale" Width="1.5" PointX="11.75" PointY="22.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewSalesDetail" Width="1.5" PointX="5.75" PointY="23.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewSalesOrder" Width="1.5" PointX="23.75" PointY="8.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewSalesOrderDetail" Width="1.5" PointX="23.75" PointY="12.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewSalesReturn" Width="1.5" PointX="23.75" PointY="17.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewSalesReturnDetail" Width="1.5" PointX="23.75" PointY="21.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewStockGroup" Width="1.5" PointX="0.75" PointY="21.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewStockReport" Width="1.5" PointX="24.75" PointY="0.75" />
-        <EntityTypeShape EntityType="nubebfsv1Model.ViewTrialBalance" Width="1.5" PointX="25.75" PointY="5.75" />
-        <AssociationConnector Association="nubebfsv1Model.FK__AccountGr__Under__6F4A8121" />
-        <AssociationConnector Association="nubebfsv1Model.FK__Ledger__AccountG__703EA55A" />
-        <AssociationConnector Association="nubebfsv1Model.FK__JournalDe__Journ__78D3EB5B" />
-        <AssociationConnector Association="nubebfsv1Model.FK__JournalDe__Ledge__7D98A078" />
-        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Ledge__0539C240" />
-        <AssociationConnector Association="nubebfsv1Model.FK__ReceiptDe__Ledge__0CDAE408" />
-        <AssociationConnector Association="nubebfsv1Model.FK_LedgerOP_Ledger" />
+        <EntityTypeShape EntityType="nubebfsv1Model.AccountGroup" Width="1.5" PointX="1.5" PointY="5.625" />
+        <EntityTypeShape EntityType="nubebfsv1Model.JournalDetail" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="nubebfsv1Model.JournalMaster" Width="1.5" PointX="0.75" PointY="15.625" />
+        <EntityTypeShape EntityType="nubebfsv1Model.Ledger" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="nubebfsv1Model.PaymentDetail" Width="1.5" PointX="5.25" PointY="12.5" />
+        <EntityTypeShape EntityType="nubebfsv1Model.PaymentMaster" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="nubebfsv1Model.ReceiptDetail" Width="1.5" PointX="5.25" PointY="17" />
+        <EntityTypeShape EntityType="nubebfsv1Model.ReceiptMaster" Width="1.5" PointX="3" PointY="22.75" />
+        <EntityTypeShape EntityType="nubebfsv1Model.ViewLedgerGroup" Width="1.5" PointX="2.75" PointY="0.75" />
+        <AssociationConnector Association="nubebfsv1Model.FK__AccountGr__Under__7226EDCC" />
+        <AssociationConnector Association="nubebfsv1Model.FK__Ledger__AccountG__731B1205" />
+        <AssociationConnector Association="nubebfsv1Model.FK__JournalDe__Journ__7D98A078" />
+        <AssociationConnector Association="nubebfsv1Model.FK__JournalDe__Ledge__7E8CC4B1" />
+        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Ledge__08162EEB" />
+        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Ledge__09FE775D" />
+        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Ledge__36D11DD4" />
+        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Ledge__37C5420D" />
+        <AssociationConnector Association="nubebfsv1Model.FK__ReceiptDe__Ledge__1387E197" />
+        <AssociationConnector Association="nubebfsv1Model.FK__ReceiptMa__Ledge__0EC32C7A" />
         <AssociationConnector Association="nubebfsv1Model.FK_PaymentMaster_Ledger" />
-        <AssociationConnector Association="nubebfsv1Model.FK_ReceiptMaster_Ledger" />
-        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Payme__04459E07" />
-        <AssociationConnector Association="nubebfsv1Model.FK__ReceiptDe__Recei__0BE6BFCF" />
+        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Payme__07220AB2" />
+        <AssociationConnector Association="nubebfsv1Model.FK__PaymentDe__Payme__0AF29B96" />
+        <AssociationConnector Association="nubebfsv1Model.FK__ReceiptDe__Recei__1293BD5E" />
+        <EntityTypeShape EntityType="nubebfsv1Model.LedgerOP" Width="1.5" PointX="3" PointY="28" />
+        <AssociationConnector Association="nubebfsv1Model.FK_LedgerOP_Ledger" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
