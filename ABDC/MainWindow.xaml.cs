@@ -57,6 +57,8 @@ namespace ABDC
 
                     DALNew.FundMaster cm = new DALNew.FundMaster() { FundName = f, IsActive = true };
                     DALNew.ACYearMaster acym = new DALNew.ACYearMaster() {ACYear="2016 - 2017", ACYearStatusId=1 };
+                   
+
                     cm.ACYearMasters.Add(acym);
                     dbNew.FundMasters.Add(cm);
                     dbNew.SaveChanges();
@@ -88,6 +90,21 @@ namespace ABDC
                     ut.UserAccounts.Add(ua);
                     dbNew.SaveChanges();
                     WriteLog(string.Format("Stored User Account : {0}, Id : {1}", ua.UserName, ua.Id));
+
+                    DALNew.CustomFormat cf = new DALNew.CustomFormat()
+                    {
+                        CurrencyNegativeSymbolPrefix = "[RM] ",
+                        CurrencyPositiveSymbolPrefix = "RM ",
+                        CurrencyToWordPrefix = "Ringgit Malaysia", 
+                        DecimalToWordPrefix="Cents", 
+                        DecimalSymbol=".",
+                        DigitGroupingSymbol=",",
+                        IsDisplayWithOnlyOnSuffix=true,
+                        NoOfDigitAfterDecimal=2,
+                        FundMasterId=cm.Id                                         
+                    };
+                    dbNew.CustomFormats.Add(cf);
+                    dbNew.SaveChanges();
 
                     WriteAccountGroup(cm,1,null,acym);
                     WritePayment(cm);
@@ -274,8 +291,8 @@ namespace ABDC
 
                         dbNew.Receipts.Add(rm);
                         dbNew.SaveChanges();
-                        LogDetailStore(r, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
-                        LogDetailStore(r.ReceiptDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(rm, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(rm.ReceiptDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
                         WriteLog(string.Format("Stored Receipt => Date : {0}, Entry No : {1}, Voucher No : {2}", rm.ReceiptDate, rm.EntryNo, rm.VoucherNo));
                         pbrReceipt.Value += 1;                        
                     }
@@ -330,8 +347,8 @@ namespace ABDC
 
                         dbNew.Journals.Add(jm);
                         dbNew.SaveChanges();
-                        LogDetailStore(j, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
-                        LogDetailStore(j.JournalDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(jm, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
+                        LogDetailStore(jm.JournalDetails, LogDetailType.INSERT, dbNew.UserAccounts.FirstOrDefault().Id);
 
 
                         WriteLog(string.Format("Stored Journal => Date : {0}, Entry No : {1}, Voucher No : {2}", jm.JournalDate, jm.EntryNo, jm.VoucherNo));
