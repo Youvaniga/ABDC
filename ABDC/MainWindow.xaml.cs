@@ -499,45 +499,45 @@ namespace ABDC
         {
             try
             {
-                Type t = Data.GetType();
-                long EntityId = Convert.ToInt64(t.GetProperty("Id").GetValue(Data));
-                int ETypeId = EntityTypeId(t.Name);
+                //Type t = Data.GetType();
+                //long EntityId = Convert.ToInt64(t.GetProperty("Id").GetValue(Data));
+                //int ETypeId = EntityTypeId(t.Name);
 
-                DALNew.LogMaster l = dbNew.LogMasters.Where(x => x.EntityId == EntityId && x.EntityTypeId == ETypeId).FirstOrDefault();
-                DALNew.LogDetail ld = new DALNew.LogDetail();
-                DateTime dt = DateTime.Now;
+                //DALNew.LogMaster l = dbNew.LogMasters.Where(x => x.EntityId == EntityId && x.EntityTypeId == ETypeId).FirstOrDefault();
+                //DALNew.LogDetail ld = new DALNew.LogDetail();
+                //DateTime dt = DateTime.Now;
 
 
-                if (l == null)
-                {
-                    l = new DALNew.LogMaster();
-                    dbNew.LogMasters.Add(l);
-                    l.EntityId = EntityId;
-                    l.EntityTypeId = ETypeId;
-                    l.CreatedAt = dt;
-                    l.CreatedBy = userId;
-                }
+                //if (l == null)
+                //{
+                //    l = new DALNew.LogMaster();
+                //    dbNew.LogMasters.Add(l);
+                //    l.EntityId = EntityId;
+                //    l.EntityTypeId = ETypeId;
+                //    l.CreatedAt = dt;
+                //    l.CreatedBy = userId;
+                //}
 
-                if (Type == LogDetailType.UPDATE)
-                {
-                    l.UpdatedAt = dt;
-                    l.UpdatedBy = userId;
-                }
-                else if (Type == LogDetailType.DELETE)
-                {
-                    l.DeletedAt = dt;
-                    l.DeletedBy = userId;
-                }
+                //if (Type == LogDetailType.UPDATE)
+                //{
+                //    l.UpdatedAt = dt;
+                //    l.UpdatedBy = userId;
+                //}
+                //else if (Type == LogDetailType.DELETE)
+                //{
+                //    l.DeletedAt = dt;
+                //    l.DeletedBy = userId;
+                //}
 
-                dbNew.SaveChanges();
+                //dbNew.SaveChanges();
 
-                dbNew.LogDetails.Add(ld);
-                ld.LogMasterId = l.Id;
-                ld.RecordDetail = new JavaScriptSerializer().Serialize(Data);
-                ld.EntryBy =userId;
-                ld.EntryAt = dt;
-                ld.LogDetailTypeId = LogDetailTypeId(Type);
-                dbNew.SaveChanges();
+                //dbNew.LogDetails.Add(ld);
+                //ld.LogMasterId = l.Id;
+                //ld.RecordDetail = new JavaScriptSerializer().Serialize(Data);
+                //ld.EntryBy =userId;
+                //ld.EntryAt = dt;
+                //ld.LogDetailTypeId = LogDetailTypeId(Type);
+                //dbNew.SaveChanges();
             }
             catch (Exception ex) { }
 
