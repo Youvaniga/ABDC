@@ -17,10 +17,11 @@ namespace ABDC
         private string _DataKey;
         private int _DataValue;
         private static int _CompanyId;
+        private static int _UserId;
         #endregion
 
         #region Property
-        
+
         public int Id
         {
             get
@@ -85,6 +86,19 @@ namespace ABDC
             {
                 _CompanyId = value;
                 _toList = null;
+            }
+        }
+
+        public static int UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+
+            set
+            {
+                _UserId = value;
             }
         }
 
