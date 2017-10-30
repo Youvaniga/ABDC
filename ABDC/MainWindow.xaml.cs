@@ -456,11 +456,65 @@ namespace ABDC
             LogDetailStore(cf1, ua.Id);
             LogDetailStore(ut1, ua.Id);
             LogDetailStore(ua1, ua.Id);
+            var x1 = dbNew.SaveChanges();
+            WriteLog("Log Data Finished of Master");
             LogDetailStore(acym1, ua.Id);
-            
+            var x2 = dbNew.SaveChanges();
+            WriteLog("Log Data Finished of AccountYearMaster");
+            foreach (var ag in fm.AccountGroups)
+            {
+                LogDetailStore(new DALNew.AccountGroup() { Id = ag.Id, FundMasterId=fm.Id, GroupCode=ag.GroupCode, UnderGroupId=ag.UnderGroupId,GroupName=ag.GroupName },ua.Id);
+            }
 
+            var x3 = dbNew.SaveChanges();
+            WriteLog("Log Data Finished of AccountGroup");
+            foreach (var ld in lstLedgerNew)
+            {
+                LogDetailStore(new DALNew.Ledger() { Id=ld.Id, AccountGroupId=ld.AccountGroupId, LedgerCode=ld.LedgerCode, LedgerName= ld.LedgerName }, ua.Id);
+            }
+            var n0=dbNew.SaveChanges();
+            WriteLog("Log Data Finished of Ledger");
+            int i = 0;
+            foreach (var p in lstPaymentNew)
+            {
+                var p1 = new DALNew.Payment() { Id = p.Id, Amount = p.Amount, ChequeDate = p.ChequeDate, ChequeNo = p.ChequeNo, ClearDate = p.ClearDate, EntryNo = p.EntryNo, ExtraCharge = p.ExtraCharge, LedgerId = p.LedgerId, Particulars = p.Particulars, PaymentDate = p.PaymentDate, PaymentMode = p.PaymentMode, PayTo = p.PayTo, RefCode = p.RefCode, RefNo = p.RefNo, Status = p.Status, VoucherNo = p.VoucherNo };
+                foreach(var pd in p.PaymentDetails)
+                {
+                    p1.PaymentDetails.Add(new DALNew.PaymentDetail() {Id= pd.Id, Amount=pd.Amount, LedgerId=pd.LedgerId, Particular=pd.Particular, PaymentId=pd.PaymentId });
+                }
 
-            dbNew.SaveChanges();
+                LogDetailStore(p1, ua.Id);                
+                if (i++ % 1000 == 0)dbNew.SaveChanges();
+                
+            }
+            var n1 = dbNew.SaveChanges();
+            WriteLog("Log Data Finished of Payment");
+            foreach (var r in lstReceiptNew)
+            {
+                var r1 = new DALNew.Receipt() {Id = r.Id, Amount=r.Amount, ChequeDate=r.ChequeDate, ChequeNo=r.ChequeNo, CleareDate=r.CleareDate, EntryNo=r.EntryNo, Extracharge=r.Extracharge, LedgerId=r.LedgerId, Particulars=r.Particulars, ReceiptDate=r.ReceiptDate, ReceiptMode=r.ReceiptMode, ReceivedFrom=r.ReceivedFrom, RefCode=r.RefCode, RefNo=r.RefNo, Status=r.Status, VoucherNo=r.VoucherNo };
+                foreach(var rd in r.ReceiptDetails)
+                {
+                    r1.ReceiptDetails.Add(new DALNew.ReceiptDetail() { Id= rd.Id, Amount = rd.Amount, LedgerId=rd.LedgerId, Particulars=rd.Particulars, ReceiptId=rd.ReceiptId });
+                }
+                LogDetailStore(r1, ua.Id);
+
+                if (i++ % 1000 == 0) dbNew.SaveChanges();
+            }
+            var n2 = dbNew.SaveChanges();
+            WriteLog("Log Data Finished of Receipt");
+            foreach (var j in lstJournalNew)
+            {
+                var j1 = new DALNew.Journal() { Id=j.Id, Amount= j.Amount, EntryNo=j.EntryNo, HQNo=j.HQNo, JournalDate=j.JournalDate, Particular=j.Particular, RefCode=j.RefCode, Status=j.Status, VoucherNo=j.VoucherNo };
+                foreach(var jd in j.JournalDetails)
+                {
+                    j1.JournalDetails.Add(new DALNew.JournalDetail() {Id=jd.Id, CrAmt=jd.CrAmt,DrAmt=jd.DrAmt, JournalId=jd.JournalId, LedgerId=jd.LedgerId, Particulars= jd.Particulars });
+                }
+                LogDetailStore(j1, ua.Id);
+                if (i++ % 1000 == 0) dbNew.SaveChanges();
+            }
+
+            var n3 = dbNew.SaveChanges();
+            WriteLog("Log Data Finished of Journal");
         }
 
         public  void WriteLog(String str)
@@ -548,10 +602,11 @@ namespace ABDC
                 l.CreatedBy = userId;
                 l.LogDetails.Add(ld);
                 
-                ld.RecordDetail = new JavaScriptSerializer().Serialize(Data);
+                ld.RecordDetail = Newtonsoft.Json.JsonConvert.SerializeObject(Data); //new JavaScriptSerializer().Serialize(Data);
                 ld.EntryBy =userId;
                 ld.EntryAt = dt;
                 ld.LogDetailTypeId = LogDetailTypeId(LogDetailType.INSERT);
+                WriteLog(string.Format("Name={0},Id={1}",t.Name,EntityId));
             }
             catch (Exception ex) { }
         }
