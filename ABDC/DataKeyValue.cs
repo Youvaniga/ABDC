@@ -900,7 +900,7 @@ namespace ABDC
             {
                 if (_toList == null)
                 {
-                    using (var db = new DALNew.nube_newEntities())
+                    using (var db = new DALNew.nube_new_01Entities())
                     {
                         _toList =  db.DataKeyValues.Where(x=> x.FundMasterId== CompanyId ).ToList().Select(x=> new DataKeyValue() { DataKey= x.DataKey,DataValue = x.DataValue }).ToList();
                     }
@@ -936,7 +936,7 @@ namespace ABDC
 
         public static void Write(String Key, int Value)
         {
-            using(var db = new DALNew.nube_newEntities())
+            using(var db = new DALNew.nube_new_01Entities())
             {
                 var dv = new DALNew.DataKeyValue() {
                     DataKey = Key,

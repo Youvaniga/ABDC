@@ -15,7 +15,7 @@ namespace ABDC.DALOld
     public partial class LedgerOP
     {
         public decimal LedgerOPID { get; set; }
-        public Nullable<decimal> LedgerID { get; set; }
+        public decimal LedgerID { get; set; }
         public string Fund { get; set; }
         public Nullable<double> DrAmt { get; set; }
         public Nullable<double> CrAmt { get; set; }

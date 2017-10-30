@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="nube_newModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="nube_new_01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -570,7 +570,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="nube_newModelStoreContainer">
+        <EntityContainer Name="nube_new_01ModelStoreContainer">
           <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACYearLedgerBalance" EntityType="Self.ACYearLedgerBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACYearMaster" EntityType="Self.ACYearMaster" Schema="dbo" store:Type="Tables" />
@@ -699,7 +699,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="nube_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="nube_new_01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -1315,7 +1315,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="nube_newEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="nube_new_01Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
           <EntitySet Name="ACYearLedgerBalances" EntityType="Self.ACYearLedgerBalance" />
           <EntitySet Name="ACYearMasters" EntityType="Self.ACYearMaster" />
@@ -1445,9 +1445,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="nube_newModelStoreContainer" CdmEntityContainer="nube_newEntities">
+        <EntityContainerMapping StorageEntityContainer="nube_new_01ModelStoreContainer" CdmEntityContainer="nube_new_01Entities">
           <EntitySetMapping Name="AccountGroups">
-            <EntityTypeMapping TypeName="nube_newModel.AccountGroup">
+            <EntityTypeMapping TypeName="nube_new_01Model.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
@@ -1458,7 +1458,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACYearLedgerBalances">
-            <EntityTypeMapping TypeName="nube_newModel.ACYearLedgerBalance">
+            <EntityTypeMapping TypeName="nube_new_01Model.ACYearLedgerBalance">
               <MappingFragment StoreEntitySet="ACYearLedgerBalance">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ACYearMasterId" ColumnName="ACYearMasterId" />
@@ -1469,7 +1469,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACYearMasters">
-            <EntityTypeMapping TypeName="nube_newModel.ACYearMaster">
+            <EntityTypeMapping TypeName="nube_new_01Model.ACYearMaster">
               <MappingFragment StoreEntitySet="ACYearMaster">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ACYear" ColumnName="ACYear" />
@@ -1479,7 +1479,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACYearStatus">
-            <EntityTypeMapping TypeName="nube_newModel.ACYearStatu">
+            <EntityTypeMapping TypeName="nube_new_01Model.ACYearStatu">
               <MappingFragment StoreEntitySet="ACYearStatus">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1487,7 +1487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomFormats">
-            <EntityTypeMapping TypeName="nube_newModel.CustomFormat">
+            <EntityTypeMapping TypeName="nube_new_01Model.CustomFormat">
               <MappingFragment StoreEntitySet="CustomFormat">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CurrencyPositiveSymbolPrefix" ColumnName="CurrencyPositiveSymbolPrefix" />
@@ -1509,7 +1509,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DataKeyValues">
-            <EntityTypeMapping TypeName="nube_newModel.DataKeyValue">
+            <EntityTypeMapping TypeName="nube_new_01Model.DataKeyValue">
               <MappingFragment StoreEntitySet="DataKeyValue">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DataKey" ColumnName="DataKey" />
@@ -1519,7 +1519,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EntityTypes">
-            <EntityTypeMapping TypeName="nube_newModel.EntityType">
+            <EntityTypeMapping TypeName="nube_new_01Model.EntityType">
               <MappingFragment StoreEntitySet="EntityType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Entity" ColumnName="Entity" />
@@ -1527,7 +1527,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ErrorLogs">
-            <EntityTypeMapping TypeName="nube_newModel.ErrorLog">
+            <EntityTypeMapping TypeName="nube_new_01Model.ErrorLog">
               <MappingFragment StoreEntitySet="ErrorLog">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
@@ -1538,7 +1538,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FundMasters">
-            <EntityTypeMapping TypeName="nube_newModel.FundMaster">
+            <EntityTypeMapping TypeName="nube_new_01Model.FundMaster">
               <MappingFragment StoreEntitySet="FundMaster">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FundName" ColumnName="FundName" />
@@ -1547,7 +1547,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Journals">
-            <EntityTypeMapping TypeName="nube_newModel.Journal">
+            <EntityTypeMapping TypeName="nube_new_01Model.Journal">
               <MappingFragment StoreEntitySet="Journal">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
@@ -1562,7 +1562,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JournalDetails">
-            <EntityTypeMapping TypeName="nube_newModel.JournalDetail">
+            <EntityTypeMapping TypeName="nube_new_01Model.JournalDetail">
               <MappingFragment StoreEntitySet="JournalDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="JournalId" ColumnName="JournalId" />
@@ -1574,7 +1574,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ledgers">
-            <EntityTypeMapping TypeName="nube_newModel.Ledger">
+            <EntityTypeMapping TypeName="nube_new_01Model.Ledger">
               <MappingFragment StoreEntitySet="Ledger">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
@@ -1584,7 +1584,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogDetails">
-            <EntityTypeMapping TypeName="nube_newModel.LogDetail">
+            <EntityTypeMapping TypeName="nube_new_01Model.LogDetail">
               <MappingFragment StoreEntitySet="LogDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="LogMasterId" ColumnName="LogMasterId" />
@@ -1596,7 +1596,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogDetailTypes">
-            <EntityTypeMapping TypeName="nube_newModel.LogDetailType">
+            <EntityTypeMapping TypeName="nube_new_01Model.LogDetailType">
               <MappingFragment StoreEntitySet="LogDetailType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -1604,7 +1604,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogMasters">
-            <EntityTypeMapping TypeName="nube_newModel.LogMaster">
+            <EntityTypeMapping TypeName="nube_new_01Model.LogMaster">
               <MappingFragment StoreEntitySet="LogMaster">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntityId" ColumnName="EntityId" />
@@ -1619,7 +1619,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="nube_newModel.Payment">
+            <EntityTypeMapping TypeName="nube_new_01Model.Payment">
               <MappingFragment StoreEntitySet="Payment">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
@@ -1641,7 +1641,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentDetails">
-            <EntityTypeMapping TypeName="nube_newModel.PaymentDetail">
+            <EntityTypeMapping TypeName="nube_new_01Model.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
@@ -1652,7 +1652,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Receipts">
-            <EntityTypeMapping TypeName="nube_newModel.Receipt">
+            <EntityTypeMapping TypeName="nube_new_01Model.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
@@ -1674,7 +1674,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReceiptDetails">
-            <EntityTypeMapping TypeName="nube_newModel.ReceiptDetail">
+            <EntityTypeMapping TypeName="nube_new_01Model.ReceiptDetail">
               <MappingFragment StoreEntitySet="ReceiptDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
@@ -1685,7 +1685,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="nube_newModel.UserAccount">
+            <EntityTypeMapping TypeName="nube_new_01Model.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
@@ -1696,7 +1696,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="nube_newModel.UserType">
+            <EntityTypeMapping TypeName="nube_new_01Model.UserType">
               <MappingFragment StoreEntitySet="UserType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TypeOfUser" ColumnName="TypeOfUser" />
@@ -1706,7 +1706,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypeDetails">
-            <EntityTypeMapping TypeName="nube_newModel.UserTypeDetail">
+            <EntityTypeMapping TypeName="nube_new_01Model.UserTypeDetail">
               <MappingFragment StoreEntitySet="UserTypeDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
@@ -1719,7 +1719,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypeFormDetails">
-            <EntityTypeMapping TypeName="nube_newModel.UserTypeFormDetail">
+            <EntityTypeMapping TypeName="nube_new_01Model.UserTypeFormDetail">
               <MappingFragment StoreEntitySet="UserTypeFormDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FormName" ColumnName="FormName" />

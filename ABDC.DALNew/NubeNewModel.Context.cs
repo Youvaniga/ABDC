@@ -13,10 +13,10 @@ namespace ABDC.DALNew
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class nube_newEntities : DbContext
+    public partial class nube_new_01Entities : DbContext
     {
-        public nube_newEntities()
-            : base("name=nube_newEntities")
+        public nube_new_01Entities()
+            : base("name=nube_new_01Entities")
         {
         }
     

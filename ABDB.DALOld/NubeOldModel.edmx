@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="nubebfsv1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="nube_old_01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroups">
           <Key>
             <PropertyRef Name="AccountGroupId" />
@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="JDId" />
           </Key>
-          <Property Name="JDId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JDId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="JournalID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DrAmt" Type="float" />
@@ -30,7 +30,7 @@
           <Key>
             <PropertyRef Name="JournalId" />
           </Key>
-          <Property Name="JournalId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JournalId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="EntryNo" Type="numeric" Precision="18" Scale="0" />
           <Property Name="JournalDate" Type="datetime" />
           <Property Name="HQNo" Type="nvarchar" MaxLength="50" />
@@ -42,7 +42,7 @@
           <Key>
             <PropertyRef Name="LedgerId" />
           </Key>
-          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
           <Property Name="BillingName" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="500" />
@@ -61,8 +61,8 @@
           <Key>
             <PropertyRef Name="LedgerOPID" />
           </Key>
-          <Property Name="LedgerOPID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LedgerOPID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LedgerID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Fund" Type="nvarchar" MaxLength="50" />
           <Property Name="DrAmt" Type="float" />
           <Property Name="CrAmt" Type="float" />
@@ -71,7 +71,7 @@
           <Key>
             <PropertyRef Name="PDID" />
           </Key>
-          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PDID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Narration" Type="nvarchar" MaxLength="250" />
@@ -81,9 +81,9 @@
           <Key>
             <PropertyRef Name="PaymentId" />
           </Key>
-          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PaymentDate" Type="datetime" />
-          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
           <Property Name="PayAmount" Type="float" />
           <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
@@ -102,7 +102,7 @@
           <Key>
             <PropertyRef Name="RDID" />
           </Key>
-          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RDID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Narration" Type="nvarchar" MaxLength="250" />
@@ -112,7 +112,7 @@
           <Key>
             <PropertyRef Name="ReceiptId" />
           </Key>
-          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReceiptId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ReceiptDate" Type="datetime" />
           <Property Name="LedgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="ReceiptMode" Type="nvarchar" MaxLength="50" />
@@ -130,7 +130,7 @@
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'nube_old_01.dbo.ViewLedgerGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewLedgerGroup">
           <Key>
             <PropertyRef Name="VoucherType" />
@@ -149,7 +149,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
           <Property Name="LedgerNameOP2" Type="nvarchar" MaxLength="101" />
           <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__AccountGr__Under__7226EDCC">
+        <Association Name="FK__AccountGr__Under__062DE679">
           <End Role="AccountGroups" Type="Self.AccountGroups" Multiplicity="0..1" />
           <End Role="AccountGroups1" Type="Self.AccountGroups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -161,7 +161,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__Journ__7D98A078">
+        <Association Name="FK__JournalDe__Journ__090A5324">
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="0..1" />
           <End Role="JournalDetails" Type="Self.JournalDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -173,7 +173,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__Ledge__7E8CC4B1">
+        <Association Name="FK__JournalDe__Ledge__09FE775D">
           <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
           <End Role="JournalDetails" Type="Self.JournalDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,7 +185,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ledger__AccountG__731B1205">
+        <Association Name="FK__Ledger__AccountG__07220AB2">
           <End Role="AccountGroups" Type="Self.AccountGroups" Multiplicity="0..1" />
           <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +197,19 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__Ledge__08162EEB">
+        <Association Name="FK__LedgerOP__Ledger__08162EEB">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
+          <End Role="LedgerOP" Type="Self.LedgerOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="LedgerOP">
+              <PropertyRef Name="LedgerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__Ledge__0CDAE408">
           <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,43 +221,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__Ledge__09FE775D">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
-          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetails">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Ledge__36D11DD4">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
-          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetails">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Ledge__37C5420D">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
-          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetails">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Payme__07220AB2">
+        <Association Name="FK__PaymentDe__Payme__0BE6BFCF">
           <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -257,19 +233,19 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__Payme__0AF29B96">
-          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
-          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+        <Association Name="FK__PaymentMa__Ledge__0AF29B96">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PaymentMaster">
-              <PropertyRef Name="PaymentId" />
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
             </Principal>
-            <Dependent Role="PaymentDetails">
-              <PropertyRef Name="PaymentId" />
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="LedgerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__Ledge__1387E197">
+        <Association Name="FK__ReceiptDe__Ledge__0FB750B3">
           <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -281,7 +257,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__Recei__1293BD5E">
+        <Association Name="FK__ReceiptDe__Recei__0EC32C7A">
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -293,7 +269,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptMa__Ledge__0EC32C7A">
+        <Association Name="FK__ReceiptMa__Ledge__0DCF0841">
           <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -305,19 +281,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LedgerOP_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
-          <End Role="LedgerOP" Type="Self.LedgerOP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="LedgerOP">
-              <PropertyRef Name="LedgerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="nubebfsv1ModelStoreContainer">
+        <EntityContainer Name="nube_old_01ModelStoreContainer">
           <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JournalDetails" EntityType="Self.JournalDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JournalMaster" EntityType="Self.JournalMaster" Schema="dbo" store:Type="Tables" />
@@ -344,137 +308,109 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
     [ViewLedgerGroup].[ChequeNo] AS [ChequeNo]
     FROM [dbo].[ViewLedgerGroup] AS [ViewLedgerGroup]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__AccountGr__Under__7226EDCC" Association="Self.FK__AccountGr__Under__7226EDCC">
+          <AssociationSet Name="FK__AccountGr__Under__062DE679" Association="Self.FK__AccountGr__Under__062DE679">
             <End Role="AccountGroups" EntitySet="AccountGroups" />
             <End Role="AccountGroups1" EntitySet="AccountGroups" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__Journ__7D98A078" Association="Self.FK__JournalDe__Journ__7D98A078">
+          <AssociationSet Name="FK__JournalDe__Journ__090A5324" Association="Self.FK__JournalDe__Journ__090A5324">
             <End Role="JournalMaster" EntitySet="JournalMaster" />
             <End Role="JournalDetails" EntitySet="JournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__Ledge__7E8CC4B1" Association="Self.FK__JournalDe__Ledge__7E8CC4B1">
+          <AssociationSet Name="FK__JournalDe__Ledge__09FE775D" Association="Self.FK__JournalDe__Ledge__09FE775D">
             <End Role="Ledger" EntitySet="Ledger" />
             <End Role="JournalDetails" EntitySet="JournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ledger__AccountG__731B1205" Association="Self.FK__Ledger__AccountG__731B1205">
+          <AssociationSet Name="FK__Ledger__AccountG__07220AB2" Association="Self.FK__Ledger__AccountG__07220AB2">
             <End Role="AccountGroups" EntitySet="AccountGroups" />
             <End Role="Ledger" EntitySet="Ledger" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__08162EEB" Association="Self.FK__PaymentDe__Ledge__08162EEB">
-            <End Role="Ledger" EntitySet="Ledger" />
-            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__09FE775D" Association="Self.FK__PaymentDe__Ledge__09FE775D">
-            <End Role="Ledger" EntitySet="Ledger" />
-            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__36D11DD4" Association="Self.FK__PaymentDe__Ledge__36D11DD4">
-            <End Role="Ledger" EntitySet="Ledger" />
-            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__37C5420D" Association="Self.FK__PaymentDe__Ledge__37C5420D">
-            <End Role="Ledger" EntitySet="Ledger" />
-            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Payme__07220AB2" Association="Self.FK__PaymentDe__Payme__07220AB2">
-            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
-            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Payme__0AF29B96" Association="Self.FK__PaymentDe__Payme__0AF29B96">
-            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
-            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__Ledge__1387E197" Association="Self.FK__ReceiptDe__Ledge__1387E197">
-            <End Role="Ledger" EntitySet="Ledger" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__Recei__1293BD5E" Association="Self.FK__ReceiptDe__Recei__1293BD5E">
-            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptMa__Ledge__0EC32C7A" Association="Self.FK__ReceiptMa__Ledge__0EC32C7A">
-            <End Role="Ledger" EntitySet="Ledger" />
-            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LedgerOP_Ledger" Association="Self.FK_LedgerOP_Ledger">
+          <AssociationSet Name="FK__LedgerOP__Ledger__08162EEB" Association="Self.FK__LedgerOP__Ledger__08162EEB">
             <End Role="Ledger" EntitySet="Ledger" />
             <End Role="LedgerOP" EntitySet="LedgerOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Ledge__0CDAE408" Association="Self.FK__PaymentDe__Ledge__0CDAE408">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Payme__0BE6BFCF" Association="Self.FK__PaymentDe__Payme__0BE6BFCF">
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__Ledge__0AF29B96" Association="Self.FK__PaymentMa__Ledge__0AF29B96">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__Ledge__0FB750B3" Association="Self.FK__ReceiptDe__Ledge__0FB750B3">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__Recei__0EC32C7A" Association="Self.FK__ReceiptDe__Recei__0EC32C7A">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptMa__Ledge__0DCF0841" Association="Self.FK__ReceiptMa__Ledge__0DCF0841">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="nubebfsv1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="nubebfsv1Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AccountGroups" EntityType="nubebfsv1Model.AccountGroup" />
-          <EntitySet Name="JournalDetails" EntityType="nubebfsv1Model.JournalDetail" />
-          <EntitySet Name="JournalMasters" EntityType="nubebfsv1Model.JournalMaster" />
-          <EntitySet Name="Ledgers" EntityType="nubebfsv1Model.Ledger" />
-          <EntitySet Name="PaymentDetails" EntityType="nubebfsv1Model.PaymentDetail" />
-          <EntitySet Name="PaymentMasters" EntityType="nubebfsv1Model.PaymentMaster" />
-          <EntitySet Name="ReceiptDetails" EntityType="nubebfsv1Model.ReceiptDetail" />
-          <EntitySet Name="ReceiptMasters" EntityType="nubebfsv1Model.ReceiptMaster" />
-          <EntitySet Name="ViewLedgerGroups" EntityType="nubebfsv1Model.ViewLedgerGroup" />
-          <AssociationSet Name="FK__AccountGr__Under__7226EDCC" Association="nubebfsv1Model.FK__AccountGr__Under__7226EDCC">
+      <Schema Namespace="nube_old_01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="nube_old_01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountGroups" EntityType="nube_old_01Model.AccountGroup" />
+          <EntitySet Name="JournalDetails" EntityType="nube_old_01Model.JournalDetail" />
+          <EntitySet Name="JournalMasters" EntityType="nube_old_01Model.JournalMaster" />
+          <EntitySet Name="Ledgers" EntityType="nube_old_01Model.Ledger" />
+          <EntitySet Name="LedgerOPs" EntityType="nube_old_01Model.LedgerOP" />
+          <EntitySet Name="PaymentDetails" EntityType="nube_old_01Model.PaymentDetail" />
+          <EntitySet Name="PaymentMasters" EntityType="nube_old_01Model.PaymentMaster" />
+          <EntitySet Name="ReceiptDetails" EntityType="nube_old_01Model.ReceiptDetail" />
+          <EntitySet Name="ReceiptMasters" EntityType="nube_old_01Model.ReceiptMaster" />
+          <EntitySet Name="ViewLedgerGroups" EntityType="nube_old_01Model.ViewLedgerGroup" />
+          <AssociationSet Name="FK__AccountGr__Under__062DE679" Association="nube_old_01Model.FK__AccountGr__Under__062DE679">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountGroup1" EntitySet="AccountGroups" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ledger__AccountG__731B1205" Association="nubebfsv1Model.FK__Ledger__AccountG__731B1205">
+          <AssociationSet Name="FK__Ledger__AccountG__07220AB2" Association="nube_old_01Model.FK__Ledger__AccountG__07220AB2">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="Ledger" EntitySet="Ledgers" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__Journ__7D98A078" Association="nubebfsv1Model.FK__JournalDe__Journ__7D98A078">
+          <AssociationSet Name="FK__JournalDe__Journ__090A5324" Association="nube_old_01Model.FK__JournalDe__Journ__090A5324">
             <End Role="JournalMaster" EntitySet="JournalMasters" />
             <End Role="JournalDetail" EntitySet="JournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__Ledge__7E8CC4B1" Association="nubebfsv1Model.FK__JournalDe__Ledge__7E8CC4B1">
+          <AssociationSet Name="FK__JournalDe__Ledge__09FE775D" Association="nube_old_01Model.FK__JournalDe__Ledge__09FE775D">
             <End Role="Ledger" EntitySet="Ledgers" />
             <End Role="JournalDetail" EntitySet="JournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__08162EEB" Association="nubebfsv1Model.FK__PaymentDe__Ledge__08162EEB">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__09FE775D" Association="nubebfsv1Model.FK__PaymentDe__Ledge__09FE775D">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__36D11DD4" Association="nubebfsv1Model.FK__PaymentDe__Ledge__36D11DD4">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Ledge__37C5420D" Association="nubebfsv1Model.FK__PaymentDe__Ledge__37C5420D">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__Ledge__1387E197" Association="nubebfsv1Model.FK__ReceiptDe__Ledge__1387E197">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptMa__Ledge__0EC32C7A" Association="nubebfsv1Model.FK__ReceiptMa__Ledge__0EC32C7A">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PaymentMaster_Ledger" Association="nubebfsv1Model.FK_PaymentMaster_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Payme__07220AB2" Association="nubebfsv1Model.FK__PaymentDe__Payme__07220AB2">
-            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__Payme__0AF29B96" Association="nubebfsv1Model.FK__PaymentDe__Payme__0AF29B96">
-            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__Recei__1293BD5E" Association="nubebfsv1Model.FK__ReceiptDe__Recei__1293BD5E">
-            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
-            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <EntitySet Name="LedgerOPs" EntityType="nubebfsv1Model.LedgerOP" />
-          <AssociationSet Name="FK_LedgerOP_Ledger" Association="nubebfsv1Model.FK_LedgerOP_Ledger">
+          <AssociationSet Name="FK__LedgerOP__Ledger__08162EEB" Association="nube_old_01Model.FK__LedgerOP__Ledger__08162EEB">
             <End Role="Ledger" EntitySet="Ledgers" />
             <End Role="LedgerOP" EntitySet="LedgerOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Ledge__0CDAE408" Association="nube_old_01Model.FK__PaymentDe__Ledge__0CDAE408">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__Ledge__0AF29B96" Association="nube_old_01Model.FK__PaymentMa__Ledge__0AF29B96">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__Ledge__0FB750B3" Association="nube_old_01Model.FK__ReceiptDe__Ledge__0FB750B3">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptMa__Ledge__0DCF0841" Association="nube_old_01Model.FK__ReceiptMa__Ledge__0DCF0841">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Payme__0BE6BFCF" Association="nube_old_01Model.FK__PaymentDe__Payme__0BE6BFCF">
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__Recei__0EC32C7A" Association="nube_old_01Model.FK__ReceiptDe__Recei__0EC32C7A">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountGroup">
@@ -486,41 +422,41 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
           <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Under" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ProfitAndLoss" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountGroups1" Relationship="nubebfsv1Model.FK__AccountGr__Under__7226EDCC" FromRole="AccountGroup" ToRole="AccountGroup1" />
-          <NavigationProperty Name="AccountGroup1" Relationship="nubebfsv1Model.FK__AccountGr__Under__7226EDCC" FromRole="AccountGroup1" ToRole="AccountGroup" />
-          <NavigationProperty Name="Ledgers" Relationship="nubebfsv1Model.FK__Ledger__AccountG__731B1205" FromRole="AccountGroup" ToRole="Ledger" />
+          <NavigationProperty Name="AccountGroups1" Relationship="nube_old_01Model.FK__AccountGr__Under__062DE679" FromRole="AccountGroup" ToRole="AccountGroup1" />
+          <NavigationProperty Name="AccountGroup1" Relationship="nube_old_01Model.FK__AccountGr__Under__062DE679" FromRole="AccountGroup1" ToRole="AccountGroup" />
+          <NavigationProperty Name="Ledgers" Relationship="nube_old_01Model.FK__Ledger__AccountG__07220AB2" FromRole="AccountGroup" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="JournalDetail">
           <Key>
             <PropertyRef Name="JDId" />
           </Key>
-          <Property Name="JDId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JDId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="JournalID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="LedgerID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="DrAmt" Type="Double" />
           <Property Name="CrAmt" Type="Double" />
           <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="JournalMaster" Relationship="nubebfsv1Model.FK__JournalDe__Journ__7D98A078" FromRole="JournalDetail" ToRole="JournalMaster" />
-          <NavigationProperty Name="Ledger" Relationship="nubebfsv1Model.FK__JournalDe__Ledge__7E8CC4B1" FromRole="JournalDetail" ToRole="Ledger" />
+          <NavigationProperty Name="JournalMaster" Relationship="nube_old_01Model.FK__JournalDe__Journ__090A5324" FromRole="JournalDetail" ToRole="JournalMaster" />
+          <NavigationProperty Name="Ledger" Relationship="nube_old_01Model.FK__JournalDe__Ledge__09FE775D" FromRole="JournalDetail" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="JournalMaster">
           <Key>
             <PropertyRef Name="JournalId" />
           </Key>
-          <Property Name="JournalId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JournalId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="EntryNo" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="JournalDate" Type="DateTime" Precision="3" />
           <Property Name="HQNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="JournalDetails" Relationship="nubebfsv1Model.FK__JournalDe__Journ__7D98A078" FromRole="JournalMaster" ToRole="JournalDetail" />
+          <NavigationProperty Name="JournalDetails" Relationship="nube_old_01Model.FK__JournalDe__Journ__090A5324" FromRole="JournalMaster" ToRole="JournalDetail" />
         </EntityType>
         <EntityType Name="Ledger">
           <Key>
             <PropertyRef Name="LedgerId" />
           </Key>
-          <Property Name="LedgerId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LedgerId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BillingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -534,40 +470,44 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
           <Property Name="AccountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CrAmt" Type="Double" />
           <Property Name="DrAmt" Type="Double" />
-          <NavigationProperty Name="AccountGroup" Relationship="nubebfsv1Model.FK__Ledger__AccountG__731B1205" FromRole="Ledger" ToRole="AccountGroup" />
-          <NavigationProperty Name="JournalDetails" Relationship="nubebfsv1Model.FK__JournalDe__Ledge__7E8CC4B1" FromRole="Ledger" ToRole="JournalDetail" />
-          <NavigationProperty Name="PaymentDetails" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__08162EEB" FromRole="Ledger" ToRole="PaymentDetail" />
-          <NavigationProperty Name="PaymentDetails1" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__09FE775D" FromRole="Ledger" ToRole="PaymentDetail" />
-          <NavigationProperty Name="PaymentDetails2" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__36D11DD4" FromRole="Ledger" ToRole="PaymentDetail" />
-          <NavigationProperty Name="PaymentDetails3" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__37C5420D" FromRole="Ledger" ToRole="PaymentDetail" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="nubebfsv1Model.FK__ReceiptDe__Ledge__1387E197" FromRole="Ledger" ToRole="ReceiptDetail" />
-          <NavigationProperty Name="ReceiptMasters" Relationship="nubebfsv1Model.FK__ReceiptMa__Ledge__0EC32C7A" FromRole="Ledger" ToRole="ReceiptMaster" />
-          <NavigationProperty Name="PaymentMasters" Relationship="nubebfsv1Model.FK_PaymentMaster_Ledger" FromRole="Ledger" ToRole="PaymentMaster" />
-          <NavigationProperty Name="LedgerOPs" Relationship="nubebfsv1Model.FK_LedgerOP_Ledger" FromRole="Ledger" ToRole="LedgerOP" />
+          <NavigationProperty Name="AccountGroup" Relationship="nube_old_01Model.FK__Ledger__AccountG__07220AB2" FromRole="Ledger" ToRole="AccountGroup" />
+          <NavigationProperty Name="JournalDetails" Relationship="nube_old_01Model.FK__JournalDe__Ledge__09FE775D" FromRole="Ledger" ToRole="JournalDetail" />
+          <NavigationProperty Name="LedgerOPs" Relationship="nube_old_01Model.FK__LedgerOP__Ledger__08162EEB" FromRole="Ledger" ToRole="LedgerOP" />
+          <NavigationProperty Name="PaymentDetails" Relationship="nube_old_01Model.FK__PaymentDe__Ledge__0CDAE408" FromRole="Ledger" ToRole="PaymentDetail" />
+          <NavigationProperty Name="PaymentMasters" Relationship="nube_old_01Model.FK__PaymentMa__Ledge__0AF29B96" FromRole="Ledger" ToRole="PaymentMaster" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="nube_old_01Model.FK__ReceiptDe__Ledge__0FB750B3" FromRole="Ledger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptMasters" Relationship="nube_old_01Model.FK__ReceiptMa__Ledge__0DCF0841" FromRole="Ledger" ToRole="ReceiptMaster" />
+        </EntityType>
+        <EntityType Name="LedgerOP">
+          <Key>
+            <PropertyRef Name="LedgerOPID" />
+          </Key>
+          <Property Name="LedgerOPID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LedgerID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <NavigationProperty Name="Ledger" Relationship="nube_old_01Model.FK__LedgerOP__Ledger__08162EEB" FromRole="LedgerOP" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
             <PropertyRef Name="PDID" />
           </Key>
-          <Property Name="PDID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PDID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="PaymentId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Double" />
-          <NavigationProperty Name="Ledger" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__08162EEB" FromRole="PaymentDetail" ToRole="Ledger" />
-          <NavigationProperty Name="Ledger1" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__09FE775D" FromRole="PaymentDetail" ToRole="Ledger" />
-          <NavigationProperty Name="Ledger2" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__36D11DD4" FromRole="PaymentDetail" ToRole="Ledger" />
-          <NavigationProperty Name="Ledger3" Relationship="nubebfsv1Model.FK__PaymentDe__Ledge__37C5420D" FromRole="PaymentDetail" ToRole="Ledger" />
-          <NavigationProperty Name="PaymentMaster" Relationship="nubebfsv1Model.FK__PaymentDe__Payme__07220AB2" FromRole="PaymentDetail" ToRole="PaymentMaster" />
-          <NavigationProperty Name="PaymentMaster1" Relationship="nubebfsv1Model.FK__PaymentDe__Payme__0AF29B96" FromRole="PaymentDetail" ToRole="PaymentMaster" />
+          <NavigationProperty Name="Ledger" Relationship="nube_old_01Model.FK__PaymentDe__Ledge__0CDAE408" FromRole="PaymentDetail" ToRole="Ledger" />
+          <NavigationProperty Name="PaymentMaster" Relationship="nube_old_01Model.FK__PaymentDe__Payme__0BE6BFCF" FromRole="PaymentDetail" ToRole="PaymentMaster" />
         </EntityType>
         <EntityType Name="PaymentMaster">
           <Key>
             <PropertyRef Name="PaymentId" />
           </Key>
-          <Property Name="PaymentId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="PaymentDate" Type="DateTime" Precision="3" />
-          <Property Name="LedgerId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PayAmount" Type="Double" />
           <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -581,27 +521,26 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
           <Property Name="ClearDate" Type="DateTime" Precision="3" />
           <Property Name="PayTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ledger" Relationship="nubebfsv1Model.FK_PaymentMaster_Ledger" FromRole="PaymentMaster" ToRole="Ledger" />
-          <NavigationProperty Name="PaymentDetails" Relationship="nubebfsv1Model.FK__PaymentDe__Payme__07220AB2" FromRole="PaymentMaster" ToRole="PaymentDetail" />
-          <NavigationProperty Name="PaymentDetails1" Relationship="nubebfsv1Model.FK__PaymentDe__Payme__0AF29B96" FromRole="PaymentMaster" ToRole="PaymentDetail" />
+          <NavigationProperty Name="Ledger" Relationship="nube_old_01Model.FK__PaymentMa__Ledge__0AF29B96" FromRole="PaymentMaster" ToRole="Ledger" />
+          <NavigationProperty Name="PaymentDetails" Relationship="nube_old_01Model.FK__PaymentDe__Payme__0BE6BFCF" FromRole="PaymentMaster" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="ReceiptDetail">
           <Key>
             <PropertyRef Name="RDID" />
           </Key>
-          <Property Name="RDID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RDID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="ReceiptId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Narration" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Double" />
-          <NavigationProperty Name="Ledger" Relationship="nubebfsv1Model.FK__ReceiptDe__Ledge__1387E197" FromRole="ReceiptDetail" ToRole="Ledger" />
-          <NavigationProperty Name="ReceiptMaster" Relationship="nubebfsv1Model.FK__ReceiptDe__Recei__1293BD5E" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+          <NavigationProperty Name="Ledger" Relationship="nube_old_01Model.FK__ReceiptDe__Ledge__0FB750B3" FromRole="ReceiptDetail" ToRole="Ledger" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="nube_old_01Model.FK__ReceiptDe__Recei__0EC32C7A" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
         </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
             <PropertyRef Name="ReceiptId" />
           </Key>
-          <Property Name="ReceiptId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiptId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
           <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ReceiptMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -617,8 +556,8 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
           <Property Name="ClrDate" Type="DateTime" Precision="3" />
           <Property Name="ReceivedFrom" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ledger" Relationship="nubebfsv1Model.FK__ReceiptMa__Ledge__0EC32C7A" FromRole="ReceiptMaster" ToRole="Ledger" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="nubebfsv1Model.FK__ReceiptDe__Recei__1293BD5E" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="Ledger" Relationship="nube_old_01Model.FK__ReceiptMa__Ledge__0DCF0841" FromRole="ReceiptMaster" ToRole="Ledger" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="nube_old_01Model.FK__ReceiptDe__Recei__0EC32C7A" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="ViewLedgerGroup">
           <Key>
@@ -638,9 +577,9 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
           <Property Name="LedgerNameOP2" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
           <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__AccountGr__Under__7226EDCC">
-          <End Type="nubebfsv1Model.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.AccountGroup" Role="AccountGroup1" Multiplicity="*" />
+        <Association Name="FK__AccountGr__Under__062DE679">
+          <End Type="nube_old_01Model.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.AccountGroup" Role="AccountGroup1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountGroup">
               <PropertyRef Name="AccountGroupId" />
@@ -650,9 +589,9 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ledger__AccountG__731B1205">
-          <End Type="nubebfsv1Model.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="*" />
+        <Association Name="FK__Ledger__AccountG__07220AB2">
+          <End Type="nube_old_01Model.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountGroup">
               <PropertyRef Name="AccountGroupId" />
@@ -662,9 +601,9 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__Journ__7D98A078">
-          <End Type="nubebfsv1Model.JournalMaster" Role="JournalMaster" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
+        <Association Name="FK__JournalDe__Journ__090A5324">
+          <End Type="nube_old_01Model.JournalMaster" Role="JournalMaster" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="JournalMaster">
               <PropertyRef Name="JournalId" />
@@ -674,9 +613,9 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__Ledge__7E8CC4B1">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
+        <Association Name="FK__JournalDe__Ledge__09FE775D">
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="LedgerId" />
@@ -686,140 +625,9 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__Ledge__08162EEB">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Ledge__09FE775D">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Ledge__36D11DD4">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Ledge__37C5420D">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ReceiptDe__Ledge__1387E197">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="ReceiptDetail">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ReceiptMa__Ledge__0EC32C7A">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.ReceiptMaster" Role="ReceiptMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="ReceiptMaster">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PaymentMaster_Ledger">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="1" />
-          <End Type="nubebfsv1Model.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ledger">
-              <PropertyRef Name="LedgerId" />
-            </Principal>
-            <Dependent Role="PaymentMaster">
-              <PropertyRef Name="LedgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Payme__07220AB2">
-          <End Type="nubebfsv1Model.PaymentMaster" Role="PaymentMaster" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PaymentMaster">
-              <PropertyRef Name="PaymentId" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="PaymentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__Payme__0AF29B96">
-          <End Type="nubebfsv1Model.PaymentMaster" Role="PaymentMaster" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PaymentMaster">
-              <PropertyRef Name="PaymentId" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="PaymentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ReceiptDe__Recei__1293BD5E">
-          <End Type="nubebfsv1Model.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReceiptMaster">
-              <PropertyRef Name="ReceiptId" />
-            </Principal>
-            <Dependent Role="ReceiptDetail">
-              <PropertyRef Name="ReceiptId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="LedgerOP">
-          <Key>
-            <PropertyRef Name="LedgerOPID" />
-          </Key>
-          <Property Name="LedgerOPID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LedgerID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Fund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DrAmt" Type="Double" />
-          <Property Name="CrAmt" Type="Double" />
-          <NavigationProperty Name="Ledger" Relationship="nubebfsv1Model.FK_LedgerOP_Ledger" FromRole="LedgerOP" ToRole="Ledger" />
-        </EntityType>
-        <Association Name="FK_LedgerOP_Ledger">
-          <End Type="nubebfsv1Model.Ledger" Role="Ledger" Multiplicity="0..1" />
-          <End Type="nubebfsv1Model.LedgerOP" Role="LedgerOP" Multiplicity="*" />
+        <Association Name="FK__LedgerOP__Ledger__08162EEB">
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="nube_old_01Model.LedgerOP" Role="LedgerOP" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="LedgerId" />
@@ -829,14 +637,86 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <Association Name="FK__PaymentDe__Ledge__0CDAE408">
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__Ledge__0AF29B96">
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__Ledge__0FB750B3">
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptMa__Ledge__0DCF0841">
+          <End Type="nube_old_01Model.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.ReceiptMaster" Role="ReceiptMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="ReceiptMaster">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__Payme__0BE6BFCF">
+          <End Type="nube_old_01Model.PaymentMaster" Role="PaymentMaster" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__Recei__0EC32C7A">
+          <End Type="nube_old_01Model.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
+          <End Type="nube_old_01Model.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="ReceiptId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="ReceiptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="nubebfsv1ModelStoreContainer" CdmEntityContainer="nubebfsv1Entities">
+        <EntityContainerMapping StorageEntityContainer="nube_old_01ModelStoreContainer" CdmEntityContainer="nube_old_01Entities">
           <EntitySetMapping Name="AccountGroups">
-            <EntityTypeMapping TypeName="nubebfsv1Model.AccountGroup">
+            <EntityTypeMapping TypeName="nube_old_01Model.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroups">
                 <ScalarProperty Name="ProfitAndLoss" ColumnName="ProfitAndLoss" />
                 <ScalarProperty Name="Under" ColumnName="Under" />
@@ -847,7 +727,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JournalDetails">
-            <EntityTypeMapping TypeName="nubebfsv1Model.JournalDetail">
+            <EntityTypeMapping TypeName="nube_old_01Model.JournalDetail">
               <MappingFragment StoreEntitySet="JournalDetails">
                 <ScalarProperty Name="Narration" ColumnName="Narration" />
                 <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
@@ -859,7 +739,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JournalMasters">
-            <EntityTypeMapping TypeName="nubebfsv1Model.JournalMaster">
+            <EntityTypeMapping TypeName="nube_old_01Model.JournalMaster">
               <MappingFragment StoreEntitySet="JournalMaster">
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
@@ -872,7 +752,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ledgers">
-            <EntityTypeMapping TypeName="nubebfsv1Model.Ledger">
+            <EntityTypeMapping TypeName="nube_old_01Model.Ledger">
               <MappingFragment StoreEntitySet="Ledger">
                 <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
                 <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
@@ -891,8 +771,19 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LedgerOPs">
+            <EntityTypeMapping TypeName="nube_old_01Model.LedgerOP">
+              <MappingFragment StoreEntitySet="LedgerOP">
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="LedgerID" ColumnName="LedgerID" />
+                <ScalarProperty Name="LedgerOPID" ColumnName="LedgerOPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PaymentDetails">
-            <EntityTypeMapping TypeName="nubebfsv1Model.PaymentDetail">
+            <EntityTypeMapping TypeName="nube_old_01Model.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetails">
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Narration" ColumnName="Narration" />
@@ -903,7 +794,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentMasters">
-            <EntityTypeMapping TypeName="nubebfsv1Model.PaymentMaster">
+            <EntityTypeMapping TypeName="nube_old_01Model.PaymentMaster">
               <MappingFragment StoreEntitySet="PaymentMaster">
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
                 <ScalarProperty Name="PayTo" ColumnName="PayTo" />
@@ -925,7 +816,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReceiptDetails">
-            <EntityTypeMapping TypeName="nubebfsv1Model.ReceiptDetail">
+            <EntityTypeMapping TypeName="nube_old_01Model.ReceiptDetail">
               <MappingFragment StoreEntitySet="ReceiptDetails">
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Narration" ColumnName="Narration" />
@@ -936,7 +827,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReceiptMasters">
-            <EntityTypeMapping TypeName="nubebfsv1Model.ReceiptMaster">
+            <EntityTypeMapping TypeName="nube_old_01Model.ReceiptMaster">
               <MappingFragment StoreEntitySet="ReceiptMaster">
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
                 <ScalarProperty Name="ReceivedFrom" ColumnName="ReceivedFrom" />
@@ -958,7 +849,7 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ViewLedgerGroups">
-            <EntityTypeMapping TypeName="nubebfsv1Model.ViewLedgerGroup">
+            <EntityTypeMapping TypeName="nube_old_01Model.ViewLedgerGroup">
               <MappingFragment StoreEntitySet="ViewLedgerGroup">
                 <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
                 <ScalarProperty Name="LedgerNameOP2" ColumnName="LedgerNameOP2" />
@@ -973,17 +864,6 @@ warning 6002: The table/view 'nubebfsv1.dbo.ViewLedgerGroup' does not have a pri
                 <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
                 <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
                 <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LedgerOPs">
-            <EntityTypeMapping TypeName="nubebfsv1Model.LedgerOP">
-              <MappingFragment StoreEntitySet="LedgerOP">
-                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
-                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
-                <ScalarProperty Name="Fund" ColumnName="Fund" />
-                <ScalarProperty Name="LedgerID" ColumnName="LedgerID" />
-                <ScalarProperty Name="LedgerOPID" ColumnName="LedgerOPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

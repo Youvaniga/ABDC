@@ -25,8 +25,8 @@ namespace ABDC
     public partial class MainWindow : Window
     {
 
-        DALOld.nubebfsv1Entities dbOld = new DALOld.nubebfsv1Entities();
-        DALNew.nube_newEntities dbNew = new DALNew.nube_newEntities();
+        DALOld.nube_old_01Entities dbOld = new DALOld.nube_old_01Entities();
+        DALNew.nube_new_01Entities dbNew = new DALNew.nube_new_01Entities();
         DateTime dtStart, dtEnd;
         private List<DALNew.EntityType> _entityTypeList;
         private  List<DALNew.LogDetailType> _logDetailTypeList;
@@ -200,8 +200,7 @@ namespace ABDC
         {
             WriteLog("Start to store the Payment");
             try
-            {
-                
+            {                
                 var lstPayment = dbOld.PaymentMasters.Where(x => x.Fund == cm.FundName && x.PaymentDate>=new DateTime(2016,4,1)).ToList();
                 pbrPayment.Maximum = lstPayment.Count();
                 pbrPayment.Value = 0;                
@@ -238,7 +237,6 @@ namespace ABDC
                             };
                             pm.PaymentDetails.Add(pmd);
                           }
-
                         dbNew.Payments.Add(pm);
                         dbNew.SaveChanges();
                         LogDetailStore(new DALNew.Payment() { Id = pm.Id, LedgerId = pm.LedgerId, Amount= pm.Amount, ChequeDate=pm.ChequeDate, ChequeNo= pm.ChequeNo, ClearDate=pm.ClearDate, EntryNo=pm.EntryNo, ExtraCharge=pm.ExtraCharge, Particulars=pm.Particulars, PaymentDate=pm.PaymentDate, PaymentMode=pm.PaymentMode, PayTo=pm.PayTo, RefCode=pm.RefCode, RefNo= pm.RefNo, Status= pm.Status, VoucherNo = pm.VoucherNo }, LogDetailType.INSERT, DataKeyValue.UserId);
