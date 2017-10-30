@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="nube_newModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="nube_newModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -354,6 +354,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DataKeyValue_FundMaster">
+          <End Role="FundMaster" Type="Self.FundMaster" Multiplicity="1" />
+          <End Role="DataKeyValue" Type="Self.DataKeyValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FundMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DataKeyValue">
+              <PropertyRef Name="FundMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JournalDetail_Journal">
           <End Role="Journal" Type="Self.Journal" Multiplicity="1" />
           <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
@@ -622,6 +634,10 @@
             <End Role="FundMaster" EntitySet="FundMaster" />
             <End Role="CustomFormat" EntitySet="CustomFormat" />
           </AssociationSet>
+          <AssociationSet Name="FK_DataKeyValue_FundMaster" Association="Self.FK_DataKeyValue_FundMaster">
+            <End Role="FundMaster" EntitySet="FundMaster" />
+            <End Role="DataKeyValue" EntitySet="DataKeyValue" />
+          </AssociationSet>
           <AssociationSet Name="FK_JournalDetail_Journal" Association="Self.FK_JournalDetail_Journal">
             <End Role="Journal" EntitySet="Journal" />
             <End Role="JournalDetail" EntitySet="JournalDetail" />
@@ -695,24 +711,152 @@
             <End Role="UserTypeDetail" EntitySet="UserTypeDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="nube_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="nube_newEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountGroups" EntityType="nube_newModel.AccountGroup" />
+          <EntitySet Name="ACYearLedgerBalances" EntityType="nube_newModel.ACYearLedgerBalance" />
+          <EntitySet Name="ACYearMasters" EntityType="nube_newModel.ACYearMaster" />
+          <EntitySet Name="ACYearStatus" EntityType="nube_newModel.ACYearStatu" />
+          <EntitySet Name="CustomFormats" EntityType="nube_newModel.CustomFormat" />
+          <EntitySet Name="DataKeyValues" EntityType="nube_newModel.DataKeyValue" />
+          <EntitySet Name="EntityTypes" EntityType="nube_newModel.EntityType" />
+          <EntitySet Name="ErrorLogs" EntityType="nube_newModel.ErrorLog" />
+          <EntitySet Name="FundMasters" EntityType="nube_newModel.FundMaster" />
+          <EntitySet Name="Journals" EntityType="nube_newModel.Journal" />
+          <EntitySet Name="JournalDetails" EntityType="nube_newModel.JournalDetail" />
+          <EntitySet Name="Ledgers" EntityType="nube_newModel.Ledger" />
+          <EntitySet Name="LogDetails" EntityType="nube_newModel.LogDetail" />
+          <EntitySet Name="LogDetailTypes" EntityType="nube_newModel.LogDetailType" />
+          <EntitySet Name="LogMasters" EntityType="nube_newModel.LogMaster" />
+          <EntitySet Name="Payments" EntityType="nube_newModel.Payment" />
+          <EntitySet Name="PaymentDetails" EntityType="nube_newModel.PaymentDetail" />
+          <EntitySet Name="Receipts" EntityType="nube_newModel.Receipt" />
+          <EntitySet Name="ReceiptDetails" EntityType="nube_newModel.ReceiptDetail" />
+          <EntitySet Name="UserAccounts" EntityType="nube_newModel.UserAccount" />
+          <EntitySet Name="UserTypes" EntityType="nube_newModel.UserType" />
+          <EntitySet Name="UserTypeDetails" EntityType="nube_newModel.UserTypeDetail" />
+          <EntitySet Name="UserTypeFormDetails" EntityType="nube_newModel.UserTypeFormDetail" />
+          <AssociationSet Name="FK_AccountGroup_AccountGroup" Association="nube_newModel.FK_AccountGroup_AccountGroup">
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+            <End Role="AccountGroup1" EntitySet="AccountGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountGroup_CompanyDetail" Association="nube_newModel.FK_AccountGroup_CompanyDetail">
+            <End Role="FundMaster" EntitySet="FundMasters" />
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ledger_AccountGroup" Association="nube_newModel.FK_Ledger_AccountGroup">
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACYearLedgerBalance_ACYearMaster" Association="nube_newModel.FK_ACYearLedgerBalance_ACYearMaster">
+            <End Role="ACYearMaster" EntitySet="ACYearMasters" />
+            <End Role="ACYearLedgerBalance" EntitySet="ACYearLedgerBalances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACYearLedgerBalance_Ledger" Association="nube_newModel.FK_ACYearLedgerBalance_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="ACYearLedgerBalance" EntitySet="ACYearLedgerBalances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACYearMaster_ACYearStatus" Association="nube_newModel.FK_ACYearMaster_ACYearStatus">
+            <End Role="ACYearStatu" EntitySet="ACYearStatus" />
+            <End Role="ACYearMaster" EntitySet="ACYearMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACYearMaster_CompanyDetail" Association="nube_newModel.FK_ACYearMaster_CompanyDetail">
+            <End Role="FundMaster" EntitySet="FundMasters" />
+            <End Role="ACYearMaster" EntitySet="ACYearMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomFormat_CompanyDetail" Association="nube_newModel.FK_CustomFormat_CompanyDetail">
+            <End Role="FundMaster" EntitySet="FundMasters" />
+            <End Role="CustomFormat" EntitySet="CustomFormats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataKeyValue_FundMaster" Association="nube_newModel.FK_DataKeyValue_FundMaster">
+            <End Role="FundMaster" EntitySet="FundMasters" />
+            <End Role="DataKeyValue" EntitySet="DataKeyValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_EntityType" Association="nube_newModel.FK_LogMaster_EntityType">
+            <End Role="EntityType" EntitySet="EntityTypes" />
+            <End Role="LogMaster" EntitySet="LogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_CompanyDetail" Association="nube_newModel.FK_UserType_CompanyDetail">
+            <End Role="FundMaster" EntitySet="FundMasters" />
+            <End Role="UserType" EntitySet="UserTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetail_Journal" Association="nube_newModel.FK_JournalDetail_Journal">
+            <End Role="Journal" EntitySet="Journals" />
+            <End Role="JournalDetail" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetail_Ledger" Association="nube_newModel.FK_JournalDetail_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="JournalDetail" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Ledger" Association="nube_newModel.FK_Payment_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetail_Ledger" Association="nube_newModel.FK_PaymentDetail_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Ledger" Association="nube_newModel.FK_Receipt_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Receipt" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetail_Ledger" Association="nube_newModel.FK_ReceiptDetail_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_LogDetailType" Association="nube_newModel.FK_LogDetail_LogDetailType">
+            <End Role="LogDetailType" EntitySet="LogDetailTypes" />
+            <End Role="LogDetail" EntitySet="LogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_LogMaster" Association="nube_newModel.FK_LogDetail_LogMaster">
+            <End Role="LogMaster" EntitySet="LogMasters" />
+            <End Role="LogDetail" EntitySet="LogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_UserAccount" Association="nube_newModel.FK_LogDetail_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="LogDetail" EntitySet="LogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount" Association="nube_newModel.FK_LogMaster_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="LogMaster" EntitySet="LogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetail_Payment" Association="nube_newModel.FK_PaymentDetail_Payment">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetail_Receipt" Association="nube_newModel.FK_ReceiptDetail_Receipt">
+            <End Role="Receipt" EntitySet="Receipts" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserType" Association="nube_newModel.FK_UserAccount_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserType" Association="nube_newModel.FK_UserTypeDetail_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserTypeFormDetail" Association="nube_newModel.FK_UserTypeDetail_UserTypeFormDetail">
+            <End Role="UserTypeFormDetail" EntitySet="UserTypeFormDetails" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UnderGroupId" Type="Int32" />
           <Property Name="GroupCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="FundMasterId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AccountGroup1" Relationship="Self.FK_AccountGroup_AccountGroup" FromRole="AccountGroup" ToRole="AccountGroup1" />
-          <NavigationProperty Name="AccountGroup2" Relationship="Self.FK_AccountGroup_AccountGroup" FromRole="AccountGroup1" ToRole="AccountGroup" />
-          <NavigationProperty Name="FundMaster" Relationship="Self.FK_AccountGroup_CompanyDetail" FromRole="AccountGroup" ToRole="FundMaster" />
-          <NavigationProperty Name="Ledgers" Relationship="Self.FK_Ledger_AccountGroup" FromRole="AccountGroup" ToRole="Ledger" />
+          <NavigationProperty Name="AccountGroup1" Relationship="nube_newModel.FK_AccountGroup_AccountGroup" FromRole="AccountGroup" ToRole="AccountGroup1" />
+          <NavigationProperty Name="AccountGroup2" Relationship="nube_newModel.FK_AccountGroup_AccountGroup" FromRole="AccountGroup1" ToRole="AccountGroup" />
+          <NavigationProperty Name="FundMaster" Relationship="nube_newModel.FK_AccountGroup_CompanyDetail" FromRole="AccountGroup" ToRole="FundMaster" />
+          <NavigationProperty Name="Ledgers" Relationship="nube_newModel.FK_Ledger_AccountGroup" FromRole="AccountGroup" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="ACYearLedgerBalance">
           <Key>
@@ -723,8 +867,8 @@
           <Property Name="LedgerId" Type="Int32" />
           <Property Name="DrAmt" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="CrAmt" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="ACYearMaster" Relationship="Self.FK_ACYearLedgerBalance_ACYearMaster" FromRole="ACYearLedgerBalance" ToRole="ACYearMaster" />
-          <NavigationProperty Name="Ledger" Relationship="Self.FK_ACYearLedgerBalance_Ledger" FromRole="ACYearLedgerBalance" ToRole="Ledger" />
+          <NavigationProperty Name="ACYearMaster" Relationship="nube_newModel.FK_ACYearLedgerBalance_ACYearMaster" FromRole="ACYearLedgerBalance" ToRole="ACYearMaster" />
+          <NavigationProperty Name="Ledger" Relationship="nube_newModel.FK_ACYearLedgerBalance_Ledger" FromRole="ACYearLedgerBalance" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="ACYearMaster">
           <Key>
@@ -734,9 +878,9 @@
           <Property Name="ACYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ACYearStatusId" Type="Int16" />
           <Property Name="FundMasterId" Type="Int32" />
-          <NavigationProperty Name="ACYearLedgerBalances" Relationship="Self.FK_ACYearLedgerBalance_ACYearMaster" FromRole="ACYearMaster" ToRole="ACYearLedgerBalance" />
-          <NavigationProperty Name="ACYearStatu" Relationship="Self.FK_ACYearMaster_ACYearStatus" FromRole="ACYearMaster" ToRole="ACYearStatus" />
-          <NavigationProperty Name="FundMaster" Relationship="Self.FK_ACYearMaster_CompanyDetail" FromRole="ACYearMaster" ToRole="FundMaster" />
+          <NavigationProperty Name="ACYearLedgerBalances" Relationship="nube_newModel.FK_ACYearLedgerBalance_ACYearMaster" FromRole="ACYearMaster" ToRole="ACYearLedgerBalance" />
+          <NavigationProperty Name="ACYearStatu" Relationship="nube_newModel.FK_ACYearMaster_ACYearStatus" FromRole="ACYearMaster" ToRole="ACYearStatu" />
+          <NavigationProperty Name="FundMaster" Relationship="nube_newModel.FK_ACYearMaster_CompanyDetail" FromRole="ACYearMaster" ToRole="FundMaster" />
         </EntityType>
         <EntityType Name="ACYearStatu">
           <Key>
@@ -744,7 +888,7 @@
           </Key>
           <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ACYearMasters" Relationship="Self.FK_ACYearMaster_ACYearStatus" FromRole="ACYearStatus" ToRole="ACYearMaster" />
+          <NavigationProperty Name="ACYearMasters" Relationship="nube_newModel.FK_ACYearMaster_ACYearStatus" FromRole="ACYearStatu" ToRole="ACYearMaster" />
         </EntityType>
         <EntityType Name="CustomFormat">
           <Key>
@@ -766,16 +910,17 @@
           <Property Name="CurrencyCaseSensitive" Type="Int32" />
           <Property Name="IsDisplayWithOnlyOnSuffix" Type="Boolean" />
           <Property Name="FundMasterId" Type="Int32" />
-          <NavigationProperty Name="FundMaster" Relationship="Self.FK_CustomFormat_CompanyDetail" FromRole="CustomFormat" ToRole="FundMaster" />
+          <NavigationProperty Name="FundMaster" Relationship="nube_newModel.FK_CustomFormat_CompanyDetail" FromRole="CustomFormat" ToRole="FundMaster" />
         </EntityType>
         <EntityType Name="DataKeyValue">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DataKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataKey" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="DataValue" Type="Int32" Nullable="false" />
           <Property Name="FundMasterId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FundMaster" Relationship="nube_newModel.FK_DataKeyValue_FundMaster" FromRole="DataKeyValue" ToRole="FundMaster" />
         </EntityType>
         <EntityType Name="EntityType">
           <Key>
@@ -783,7 +928,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Entity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LogMasters" Relationship="Self.FK_LogMaster_EntityType" FromRole="EntityType" ToRole="LogMaster" />
+          <NavigationProperty Name="LogMasters" Relationship="nube_newModel.FK_LogMaster_EntityType" FromRole="EntityType" ToRole="LogMaster" />
         </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
@@ -800,27 +945,28 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FundName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FundName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AccountGroups" Relationship="Self.FK_AccountGroup_CompanyDetail" FromRole="FundMaster" ToRole="AccountGroup" />
-          <NavigationProperty Name="ACYearMasters" Relationship="Self.FK_ACYearMaster_CompanyDetail" FromRole="FundMaster" ToRole="ACYearMaster" />
-          <NavigationProperty Name="CustomFormats" Relationship="Self.FK_CustomFormat_CompanyDetail" FromRole="FundMaster" ToRole="CustomFormat" />
-          <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_CompanyDetail" FromRole="FundMaster" ToRole="UserType" />
+          <NavigationProperty Name="AccountGroups" Relationship="nube_newModel.FK_AccountGroup_CompanyDetail" FromRole="FundMaster" ToRole="AccountGroup" />
+          <NavigationProperty Name="ACYearMasters" Relationship="nube_newModel.FK_ACYearMaster_CompanyDetail" FromRole="FundMaster" ToRole="ACYearMaster" />
+          <NavigationProperty Name="CustomFormats" Relationship="nube_newModel.FK_CustomFormat_CompanyDetail" FromRole="FundMaster" ToRole="CustomFormat" />
+          <NavigationProperty Name="DataKeyValues" Relationship="nube_newModel.FK_DataKeyValue_FundMaster" FromRole="FundMaster" ToRole="DataKeyValue" />
+          <NavigationProperty Name="UserTypes" Relationship="nube_newModel.FK_UserType_CompanyDetail" FromRole="FundMaster" ToRole="UserType" />
         </EntityType>
         <EntityType Name="Journal">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntryNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="JournalDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Particular" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HQNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="JournalDetails" Relationship="Self.FK_JournalDetail_Journal" FromRole="Journal" ToRole="JournalDetail" />
+          <NavigationProperty Name="JournalDetails" Relationship="nube_newModel.FK_JournalDetail_Journal" FromRole="Journal" ToRole="JournalDetail" />
         </EntityType>
         <EntityType Name="JournalDetail">
           <Key>
@@ -829,27 +975,27 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JournalId" Type="Int64" Nullable="false" />
           <Property Name="LedgerId" Type="Int32" Nullable="false" />
-          <Property Name="DrAmt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="CrAmt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DrAmt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CrAmt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Journal" Relationship="Self.FK_JournalDetail_Journal" FromRole="JournalDetail" ToRole="Journal" />
-          <NavigationProperty Name="Ledger" Relationship="Self.FK_JournalDetail_Ledger" FromRole="JournalDetail" ToRole="Ledger" />
+          <NavigationProperty Name="Journal" Relationship="nube_newModel.FK_JournalDetail_Journal" FromRole="JournalDetail" ToRole="Journal" />
+          <NavigationProperty Name="Ledger" Relationship="nube_newModel.FK_JournalDetail_Ledger" FromRole="JournalDetail" ToRole="Ledger" />
         </EntityType>
         <EntityType Name="Ledger">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LedgerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LedgerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LedgerCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="AccountGroupId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AccountGroup" Relationship="Self.FK_Ledger_AccountGroup" FromRole="Ledger" ToRole="AccountGroup" />
-          <NavigationProperty Name="ACYearLedgerBalances" Relationship="Self.FK_ACYearLedgerBalance_Ledger" FromRole="Ledger" ToRole="ACYearLedgerBalance" />
-          <NavigationProperty Name="JournalDetails" Relationship="Self.FK_JournalDetail_Ledger" FromRole="Ledger" ToRole="JournalDetail" />
-          <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Ledger" FromRole="Ledger" ToRole="Payment" />
-          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetail_Ledger" FromRole="Ledger" ToRole="PaymentDetail" />
-          <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Ledger" FromRole="Ledger" ToRole="Receipt" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetail_Ledger" FromRole="Ledger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="AccountGroup" Relationship="nube_newModel.FK_Ledger_AccountGroup" FromRole="Ledger" ToRole="AccountGroup" />
+          <NavigationProperty Name="ACYearLedgerBalances" Relationship="nube_newModel.FK_ACYearLedgerBalance_Ledger" FromRole="Ledger" ToRole="ACYearLedgerBalance" />
+          <NavigationProperty Name="JournalDetails" Relationship="nube_newModel.FK_JournalDetail_Ledger" FromRole="Ledger" ToRole="JournalDetail" />
+          <NavigationProperty Name="Payments" Relationship="nube_newModel.FK_Payment_Ledger" FromRole="Ledger" ToRole="Payment" />
+          <NavigationProperty Name="PaymentDetails" Relationship="nube_newModel.FK_PaymentDetail_Ledger" FromRole="Ledger" ToRole="PaymentDetail" />
+          <NavigationProperty Name="Receipts" Relationship="nube_newModel.FK_Receipt_Ledger" FromRole="Ledger" ToRole="Receipt" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="nube_newModel.FK_ReceiptDetail_Ledger" FromRole="Ledger" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="LogDetail">
           <Key>
@@ -861,9 +1007,9 @@
           <Property Name="EntryBy" Type="Int32" />
           <Property Name="EntryAt" Type="DateTime" Precision="3" />
           <Property Name="LogDetailTypeId" Type="Int32" />
-          <NavigationProperty Name="LogDetailType" Relationship="Self.FK_LogDetail_LogDetailType" FromRole="LogDetail" ToRole="LogDetailType" />
-          <NavigationProperty Name="LogMaster" Relationship="Self.FK_LogDetail_LogMaster" FromRole="LogDetail" ToRole="LogMaster" />
-          <NavigationProperty Name="UserAccount" Relationship="Self.FK_LogDetail_UserAccount" FromRole="LogDetail" ToRole="UserAccount" />
+          <NavigationProperty Name="LogDetailType" Relationship="nube_newModel.FK_LogDetail_LogDetailType" FromRole="LogDetail" ToRole="LogDetailType" />
+          <NavigationProperty Name="LogMaster" Relationship="nube_newModel.FK_LogDetail_LogMaster" FromRole="LogDetail" ToRole="LogMaster" />
+          <NavigationProperty Name="UserAccount" Relationship="nube_newModel.FK_LogDetail_UserAccount" FromRole="LogDetail" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="LogDetailType">
           <Key>
@@ -871,7 +1017,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LogDetails" Relationship="Self.FK_LogDetail_LogDetailType" FromRole="LogDetailType" ToRole="LogDetail" />
+          <NavigationProperty Name="LogDetails" Relationship="nube_newModel.FK_LogDetail_LogDetailType" FromRole="LogDetailType" ToRole="LogDetail" />
         </EntityType>
         <EntityType Name="LogMaster">
           <Key>
@@ -886,21 +1032,21 @@
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
           <Property Name="DeletedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="EntityType" Relationship="Self.FK_LogMaster_EntityType" FromRole="LogMaster" ToRole="EntityType" />
-          <NavigationProperty Name="LogDetails" Relationship="Self.FK_LogDetail_LogMaster" FromRole="LogMaster" ToRole="LogDetail" />
-          <NavigationProperty Name="UserAccount" Relationship="Self.FK_LogMaster_UserAccount" FromRole="LogMaster" ToRole="UserAccount" />
+          <NavigationProperty Name="EntityType" Relationship="nube_newModel.FK_LogMaster_EntityType" FromRole="LogMaster" ToRole="EntityType" />
+          <NavigationProperty Name="LogDetails" Relationship="nube_newModel.FK_LogDetail_LogMaster" FromRole="LogMaster" ToRole="LogDetail" />
+          <NavigationProperty Name="UserAccount" Relationship="nube_newModel.FK_LogMaster_UserAccount" FromRole="LogMaster" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntryNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="LedgerId" Type="Int32" Nullable="false" />
-          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PaymentMode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ExtraCharge" Type="Decimal" Precision="19" Scale="4" />
@@ -910,8 +1056,8 @@
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="PayTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ledger" Relationship="Self.FK_Payment_Ledger" FromRole="Payment" ToRole="Ledger" />
-          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetail_Payment" FromRole="Payment" ToRole="PaymentDetail" />
+          <NavigationProperty Name="Ledger" Relationship="nube_newModel.FK_Payment_Ledger" FromRole="Payment" ToRole="Ledger" />
+          <NavigationProperty Name="PaymentDetails" Relationship="nube_newModel.FK_PaymentDetail_Payment" FromRole="Payment" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -920,22 +1066,22 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PaymentId" Type="Int64" Nullable="false" />
           <Property Name="LedgerId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Particular" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ledger" Relationship="Self.FK_PaymentDetail_Ledger" FromRole="PaymentDetail" ToRole="Ledger" />
-          <NavigationProperty Name="Payment" Relationship="Self.FK_PaymentDetail_Payment" FromRole="PaymentDetail" ToRole="Payment" />
+          <NavigationProperty Name="Ledger" Relationship="nube_newModel.FK_PaymentDetail_Ledger" FromRole="PaymentDetail" ToRole="Ledger" />
+          <NavigationProperty Name="Payment" Relationship="nube_newModel.FK_PaymentDetail_Payment" FromRole="PaymentDetail" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntryNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ReceiptDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="LedgerId" Type="Int32" Nullable="false" />
-          <Property Name="ReceiptMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ReceiptMode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -945,8 +1091,8 @@
           <Property Name="CleareDate" Type="DateTime" Precision="0" />
           <Property Name="ReceivedFrom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ledger" Relationship="Self.FK_Receipt_Ledger" FromRole="Receipt" ToRole="Ledger" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetail_Receipt" FromRole="Receipt" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="Ledger" Relationship="nube_newModel.FK_Receipt_Ledger" FromRole="Receipt" ToRole="Ledger" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="nube_newModel.FK_ReceiptDetail_Receipt" FromRole="Receipt" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="ReceiptDetail">
           <Key>
@@ -955,10 +1101,10 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReceiptId" Type="Int64" Nullable="false" />
           <Property Name="LedgerId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ledger" Relationship="Self.FK_ReceiptDetail_Ledger" FromRole="ReceiptDetail" ToRole="Ledger" />
-          <NavigationProperty Name="Receipt" Relationship="Self.FK_ReceiptDetail_Receipt" FromRole="ReceiptDetail" ToRole="Receipt" />
+          <NavigationProperty Name="Ledger" Relationship="nube_newModel.FK_ReceiptDetail_Ledger" FromRole="ReceiptDetail" ToRole="Ledger" />
+          <NavigationProperty Name="Receipt" Relationship="nube_newModel.FK_ReceiptDetail_Receipt" FromRole="ReceiptDetail" ToRole="Receipt" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -966,24 +1112,24 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeId" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="LogDetails" Relationship="Self.FK_LogDetail_UserAccount" FromRole="UserAccount" ToRole="LogDetail" />
-          <NavigationProperty Name="LogMasters" Relationship="Self.FK_LogMaster_UserAccount" FromRole="UserAccount" ToRole="LogMaster" />
-          <NavigationProperty Name="UserType" Relationship="Self.FK_UserAccount_UserType" FromRole="UserAccount" ToRole="UserType" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LogDetails" Relationship="nube_newModel.FK_LogDetail_UserAccount" FromRole="UserAccount" ToRole="LogDetail" />
+          <NavigationProperty Name="LogMasters" Relationship="nube_newModel.FK_LogMaster_UserAccount" FromRole="UserAccount" ToRole="LogMaster" />
+          <NavigationProperty Name="UserType" Relationship="nube_newModel.FK_UserAccount_UserType" FromRole="UserAccount" ToRole="UserType" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeOfUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeOfUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FundMasterId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FundMaster" Relationship="Self.FK_UserType_CompanyDetail" FromRole="UserType" ToRole="FundMaster" />
-          <NavigationProperty Name="UserAccounts" Relationship="Self.FK_UserAccount_UserType" FromRole="UserType" ToRole="UserAccount" />
-          <NavigationProperty Name="UserTypeDetails" Relationship="Self.FK_UserTypeDetail_UserType" FromRole="UserType" ToRole="UserTypeDetail" />
+          <NavigationProperty Name="FundMaster" Relationship="nube_newModel.FK_UserType_CompanyDetail" FromRole="UserType" ToRole="FundMaster" />
+          <NavigationProperty Name="UserAccounts" Relationship="nube_newModel.FK_UserAccount_UserType" FromRole="UserType" ToRole="UserAccount" />
+          <NavigationProperty Name="UserTypeDetails" Relationship="nube_newModel.FK_UserTypeDetail_UserType" FromRole="UserType" ToRole="UserTypeDetail" />
         </EntityType>
         <EntityType Name="UserTypeDetail">
           <Key>
@@ -996,28 +1142,28 @@
           <Property Name="AllowInsert" Type="Boolean" Nullable="false" />
           <Property Name="AllowUpdate" Type="Boolean" Nullable="false" />
           <Property Name="AllowDelete" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UserType" Relationship="Self.FK_UserTypeDetail_UserType" FromRole="UserTypeDetail" ToRole="UserType" />
-          <NavigationProperty Name="UserTypeFormDetail" Relationship="Self.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeDetail" ToRole="UserTypeFormDetail" />
+          <NavigationProperty Name="UserType" Relationship="nube_newModel.FK_UserTypeDetail_UserType" FromRole="UserTypeDetail" ToRole="UserType" />
+          <NavigationProperty Name="UserTypeFormDetail" Relationship="nube_newModel.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeDetail" ToRole="UserTypeFormDetail" />
         </EntityType>
         <EntityType Name="UserTypeFormDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FormName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FormType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OrderNo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FormName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FormType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsInsert" Type="Boolean" Nullable="false" />
           <Property Name="IsUpdate" Type="Boolean" Nullable="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
           <Property Name="IsMenu" Type="Boolean" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="UserTypeDetails" Relationship="Self.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeFormDetail" ToRole="UserTypeDetail" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserTypeDetails" Relationship="nube_newModel.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeFormDetail" ToRole="UserTypeDetail" />
         </EntityType>
         <Association Name="FK_AccountGroup_AccountGroup">
-          <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
-          <End Role="AccountGroup1" Type="Self.AccountGroup" Multiplicity="*" />
+          <End Type="nube_newModel.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
+          <End Type="nube_newModel.AccountGroup" Role="AccountGroup1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountGroup">
               <PropertyRef Name="Id" />
@@ -1028,8 +1174,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AccountGroup_CompanyDetail">
-          <End Role="FundMaster" Type="Self.FundMaster" Multiplicity="1" />
-          <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="*" />
+          <End Type="nube_newModel.FundMaster" Role="FundMaster" Multiplicity="1" />
+          <End Type="nube_newModel.AccountGroup" Role="AccountGroup" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FundMaster">
               <PropertyRef Name="Id" />
@@ -1040,8 +1186,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ledger_AccountGroup">
-          <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="1" />
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <End Type="nube_newModel.AccountGroup" Role="AccountGroup" Multiplicity="1" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountGroup">
               <PropertyRef Name="Id" />
@@ -1052,8 +1198,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ACYearLedgerBalance_ACYearMaster">
-          <End Role="ACYearMaster" Type="Self.ACYearMaster" Multiplicity="0..1" />
-          <End Role="ACYearLedgerBalance" Type="Self.ACYearLedgerBalance" Multiplicity="*" />
+          <End Type="nube_newModel.ACYearMaster" Role="ACYearMaster" Multiplicity="0..1" />
+          <End Type="nube_newModel.ACYearLedgerBalance" Role="ACYearLedgerBalance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ACYearMaster">
               <PropertyRef Name="Id" />
@@ -1064,8 +1210,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ACYearLedgerBalance_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
-          <End Role="ACYearLedgerBalance" Type="Self.ACYearLedgerBalance" Multiplicity="*" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="0..1" />
+          <End Type="nube_newModel.ACYearLedgerBalance" Role="ACYearLedgerBalance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="Id" />
@@ -1076,10 +1222,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ACYearMaster_ACYearStatus">
-          <End Role="ACYearStatus" Type="Self.ACYearStatu" Multiplicity="0..1" />
-          <End Role="ACYearMaster" Type="Self.ACYearMaster" Multiplicity="*" />
+          <End Type="nube_newModel.ACYearStatu" Role="ACYearStatu" Multiplicity="0..1" />
+          <End Type="nube_newModel.ACYearMaster" Role="ACYearMaster" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ACYearStatus">
+            <Principal Role="ACYearStatu">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ACYearMaster">
@@ -1088,8 +1234,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ACYearMaster_CompanyDetail">
-          <End Role="FundMaster" Type="Self.FundMaster" Multiplicity="0..1" />
-          <End Role="ACYearMaster" Type="Self.ACYearMaster" Multiplicity="*" />
+          <End Type="nube_newModel.FundMaster" Role="FundMaster" Multiplicity="0..1" />
+          <End Type="nube_newModel.ACYearMaster" Role="ACYearMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FundMaster">
               <PropertyRef Name="Id" />
@@ -1100,8 +1246,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CustomFormat_CompanyDetail">
-          <End Role="FundMaster" Type="Self.FundMaster" Multiplicity="0..1" />
-          <End Role="CustomFormat" Type="Self.CustomFormat" Multiplicity="*" />
+          <End Type="nube_newModel.FundMaster" Role="FundMaster" Multiplicity="0..1" />
+          <End Type="nube_newModel.CustomFormat" Role="CustomFormat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FundMaster">
               <PropertyRef Name="Id" />
@@ -1111,9 +1257,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DataKeyValue_FundMaster">
+          <End Type="nube_newModel.FundMaster" Role="FundMaster" Multiplicity="1" />
+          <End Type="nube_newModel.DataKeyValue" Role="DataKeyValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FundMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DataKeyValue">
+              <PropertyRef Name="FundMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LogMaster_EntityType">
-          <End Role="EntityType" Type="Self.EntityType" Multiplicity="0..1" />
-          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="*" />
+          <End Type="nube_newModel.EntityType" Role="EntityType" Multiplicity="0..1" />
+          <End Type="nube_newModel.LogMaster" Role="LogMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EntityType">
               <PropertyRef Name="Id" />
@@ -1124,8 +1282,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserType_CompanyDetail">
-          <End Role="FundMaster" Type="Self.FundMaster" Multiplicity="1" />
-          <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+          <End Type="nube_newModel.FundMaster" Role="FundMaster" Multiplicity="1" />
+          <End Type="nube_newModel.UserType" Role="UserType" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FundMaster">
               <PropertyRef Name="Id" />
@@ -1136,8 +1294,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_JournalDetail_Journal">
-          <End Role="Journal" Type="Self.Journal" Multiplicity="1" />
-          <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
+          <End Type="nube_newModel.Journal" Role="Journal" Multiplicity="1" />
+          <End Type="nube_newModel.JournalDetail" Role="JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Journal">
               <PropertyRef Name="Id" />
@@ -1148,8 +1306,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_JournalDetail_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
-          <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="nube_newModel.JournalDetail" Role="JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="Id" />
@@ -1160,8 +1318,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Payment_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="nube_newModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="Id" />
@@ -1172,8 +1330,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PaymentDetail_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
-          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="nube_newModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="Id" />
@@ -1184,8 +1342,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Receipt_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="nube_newModel.Receipt" Role="Receipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="Id" />
@@ -1196,8 +1354,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReceiptDetail_Ledger">
-          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
-          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <End Type="nube_newModel.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="nube_newModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ledger">
               <PropertyRef Name="Id" />
@@ -1208,8 +1366,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LogDetail_LogDetailType">
-          <End Role="LogDetailType" Type="Self.LogDetailType" Multiplicity="0..1" />
-          <End Role="LogDetail" Type="Self.LogDetail" Multiplicity="*" />
+          <End Type="nube_newModel.LogDetailType" Role="LogDetailType" Multiplicity="0..1" />
+          <End Type="nube_newModel.LogDetail" Role="LogDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LogDetailType">
               <PropertyRef Name="Id" />
@@ -1220,8 +1378,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LogDetail_LogMaster">
-          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="0..1" />
-          <End Role="LogDetail" Type="Self.LogDetail" Multiplicity="*" />
+          <End Type="nube_newModel.LogMaster" Role="LogMaster" Multiplicity="0..1" />
+          <End Type="nube_newModel.LogDetail" Role="LogDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LogMaster">
               <PropertyRef Name="Id" />
@@ -1232,8 +1390,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LogDetail_UserAccount">
-          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
-          <End Role="LogDetail" Type="Self.LogDetail" Multiplicity="*" />
+          <End Type="nube_newModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="nube_newModel.LogDetail" Role="LogDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserAccount">
               <PropertyRef Name="Id" />
@@ -1244,8 +1402,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LogMaster_UserAccount">
-          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
-          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="*" />
+          <End Type="nube_newModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="nube_newModel.LogMaster" Role="LogMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserAccount">
               <PropertyRef Name="Id" />
@@ -1256,8 +1414,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PaymentDetail_Payment">
-          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
-          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <End Type="nube_newModel.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="nube_newModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payment">
               <PropertyRef Name="Id" />
@@ -1268,8 +1426,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReceiptDetail_Receipt">
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="1" />
-          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <End Type="nube_newModel.Receipt" Role="Receipt" Multiplicity="1" />
+          <End Type="nube_newModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Receipt">
               <PropertyRef Name="Id" />
@@ -1280,8 +1438,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserAccount_UserType">
-          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
-          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <End Type="nube_newModel.UserType" Role="UserType" Multiplicity="1" />
+          <End Type="nube_newModel.UserAccount" Role="UserAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserType">
               <PropertyRef Name="Id" />
@@ -1292,8 +1450,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserTypeDetail_UserType">
-          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
-          <End Role="UserTypeDetail" Type="Self.UserTypeDetail" Multiplicity="*" />
+          <End Type="nube_newModel.UserType" Role="UserType" Multiplicity="1" />
+          <End Type="nube_newModel.UserTypeDetail" Role="UserTypeDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserType">
               <PropertyRef Name="Id" />
@@ -1304,8 +1462,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserTypeDetail_UserTypeFormDetail">
-          <End Role="UserTypeFormDetail" Type="Self.UserTypeFormDetail" Multiplicity="1" />
-          <End Role="UserTypeDetail" Type="Self.UserTypeDetail" Multiplicity="*" />
+          <End Type="nube_newModel.UserTypeFormDetail" Role="UserTypeFormDetail" Multiplicity="1" />
+          <End Type="nube_newModel.UserTypeDetail" Role="UserTypeDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserTypeFormDetail">
               <PropertyRef Name="Id" />
@@ -1315,131 +1473,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="nube_newEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
-          <EntitySet Name="ACYearLedgerBalances" EntityType="Self.ACYearLedgerBalance" />
-          <EntitySet Name="ACYearMasters" EntityType="Self.ACYearMaster" />
-          <EntitySet Name="ACYearStatus" EntityType="Self.ACYearStatu" />
-          <EntitySet Name="CustomFormats" EntityType="Self.CustomFormat" />
-          <EntitySet Name="DataKeyValues" EntityType="Self.DataKeyValue" />
-          <EntitySet Name="EntityTypes" EntityType="Self.EntityType" />
-          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
-          <EntitySet Name="FundMasters" EntityType="Self.FundMaster" />
-          <EntitySet Name="Journals" EntityType="Self.Journal" />
-          <EntitySet Name="JournalDetails" EntityType="Self.JournalDetail" />
-          <EntitySet Name="Ledgers" EntityType="Self.Ledger" />
-          <EntitySet Name="LogDetails" EntityType="Self.LogDetail" />
-          <EntitySet Name="LogDetailTypes" EntityType="Self.LogDetailType" />
-          <EntitySet Name="LogMasters" EntityType="Self.LogMaster" />
-          <EntitySet Name="Payments" EntityType="Self.Payment" />
-          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
-          <EntitySet Name="Receipts" EntityType="Self.Receipt" />
-          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetail" />
-          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
-          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
-          <EntitySet Name="UserTypeDetails" EntityType="Self.UserTypeDetail" />
-          <EntitySet Name="UserTypeFormDetails" EntityType="Self.UserTypeFormDetail" />
-          <AssociationSet Name="FK_AccountGroup_AccountGroup" Association="Self.FK_AccountGroup_AccountGroup">
-            <End Role="AccountGroup" EntitySet="AccountGroups" />
-            <End Role="AccountGroup1" EntitySet="AccountGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AccountGroup_CompanyDetail" Association="Self.FK_AccountGroup_CompanyDetail">
-            <End Role="FundMaster" EntitySet="FundMasters" />
-            <End Role="AccountGroup" EntitySet="AccountGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ledger_AccountGroup" Association="Self.FK_Ledger_AccountGroup">
-            <End Role="AccountGroup" EntitySet="AccountGroups" />
-            <End Role="Ledger" EntitySet="Ledgers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ACYearLedgerBalance_ACYearMaster" Association="Self.FK_ACYearLedgerBalance_ACYearMaster">
-            <End Role="ACYearMaster" EntitySet="ACYearMasters" />
-            <End Role="ACYearLedgerBalance" EntitySet="ACYearLedgerBalances" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ACYearLedgerBalance_Ledger" Association="Self.FK_ACYearLedgerBalance_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="ACYearLedgerBalance" EntitySet="ACYearLedgerBalances" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ACYearMaster_ACYearStatus" Association="Self.FK_ACYearMaster_ACYearStatus">
-            <End Role="ACYearStatus" EntitySet="ACYearStatus" />
-            <End Role="ACYearMaster" EntitySet="ACYearMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ACYearMaster_CompanyDetail" Association="Self.FK_ACYearMaster_CompanyDetail">
-            <End Role="FundMaster" EntitySet="FundMasters" />
-            <End Role="ACYearMaster" EntitySet="ACYearMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomFormat_CompanyDetail" Association="Self.FK_CustomFormat_CompanyDetail">
-            <End Role="FundMaster" EntitySet="FundMasters" />
-            <End Role="CustomFormat" EntitySet="CustomFormats" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LogMaster_EntityType" Association="Self.FK_LogMaster_EntityType">
-            <End Role="EntityType" EntitySet="EntityTypes" />
-            <End Role="LogMaster" EntitySet="LogMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserType_CompanyDetail" Association="Self.FK_UserType_CompanyDetail">
-            <End Role="FundMaster" EntitySet="FundMasters" />
-            <End Role="UserType" EntitySet="UserTypes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JournalDetail_Journal" Association="Self.FK_JournalDetail_Journal">
-            <End Role="Journal" EntitySet="Journals" />
-            <End Role="JournalDetail" EntitySet="JournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JournalDetail_Ledger" Association="Self.FK_JournalDetail_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="JournalDetail" EntitySet="JournalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Payment_Ledger" Association="Self.FK_Payment_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="Payment" EntitySet="Payments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PaymentDetail_Ledger" Association="Self.FK_PaymentDetail_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Receipt_Ledger" Association="Self.FK_Receipt_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="Receipt" EntitySet="Receipts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptDetail_Ledger" Association="Self.FK_ReceiptDetail_Ledger">
-            <End Role="Ledger" EntitySet="Ledgers" />
-            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LogDetail_LogDetailType" Association="Self.FK_LogDetail_LogDetailType">
-            <End Role="LogDetailType" EntitySet="LogDetailTypes" />
-            <End Role="LogDetail" EntitySet="LogDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LogDetail_LogMaster" Association="Self.FK_LogDetail_LogMaster">
-            <End Role="LogMaster" EntitySet="LogMasters" />
-            <End Role="LogDetail" EntitySet="LogDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LogDetail_UserAccount" Association="Self.FK_LogDetail_UserAccount">
-            <End Role="UserAccount" EntitySet="UserAccounts" />
-            <End Role="LogDetail" EntitySet="LogDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LogMaster_UserAccount" Association="Self.FK_LogMaster_UserAccount">
-            <End Role="UserAccount" EntitySet="UserAccounts" />
-            <End Role="LogMaster" EntitySet="LogMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PaymentDetail_Payment" Association="Self.FK_PaymentDetail_Payment">
-            <End Role="Payment" EntitySet="Payments" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptDetail_Receipt" Association="Self.FK_ReceiptDetail_Receipt">
-            <End Role="Receipt" EntitySet="Receipts" />
-            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserAccount_UserType" Association="Self.FK_UserAccount_UserType">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="UserAccount" EntitySet="UserAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserTypeDetail_UserType" Association="Self.FK_UserTypeDetail_UserType">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserTypeDetail_UserTypeFormDetail" Association="Self.FK_UserTypeDetail_UserTypeFormDetail">
-            <End Role="UserTypeFormDetail" EntitySet="UserTypeFormDetails" />
-            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1449,288 +1482,288 @@
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="nube_newModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="UnderGroupId" ColumnName="UnderGroupId" />
-                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
                 <ScalarProperty Name="FundMasterId" ColumnName="FundMasterId" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="UnderGroupId" ColumnName="UnderGroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACYearLedgerBalances">
             <EntityTypeMapping TypeName="nube_newModel.ACYearLedgerBalance">
               <MappingFragment StoreEntitySet="ACYearLedgerBalance">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ACYearMasterId" ColumnName="ACYearMasterId" />
-                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
-                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
                 <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="ACYearMasterId" ColumnName="ACYearMasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACYearMasters">
             <EntityTypeMapping TypeName="nube_newModel.ACYearMaster">
               <MappingFragment StoreEntitySet="ACYearMaster">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ACYear" ColumnName="ACYear" />
-                <ScalarProperty Name="ACYearStatusId" ColumnName="ACYearStatusId" />
                 <ScalarProperty Name="FundMasterId" ColumnName="FundMasterId" />
+                <ScalarProperty Name="ACYearStatusId" ColumnName="ACYearStatusId" />
+                <ScalarProperty Name="ACYear" ColumnName="ACYear" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACYearStatus">
             <EntityTypeMapping TypeName="nube_newModel.ACYearStatu">
               <MappingFragment StoreEntitySet="ACYearStatus">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomFormats">
             <EntityTypeMapping TypeName="nube_newModel.CustomFormat">
               <MappingFragment StoreEntitySet="CustomFormat">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CurrencyPositiveSymbolPrefix" ColumnName="CurrencyPositiveSymbolPrefix" />
-                <ScalarProperty Name="CurrencyPositiveSymbolSuffix" ColumnName="CurrencyPositiveSymbolSuffix" />
-                <ScalarProperty Name="CurrencyNegativeSymbolPrefix" ColumnName="CurrencyNegativeSymbolPrefix" />
-                <ScalarProperty Name="CurrencyNegativeSymbolSuffix" ColumnName="CurrencyNegativeSymbolSuffix" />
-                <ScalarProperty Name="CurrencyToWordPrefix" ColumnName="CurrencyToWordPrefix" />
-                <ScalarProperty Name="CurrencyToWordSuffix" ColumnName="CurrencyToWordSuffix" />
-                <ScalarProperty Name="DecimalToWordPrefix" ColumnName="DecimalToWordPrefix" />
-                <ScalarProperty Name="DecimalToWordSuffix" ColumnName="DecimalToWordSuffix" />
-                <ScalarProperty Name="DecimalSymbol" ColumnName="DecimalSymbol" />
-                <ScalarProperty Name="NoOfDigitAfterDecimal" ColumnName="NoOfDigitAfterDecimal" />
-                <ScalarProperty Name="DigitGroupingSymbol" ColumnName="DigitGroupingSymbol" />
-                <ScalarProperty Name="DigitGroupingBy" ColumnName="DigitGroupingBy" />
-                <ScalarProperty Name="CurrencyCaseSensitive" ColumnName="CurrencyCaseSensitive" />
-                <ScalarProperty Name="IsDisplayWithOnlyOnSuffix" ColumnName="IsDisplayWithOnlyOnSuffix" />
                 <ScalarProperty Name="FundMasterId" ColumnName="FundMasterId" />
+                <ScalarProperty Name="IsDisplayWithOnlyOnSuffix" ColumnName="IsDisplayWithOnlyOnSuffix" />
+                <ScalarProperty Name="CurrencyCaseSensitive" ColumnName="CurrencyCaseSensitive" />
+                <ScalarProperty Name="DigitGroupingBy" ColumnName="DigitGroupingBy" />
+                <ScalarProperty Name="DigitGroupingSymbol" ColumnName="DigitGroupingSymbol" />
+                <ScalarProperty Name="NoOfDigitAfterDecimal" ColumnName="NoOfDigitAfterDecimal" />
+                <ScalarProperty Name="DecimalSymbol" ColumnName="DecimalSymbol" />
+                <ScalarProperty Name="DecimalToWordSuffix" ColumnName="DecimalToWordSuffix" />
+                <ScalarProperty Name="DecimalToWordPrefix" ColumnName="DecimalToWordPrefix" />
+                <ScalarProperty Name="CurrencyToWordSuffix" ColumnName="CurrencyToWordSuffix" />
+                <ScalarProperty Name="CurrencyToWordPrefix" ColumnName="CurrencyToWordPrefix" />
+                <ScalarProperty Name="CurrencyNegativeSymbolSuffix" ColumnName="CurrencyNegativeSymbolSuffix" />
+                <ScalarProperty Name="CurrencyNegativeSymbolPrefix" ColumnName="CurrencyNegativeSymbolPrefix" />
+                <ScalarProperty Name="CurrencyPositiveSymbolSuffix" ColumnName="CurrencyPositiveSymbolSuffix" />
+                <ScalarProperty Name="CurrencyPositiveSymbolPrefix" ColumnName="CurrencyPositiveSymbolPrefix" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DataKeyValues">
             <EntityTypeMapping TypeName="nube_newModel.DataKeyValue">
               <MappingFragment StoreEntitySet="DataKeyValue">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DataKey" ColumnName="DataKey" />
-                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
                 <ScalarProperty Name="FundMasterId" ColumnName="FundMasterId" />
+                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
+                <ScalarProperty Name="DataKey" ColumnName="DataKey" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EntityTypes">
             <EntityTypeMapping TypeName="nube_newModel.EntityType">
               <MappingFragment StoreEntitySet="EntityType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ErrorLogs">
             <EntityTypeMapping TypeName="nube_newModel.ErrorLog">
               <MappingFragment StoreEntitySet="ErrorLog">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
-                <ScalarProperty Name="ErrorBy" ColumnName="ErrorBy" />
-                <ScalarProperty Name="ErrorAt" ColumnName="ErrorAt" />
                 <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorAt" ColumnName="ErrorAt" />
+                <ScalarProperty Name="ErrorBy" ColumnName="ErrorBy" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FundMasters">
             <EntityTypeMapping TypeName="nube_newModel.FundMaster">
               <MappingFragment StoreEntitySet="FundMaster">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FundName" ColumnName="FundName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FundName" ColumnName="FundName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Journals">
             <EntityTypeMapping TypeName="nube_newModel.Journal">
               <MappingFragment StoreEntitySet="Journal">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
-                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
-                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Particular" ColumnName="Particular" />
-                <ScalarProperty Name="HQNo" ColumnName="HQNo" />
-                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="HQNo" ColumnName="HQNo" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JournalDetails">
             <EntityTypeMapping TypeName="nube_newModel.JournalDetail">
               <MappingFragment StoreEntitySet="JournalDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
-                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
-                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
-                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
                 <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ledgers">
             <EntityTypeMapping TypeName="nube_newModel.Ledger">
               <MappingFragment StoreEntitySet="Ledger">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
-                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
                 <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogDetails">
             <EntityTypeMapping TypeName="nube_newModel.LogDetail">
               <MappingFragment StoreEntitySet="LogDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="LogMasterId" ColumnName="LogMasterId" />
-                <ScalarProperty Name="RecordDetail" ColumnName="RecordDetail" />
-                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
-                <ScalarProperty Name="EntryAt" ColumnName="EntryAt" />
                 <ScalarProperty Name="LogDetailTypeId" ColumnName="LogDetailTypeId" />
+                <ScalarProperty Name="EntryAt" ColumnName="EntryAt" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="RecordDetail" ColumnName="RecordDetail" />
+                <ScalarProperty Name="LogMasterId" ColumnName="LogMasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogDetailTypes">
             <EntityTypeMapping TypeName="nube_newModel.LogDetailType">
               <MappingFragment StoreEntitySet="LogDetailType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogMasters">
             <EntityTypeMapping TypeName="nube_newModel.LogMaster">
               <MappingFragment StoreEntitySet="LogMaster">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
-                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="nube_newModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
-                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
-                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
-                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
-                <ScalarProperty Name="ClearDate" ColumnName="ClearDate" />
-                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
-                <ScalarProperty Name="PayTo" ColumnName="PayTo" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="PayTo" ColumnName="PayTo" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="ClearDate" ColumnName="ClearDate" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentDetails">
             <EntityTypeMapping TypeName="nube_newModel.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
-                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Particular" ColumnName="Particular" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Receipts">
             <EntityTypeMapping TypeName="nube_newModel.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
-                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
-                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
-                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
-                <ScalarProperty Name="ReceiptMode" ColumnName="ReceiptMode" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
-                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Extracharge" ColumnName="Extracharge" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
-                <ScalarProperty Name="CleareDate" ColumnName="CleareDate" />
-                <ScalarProperty Name="ReceivedFrom" ColumnName="ReceivedFrom" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="ReceivedFrom" ColumnName="ReceivedFrom" />
+                <ScalarProperty Name="CleareDate" ColumnName="CleareDate" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="Extracharge" ColumnName="Extracharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptMode" ColumnName="ReceiptMode" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReceiptDetails">
             <EntityTypeMapping TypeName="nube_newModel.ReceiptDetail">
               <MappingFragment StoreEntitySet="ReceiptDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
-                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="nube_newModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
             <EntityTypeMapping TypeName="nube_newModel.UserType">
               <MappingFragment StoreEntitySet="UserType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TypeOfUser" ColumnName="TypeOfUser" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="FundMasterId" ColumnName="FundMasterId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeOfUser" ColumnName="TypeOfUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypeDetails">
             <EntityTypeMapping TypeName="nube_newModel.UserTypeDetail">
               <MappingFragment StoreEntitySet="UserTypeDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-                <ScalarProperty Name="UserTypeFormDetailId" ColumnName="UserTypeFormDetailId" />
-                <ScalarProperty Name="IsViewForm" ColumnName="IsViewForm" />
-                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
-                <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
                 <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
+                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+                <ScalarProperty Name="IsViewForm" ColumnName="IsViewForm" />
+                <ScalarProperty Name="UserTypeFormDetailId" ColumnName="UserTypeFormDetailId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypeFormDetails">
             <EntityTypeMapping TypeName="nube_newModel.UserTypeFormDetail">
               <MappingFragment StoreEntitySet="UserTypeFormDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FormName" ColumnName="FormName" />
-                <ScalarProperty Name="FormType" ColumnName="FormType" />
-                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsInsert" ColumnName="IsInsert" />
-                <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+                <ScalarProperty Name="IsInsert" ColumnName="IsInsert" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="FormType" ColumnName="FormType" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
