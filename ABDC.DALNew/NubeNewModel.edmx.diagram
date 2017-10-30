@@ -4,55 +4,56 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d29e5323fa3c481693311a94ee581f26" Name="Diagram1">
-        <EntityTypeShape EntityType="nube_new_01Model.AccountGroup" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.ACYearLedgerBalance" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.ACYearMaster" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.ACYearStatu" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.CustomFormat" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.DataKeyValue" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.EntityType" Width="1.5" PointX="8.25" PointY="33.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.ErrorLog" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.FundMaster" Width="1.5" PointX="0.75" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.Journal" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.JournalDetail" Width="1.5" PointX="10.5" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.Ledger" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.LogDetail" Width="1.5" PointX="7.5" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.LogDetailType" Width="1.5" PointX="5.25" PointY="33.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.LogMaster" Width="1.5" PointX="10.5" PointY="29.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.Payment" Width="1.5" PointX="7.5" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.PaymentDetail" Width="1.5" PointX="9.75" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.Receipt" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.ReceiptDetail" Width="1.5" PointX="9.75" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.UserAccount" Width="1.5" PointX="5.25" PointY="29.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.UserType" Width="1.5" PointX="3" PointY="30" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.UserTypeDetail" Width="1.5" PointX="5.25" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nube_new_01Model.UserTypeFormDetail" Width="1.5" PointX="3" PointY="33.625" IsExpanded="true" />
-        <AssociationConnector Association="nube_new_01Model.FK_AccountGroup_AccountGroup" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_AccountGroup_CompanyDetail" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_Ledger_AccountGroup" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_ACYearLedgerBalance_ACYearMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_ACYearLedgerBalance_Ledger" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_ACYearMaster_ACYearStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_ACYearMaster_CompanyDetail" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_CustomFormat_CompanyDetail" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_LogMaster_EntityType" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_UserType_CompanyDetail" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_JournalDetail_Journal" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_JournalDetail_Ledger" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_Payment_Ledger" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_PaymentDetail_Ledger" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_Receipt_Ledger" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_ReceiptDetail_Ledger" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_LogDetail_LogDetailType" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_LogDetail_LogMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_LogDetail_UserAccount" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_LogMaster_UserAccount" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_PaymentDetail_Payment" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_ReceiptDetail_Receipt" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_UserAccount_UserType" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_UserTypeDetail_UserType" ManuallyRouted="false" />
-        <AssociationConnector Association="nube_new_01Model.FK_UserTypeDetail_UserTypeFormDetail" ManuallyRouted="false" />
+      <Diagram DiagramId="f7ee8fecf8904071b59b5949d6cca68e" Name="Diagram1">
+        <EntityTypeShape EntityType="nube_newModel.AccountGroup" Width="1.5" PointX="3" PointY="14.875" />
+        <EntityTypeShape EntityType="nube_newModel.ACYearLedgerBalance" Width="1.5" PointX="7.5" PointY="17" />
+        <EntityTypeShape EntityType="nube_newModel.ACYearMaster" Width="1.5" PointX="3" PointY="20.625" />
+        <EntityTypeShape EntityType="nube_newModel.ACYearStatu" Width="1.5" PointX="0.75" PointY="18" />
+        <EntityTypeShape EntityType="nube_newModel.CustomFormat" Width="1.5" PointX="3" PointY="25" />
+        <EntityTypeShape EntityType="nube_newModel.DataKeyValue" Width="1.5" PointX="3" PointY="33.25" />
+        <EntityTypeShape EntityType="nube_newModel.EntityType" Width="1.5" PointX="8.25" PointY="31" />
+        <EntityTypeShape EntityType="nube_newModel.ErrorLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="nube_newModel.FundMaster" Width="1.5" PointX="0.75" PointY="20.5" />
+        <EntityTypeShape EntityType="nube_newModel.Journal" Width="1.5" PointX="8.25" PointY="6.75" />
+        <EntityTypeShape EntityType="nube_newModel.JournalDetail" Width="1.5" PointX="10.5" PointY="17" />
+        <EntityTypeShape EntityType="nube_newModel.Ledger" Width="1.5" PointX="5.25" PointY="14.625" />
+        <EntityTypeShape EntityType="nube_newModel.LogDetail" Width="1.5" PointX="7.5" PointY="33.375" />
+        <EntityTypeShape EntityType="nube_newModel.LogDetailType" Width="1.5" PointX="5.25" PointY="36.75" />
+        <EntityTypeShape EntityType="nube_newModel.LogMaster" Width="1.5" PointX="10.5" PointY="33.125" />
+        <EntityTypeShape EntityType="nube_newModel.Payment" Width="1.5" PointX="7.5" PointY="11.375" />
+        <EntityTypeShape EntityType="nube_newModel.PaymentDetail" Width="1.5" PointX="9.75" PointY="13.375" />
+        <EntityTypeShape EntityType="nube_newModel.Receipt" Width="1.5" PointX="7.5" PointY="23" />
+        <EntityTypeShape EntityType="nube_newModel.ReceiptDetail" Width="1.5" PointX="9.75" PointY="20.875" />
+        <EntityTypeShape EntityType="nube_newModel.UserAccount" Width="1.5" PointX="5.25" PointY="33.5" />
+        <EntityTypeShape EntityType="nube_newModel.UserType" Width="1.5" PointX="3" PointY="30.125" />
+        <EntityTypeShape EntityType="nube_newModel.UserTypeDetail" Width="1.5" PointX="5.25" PointY="29.875" />
+        <EntityTypeShape EntityType="nube_newModel.UserTypeFormDetail" Width="1.5" PointX="3" PointY="36.75" />
+        <AssociationConnector Association="nube_newModel.FK_AccountGroup_AccountGroup" />
+        <AssociationConnector Association="nube_newModel.FK_AccountGroup_CompanyDetail" />
+        <AssociationConnector Association="nube_newModel.FK_Ledger_AccountGroup" />
+        <AssociationConnector Association="nube_newModel.FK_ACYearLedgerBalance_ACYearMaster" />
+        <AssociationConnector Association="nube_newModel.FK_ACYearLedgerBalance_Ledger" />
+        <AssociationConnector Association="nube_newModel.FK_ACYearMaster_ACYearStatus" />
+        <AssociationConnector Association="nube_newModel.FK_ACYearMaster_CompanyDetail" />
+        <AssociationConnector Association="nube_newModel.FK_CustomFormat_CompanyDetail" />
+        <AssociationConnector Association="nube_newModel.FK_DataKeyValue_FundMaster" />
+        <AssociationConnector Association="nube_newModel.FK_LogMaster_EntityType" />
+        <AssociationConnector Association="nube_newModel.FK_UserType_CompanyDetail" />
+        <AssociationConnector Association="nube_newModel.FK_JournalDetail_Journal" />
+        <AssociationConnector Association="nube_newModel.FK_JournalDetail_Ledger" />
+        <AssociationConnector Association="nube_newModel.FK_Payment_Ledger" />
+        <AssociationConnector Association="nube_newModel.FK_PaymentDetail_Ledger" />
+        <AssociationConnector Association="nube_newModel.FK_Receipt_Ledger" />
+        <AssociationConnector Association="nube_newModel.FK_ReceiptDetail_Ledger" />
+        <AssociationConnector Association="nube_newModel.FK_LogDetail_LogDetailType" />
+        <AssociationConnector Association="nube_newModel.FK_LogDetail_LogMaster" />
+        <AssociationConnector Association="nube_newModel.FK_LogDetail_UserAccount" />
+        <AssociationConnector Association="nube_newModel.FK_LogMaster_UserAccount" />
+        <AssociationConnector Association="nube_newModel.FK_PaymentDetail_Payment" />
+        <AssociationConnector Association="nube_newModel.FK_ReceiptDetail_Receipt" />
+        <AssociationConnector Association="nube_newModel.FK_UserAccount_UserType" />
+        <AssociationConnector Association="nube_newModel.FK_UserTypeDetail_UserType" />
+        <AssociationConnector Association="nube_newModel.FK_UserTypeDetail_UserTypeFormDetail" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
