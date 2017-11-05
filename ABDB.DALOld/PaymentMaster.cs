@@ -18,12 +18,11 @@ namespace ABDC.DALOldNUBE
         public PaymentMaster()
         {
             this.PaymentDetails = new HashSet<PaymentDetail>();
-            this.PaymentDetails1 = new HashSet<PaymentDetail>();
         }
     
         public decimal PaymentId { get; set; }
         public Nullable<System.DateTime> PaymentDate { get; set; }
-        public decimal LedgerId { get; set; }
+        public Nullable<decimal> LedgerId { get; set; }
         public string PaymentMode { get; set; }
         public Nullable<double> PayAmount { get; set; }
         public string RefNo { get; set; }
@@ -41,7 +40,5 @@ namespace ABDC.DALOldNUBE
         public virtual Ledger Ledger { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PaymentDetail> PaymentDetails1 { get; set; }
     }
 }
