@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0231640-40E6-4627-8541-0A402DD47D08}</ProjectGuid>
+    <ProjectGuid>{324FF7D4-C2DF-4AE4-B7A6-58B5EBE3004A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ABDC.DALOld</RootNamespace>
-    <AssemblyName>ABDC.DALOld</AssemblyName>
+    <RootNamespace>ABDC.DALNewNUBE</RootNamespace>
+    <AssemblyName>ABDC.DALNewNUBE</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,60 +52,99 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountGroup.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACYearLedgerBalance.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACYearMaster.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACYearStatu.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomFormat.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataKeyValue.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FundMaster.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Journal.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="JournalDetail.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JournalMaster.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Ledger.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LedgerOP.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    <Compile Include="LogDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NubeOldModel.Context.cs">
+    <Compile Include="LogDetailType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogMaster.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NubeNewModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NubeOldModel.Context.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="NubeOldModel.cs">
+    <Compile Include="NubeNewModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NubeOldModel.Designer.cs">
+    <Compile Include="NubeNewModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NubeOldModel.edmx</DependentUpon>
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PaymentDetail.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentMaster.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receipt.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReceiptDetail.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReceiptMaster.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewLedgerGroup.cs">
-      <DependentUpon>NubeOldModel.tt</DependentUpon>
+    <Compile Include="UserType.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeFormDetail.cs">
+      <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="NubeOldModel.edmx">
+    <EntityDeploy Include="NubeNewModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NubeOldModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>NubeNewModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="NubeOldModel.edmx.diagram">
-      <DependentUpon>NubeOldModel.edmx</DependentUpon>
+    <None Include="NubeNewModel.edmx.diagram">
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -113,15 +152,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NubeOldModel.Context.tt">
+    <Content Include="NubeNewModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NubeOldModel.edmx</DependentUpon>
-      <LastGenOutput>NubeOldModel.Context.cs</LastGenOutput>
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+      <LastGenOutput>NubeNewModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="NubeOldModel.tt">
+    <Content Include="NubeNewModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NubeOldModel.edmx</DependentUpon>
-      <LastGenOutput>NubeOldModel.cs</LastGenOutput>
+      <DependentUpon>NubeNewModel.edmx</DependentUpon>
+      <LastGenOutput>NubeNewModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

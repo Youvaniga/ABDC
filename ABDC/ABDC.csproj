@@ -71,6 +71,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="frmFMCG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmNubeAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,6 +91,12 @@
     <Compile Include="FormPrefix.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmFMCG.xaml.cs">
+      <DependentUpon>frmFMCG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNubeAccount.xaml.cs">
+      <DependentUpon>frmNubeAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -114,13 +128,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ABDB.DALOld\ABDC.DALOld.csproj">
+    <ProjectReference Include="..\ABDB.DALOld\ABDC.DALOldNUBE.csproj">
       <Project>{d0231640-40e6-4627-8541-0a402dd47d08}</Project>
-      <Name>ABDC.DALOld</Name>
+      <Name>ABDC.DALOldNUBE</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ABDC.DALNew\ABDC.DALNew.csproj">
+    <ProjectReference Include="..\ABDC.DALNew\ABDC.DALNewNUBE.csproj">
       <Project>{324ff7d4-c2df-4ae4-b7a6-58b5ebe3004a}</Project>
-      <Name>ABDC.DALNew</Name>
+      <Name>ABDC.DALNewNUBE</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49B9A11F-844D-4BFC-9646-0F8A60FDD5E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ABDB.DALNewFMCG</RootNamespace>
+    <AssemblyName>ABDB.DALNewFMCG</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountGroup.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditLimitType.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomFormat.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataKeyValue.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBFMCGNEWModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBFMCGNEWModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBFMCGNEWModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBFMCGNEWModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBFMCGNEWModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityType.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderIssue.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderIssueDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderReceived.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOrderReceivedDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobWorker.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Journal.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JournalDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ledger.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetailType.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogMaster.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturn.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturnDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturn.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturnDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockGroup.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockIn.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInProcess.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInProcessDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockOut.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockOutDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockSeparated.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockSeperatedDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionType.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UOM.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeFormDetail.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DBFMCGNEWModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBFMCGNEWModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DBFMCGNEWModel.edmx.diagram">
+      <DependentUpon>DBFMCGNEWModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBFMCGNEWModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBFMCGNEWModel.edmx</DependentUpon>
+      <LastGenOutput>DBFMCGNEWModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBFMCGNEWModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBFMCGNEWModel.edmx</DependentUpon>
+      <LastGenOutput>DBFMCGNEWModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

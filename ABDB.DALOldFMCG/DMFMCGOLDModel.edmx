@@ -1,0 +1,1981 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FMCG_Old01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.AccountGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccountGroups">
+          <Key>
+            <PropertyRef Name="AccountGroupId" />
+          </Key>
+          <Property Name="AccountGroupId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AccountGroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="155" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Under" Type="nvarchar" MaxLength="155" />
+          <Property Name="ProfitAndLoss" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.AutoGeneration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AutoGeneration">
+          <Key>
+            <PropertyRef Name="AGNID" />
+          </Key>
+          <Property Name="AGNID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AGNCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+          <Property Name="prefix" Type="nvarchar" MaxLength="10" />
+          <Property Name="KeySize" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="StartFrom" Type="decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Banks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="155" />
+          <Property Name="AcType" Type="nvarchar" MaxLength="50" />
+          <Property Name="MCRCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="CPerson1" Type="nvarchar" MaxLength="155" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CPerson2" Type="nvarchar" MaxLength="155" />
+          <Property Name="MobileNo2" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FMCG_Old01.dbo.ColorSchema' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ColorSchema">
+          <Property Name="ColorId" Type="nvarchar" MaxLength="20" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="staffName" Type="nvarchar" MaxLength="20" />
+          <Property Name="FColor" Type="nvarchar" MaxLength="30" />
+          <Property Name="BColor" Type="nvarchar" MaxLength="30" />
+          <Property Name="Grid1stFColor" Type="nvarchar" MaxLength="30" />
+          <Property Name="Grid2stFColor" Type="nvarchar" MaxLength="30" />
+          <Property Name="Grid1stBColor" Type="nvarchar" MaxLength="30" />
+          <Property Name="Grid2stBColor" Type="nvarchar" MaxLength="30" />
+          <Property Name="btnBordercolor" Type="nvarchar" MaxLength="30" />
+          <Property Name="btnMouseDownBackcolor" Type="nvarchar" MaxLength="30" />
+          <Property Name="btnMouseOverBackcolor" Type="nvarchar" MaxLength="30" />
+          <Property Name="GridHeading" Type="nvarchar" MaxLength="30" />
+          <Property Name="lbltitle" Type="nvarchar" MaxLength="30" />
+        </EntityType>-->
+        <EntityType Name="CompanyDetails">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PhNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cst" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="155" />
+          <Property Name="AddressLine" Type="nvarchar" MaxLength="3000" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CST" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Journal' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ledgerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="JournalDate" Type="datetime" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="500" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="500" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="DrAmt" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FMCG_Old01.dbo.JournalDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="JournalDetails">
+          <Property Name="JDId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="JDCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="150" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FMCG_Old01.dbo.JournalMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="JournalMaster">
+          <Property Name="JournalId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="JournalDate" Type="datetime" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Ledger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="nvarchar" MaxLength="5" />
+          <Property Name="CreditLimit" Type="nvarchar" MaxLength="10" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="AccCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.LedgerReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LedgerReport">
+          <Key>
+            <PropertyRef Name="LReportId" />
+          </Key>
+          <Property Name="LReportId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LReportCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="VoucherType" Type="nvarchar" MaxLength="20" />
+          <Property Name="LDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="100" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="255" />
+          <Property Name="DRAmount" Type="float" />
+          <Property Name="CRAmount" Type="float" />
+          <Property Name="FU1" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU2" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU3" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Payment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PaymentCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerCodeTo" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="155" />
+          <Property Name="LedgerCodeFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="100" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="150" />
+          <Property Name="ChequeDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FMCG_Old01.dbo.PaymentDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PaymentDetails">
+          <Property Name="PDId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PDCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SellingRate" Type="float" />
+          <Property Name="PurchaseRate" Type="float" />
+          <Property Name="UOMCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReOrderLevel" Type="float" />
+          <Property Name="OpQty" Type="float" />
+          <Property Name="Tax" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Purchase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PurchaseCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PurchaseType" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.PurchaseDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PurchaseDetails">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PurchaseCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="POCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.PurchaseOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="POId" />
+          </Key>
+          <Property Name="POId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="POCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PODate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.PurchaseOrderDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PurchaseOrderDetails">
+          <Key>
+            <PropertyRef Name="PODId" />
+          </Key>
+          <Property Name="PODId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PODCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="POCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.PurchaseReturn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PurchaseReturn">
+          <Key>
+            <PropertyRef Name="PRId" />
+          </Key>
+          <Property Name="PRId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRType" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.PurchaseReturnDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PurchaseReturnDetails">
+          <Key>
+            <PropertyRef Name="PRDId" />
+          </Key>
+          <Property Name="PRDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PurchaseCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Receipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceiptCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="ReceiptFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerCodeFrom" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReceiptMode" Type="nvarchar" MaxLength="155" />
+          <Property Name="ReceiptTo" Type="nvarchar" MaxLength="150" />
+          <Property Name="ReceiptAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="100" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FMCG_Old01.dbo.ReceiptDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ReceiptDetails">
+          <Property Name="RDId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RDCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="SalesId" />
+          </Key>
+          <Property Name="SalesId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SalesCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SalesDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SalesType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.SalesDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesDetails">
+          <Key>
+            <PropertyRef Name="SDId" />
+          </Key>
+          <Property Name="SDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SalesCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SOCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.SalesOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesOrder">
+          <Key>
+            <PropertyRef Name="SOId" />
+          </Key>
+          <Property Name="SOId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SOCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SODate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.SalesOrderDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesOrderDetails">
+          <Key>
+            <PropertyRef Name="SODId" />
+          </Key>
+          <Property Name="SODId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SODCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SOCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.SalesReturn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesReturn">
+          <Key>
+            <PropertyRef Name="SRId" />
+          </Key>
+          <Property Name="SRId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SRDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SRType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.SalesReturnDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesReturnDetails">
+          <Key>
+            <PropertyRef Name="SRDId" />
+          </Key>
+          <Property Name="SRDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SRDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SalesCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.SoftValidation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SoftValidation">
+          <Key>
+            <PropertyRef Name="SVId" />
+          </Key>
+          <Property Name="SVId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SVCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="AvailableTimes" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Staff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="StaffCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="30" />
+          <Property Name="DOJ" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.StockGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StockGroups">
+          <Key>
+            <PropertyRef Name="StockGroupId" />
+          </Key>
+          <Property Name="StockGroupId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="StockGroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="155" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Under" Type="nvarchar" MaxLength="155" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.StockReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StockReport">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="StockCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDate" Type="datetime" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Qunatity" Type="float" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="UOMCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TaxPercentage" Type="float" />
+          <Property Name="FU1" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU2" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU3" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.Supplier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SupplierCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="155" />
+          <Property Name="AddressLine" Type="nvarchar" MaxLength="3000" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CST" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.TaxMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TaxCode" Type="varchar" MaxLength="20" />
+          <Property Name="TaxValue" Type="float" />
+          <Property Name="Narration" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.TextTranslation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TextTranslation">
+          <Key>
+            <PropertyRef Name="TTId" />
+          </Key>
+          <Property Name="TTId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TTCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TTEnglish" Type="nvarchar" MaxLength="200" />
+          <Property Name="TTTamil" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.UnitsOfMeasurement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UnitsOfMeasurement">
+          <Key>
+            <PropertyRef Name="UOMId" />
+          </Key>
+          <Property Name="UOMId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UOMCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="UOMSymbol" Type="nvarchar" MaxLength="20" />
+          <Property Name="formalname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityContainer Name="FMCG_Old01ModelStoreContainer">
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccountGroups].[AccountGroupId] AS [AccountGroupId], 
+    [AccountGroups].[AccountGroupCode] AS [AccountGroupCode], 
+    [AccountGroups].[GroupName] AS [GroupName], 
+    [AccountGroups].[GroupCode] AS [GroupCode], 
+    [AccountGroups].[Under] AS [Under], 
+    [AccountGroups].[ProfitAndLoss] AS [ProfitAndLoss]
+    FROM [dbo].[AccountGroups] AS [AccountGroups]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AutoGeneration" EntityType="Self.AutoGeneration" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AutoGeneration].[AGNID] AS [AGNID], 
+    [AutoGeneration].[AGNCode] AS [AGNCode], 
+    [AutoGeneration].[TableName] AS [TableName], 
+    [AutoGeneration].[prefix] AS [prefix], 
+    [AutoGeneration].[KeySize] AS [KeySize], 
+    [AutoGeneration].[StartFrom] AS [StartFrom]
+    FROM [dbo].[AutoGeneration] AS [AutoGeneration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Banks" EntityType="Self.Banks" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Banks].[BankId] AS [BankId], 
+    [Banks].[BankCode] AS [BankCode], 
+    [Banks].[LedgerName] AS [LedgerName], 
+    [Banks].[BankName] AS [BankName], 
+    [Banks].[AcType] AS [AcType], 
+    [Banks].[MCRCode] AS [MCRCode], 
+    [Banks].[Address] AS [Address], 
+    [Banks].[Phone] AS [Phone], 
+    [Banks].[CPerson1] AS [CPerson1], 
+    [Banks].[MobileNo] AS [MobileNo], 
+    [Banks].[CPerson2] AS [CPerson2], 
+    [Banks].[MobileNo2] AS [MobileNo2]
+    FROM [dbo].[Banks] AS [Banks]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customer].[CustomerId] AS [CustomerId], 
+    [Customer].[CustomerCode] AS [CustomerCode], 
+    [Customer].[LedgerName] AS [LedgerName], 
+    [Customer].[CustomerName] AS [CustomerName], 
+    [Customer].[AddressLine] AS [AddressLine], 
+    [Customer].[TelePhoneNo] AS [TelePhoneNo], 
+    [Customer].[MobileNo] AS [MobileNo], 
+    [Customer].[EMailId] AS [EMailId], 
+    [Customer].[CST] AS [CST], 
+    [Customer].[TinNo] AS [TinNo], 
+    [Customer].[CreditDays] AS [CreditDays], 
+    [Customer].[CreditLimits] AS [CreditLimits]
+    FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Journal" EntityType="Self.Journal" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Journal].[JournalId] AS [JournalId], 
+    [Journal].[JournalCode] AS [JournalCode], 
+    [Journal].[ledgerCode] AS [ledgerCode], 
+    [Journal].[JournalDate] AS [JournalDate], 
+    [Journal].[Particulars] AS [Particulars], 
+    [Journal].[Narration] AS [Narration], 
+    [Journal].[CrAmt] AS [CrAmt], 
+    [Journal].[DrAmt] AS [DrAmt]
+    FROM [dbo].[Journal] AS [Journal]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ledger].[LedgerId] AS [LedgerId], 
+    [Ledger].[LedgerCode] AS [LedgerCode], 
+    [Ledger].[LedgerName] AS [LedgerName], 
+    [Ledger].[BillingName] AS [BillingName], 
+    [Ledger].[Address] AS [Address], 
+    [Ledger].[Phone] AS [Phone], 
+    [Ledger].[Mobile] AS [Mobile], 
+    [Ledger].[MailId] AS [MailId], 
+    [Ledger].[CreditDays] AS [CreditDays], 
+    [Ledger].[CreditLimit] AS [CreditLimit], 
+    [Ledger].[Note] AS [Note], 
+    [Ledger].[GroupCode] AS [GroupCode], 
+    [Ledger].[CrAmt] AS [CrAmt], 
+    [Ledger].[DrAmt] AS [DrAmt], 
+    [Ledger].[AccCode] AS [AccCode]
+    FROM [dbo].[Ledger] AS [Ledger]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LedgerReport" EntityType="Self.LedgerReport" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LedgerReport].[LReportId] AS [LReportId], 
+    [LedgerReport].[LReportCode] AS [LReportCode], 
+    [LedgerReport].[VoucherNo] AS [VoucherNo], 
+    [LedgerReport].[VoucherType] AS [VoucherType], 
+    [LedgerReport].[LDate] AS [LDate], 
+    [LedgerReport].[LedgerCode] AS [LedgerCode], 
+    [LedgerReport].[Particulars] AS [Particulars], 
+    [LedgerReport].[Narration] AS [Narration], 
+    [LedgerReport].[DRAmount] AS [DRAmount], 
+    [LedgerReport].[CRAmount] AS [CRAmount], 
+    [LedgerReport].[FU1] AS [FU1], 
+    [LedgerReport].[FU2] AS [FU2], 
+    [LedgerReport].[FU3] AS [FU3]
+    FROM [dbo].[LedgerReport] AS [LedgerReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Payment" EntityType="Self.Payment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Payment].[PaymentId] AS [PaymentId], 
+    [Payment].[PaymentCode] AS [PaymentCode], 
+    [Payment].[PaymentDate] AS [PaymentDate], 
+    [Payment].[PaymentTo] AS [PaymentTo], 
+    [Payment].[LedgerCodeTo] AS [LedgerCodeTo], 
+    [Payment].[PaymentMode] AS [PaymentMode], 
+    [Payment].[LedgerCodeFrom] AS [LedgerCodeFrom], 
+    [Payment].[PayAmount] AS [PayAmount], 
+    [Payment].[Narration] AS [Narration], 
+    [Payment].[RefNo] AS [RefNo], 
+    [Payment].[Status] AS [Status], 
+    [Payment].[ExtraCharge] AS [ExtraCharge], 
+    [Payment].[ChequeNo] AS [ChequeNo], 
+    [Payment].[ChequeDate] AS [ChequeDate]
+    FROM [dbo].[Payment] AS [Payment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Products].[ProductId] AS [ProductId], 
+    [Products].[ProductCode] AS [ProductCode], 
+    [Products].[ProductName] AS [ProductName], 
+    [Products].[ItemCode] AS [ItemCode], 
+    [Products].[GroupCode] AS [GroupCode], 
+    [Products].[SellingRate] AS [SellingRate], 
+    [Products].[PurchaseRate] AS [PurchaseRate], 
+    [Products].[UOMCode] AS [UOMCode], 
+    [Products].[ReOrderLevel] AS [ReOrderLevel], 
+    [Products].[OpQty] AS [OpQty], 
+    [Products].[Tax] AS [Tax]
+    FROM [dbo].[Products] AS [Products]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Purchase].[PurchaseId] AS [PurchaseId], 
+    [Purchase].[PurchaseCode] AS [PurchaseCode], 
+    [Purchase].[PurchaseDate] AS [PurchaseDate], 
+    [Purchase].[LedgerCode] AS [LedgerCode], 
+    [Purchase].[PurchaseType] AS [PurchaseType], 
+    [Purchase].[InvoiceNo] AS [InvoiceNo], 
+    [Purchase].[Extra] AS [Extra], 
+    [Purchase].[DiscountAmount] AS [DiscountAmount], 
+    [Purchase].[Narration] AS [Narration]
+    FROM [dbo].[Purchase] AS [Purchase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PurchaseDetails].[PDId] AS [PDId], 
+    [PurchaseDetails].[PDCode] AS [PDCode], 
+    [PurchaseDetails].[PurchaseCode] AS [PurchaseCode], 
+    [PurchaseDetails].[POCode] AS [POCode], 
+    [PurchaseDetails].[ProductCode] AS [ProductCode], 
+    [PurchaseDetails].[Rate] AS [Rate], 
+    [PurchaseDetails].[Quantity] AS [Quantity], 
+    [PurchaseDetails].[UOM] AS [UOM], 
+    [PurchaseDetails].[TaxPer] AS [TaxPer], 
+    [PurchaseDetails].[DisPer] AS [DisPer]
+    FROM [dbo].[PurchaseDetails] AS [PurchaseDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PurchaseOrder].[POId] AS [POId], 
+    [PurchaseOrder].[POCode] AS [POCode], 
+    [PurchaseOrder].[PODate] AS [PODate], 
+    [PurchaseOrder].[LedgerCode] AS [LedgerCode], 
+    [PurchaseOrder].[InvoiceNo] AS [InvoiceNo], 
+    [PurchaseOrder].[Extra] AS [Extra], 
+    [PurchaseOrder].[DiscountAmount] AS [DiscountAmount], 
+    [PurchaseOrder].[Narration] AS [Narration]
+    FROM [dbo].[PurchaseOrder] AS [PurchaseOrder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PurchaseOrderDetails" EntityType="Self.PurchaseOrderDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PurchaseOrderDetails].[PODId] AS [PODId], 
+    [PurchaseOrderDetails].[PODCode] AS [PODCode], 
+    [PurchaseOrderDetails].[POCode] AS [POCode], 
+    [PurchaseOrderDetails].[ProductCode] AS [ProductCode], 
+    [PurchaseOrderDetails].[Rate] AS [Rate], 
+    [PurchaseOrderDetails].[Quantity] AS [Quantity], 
+    [PurchaseOrderDetails].[UOM] AS [UOM], 
+    [PurchaseOrderDetails].[TaxPer] AS [TaxPer], 
+    [PurchaseOrderDetails].[DisPer] AS [DisPer]
+    FROM [dbo].[PurchaseOrderDetails] AS [PurchaseOrderDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PurchaseReturn" EntityType="Self.PurchaseReturn" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PurchaseReturn].[PRId] AS [PRId], 
+    [PurchaseReturn].[PRCode] AS [PRCode], 
+    [PurchaseReturn].[PRDate] AS [PRDate], 
+    [PurchaseReturn].[LedgerCode] AS [LedgerCode], 
+    [PurchaseReturn].[PRType] AS [PRType], 
+    [PurchaseReturn].[InvoiceNo] AS [InvoiceNo], 
+    [PurchaseReturn].[Extra] AS [Extra], 
+    [PurchaseReturn].[DiscountAmount] AS [DiscountAmount], 
+    [PurchaseReturn].[Narration] AS [Narration]
+    FROM [dbo].[PurchaseReturn] AS [PurchaseReturn]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PurchaseReturnDetails" EntityType="Self.PurchaseReturnDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PurchaseReturnDetails].[PRDId] AS [PRDId], 
+    [PurchaseReturnDetails].[PRDCode] AS [PRDCode], 
+    [PurchaseReturnDetails].[PRCode] AS [PRCode], 
+    [PurchaseReturnDetails].[PurchaseCode] AS [PurchaseCode], 
+    [PurchaseReturnDetails].[ProductCode] AS [ProductCode], 
+    [PurchaseReturnDetails].[Rate] AS [Rate], 
+    [PurchaseReturnDetails].[Quantity] AS [Quantity], 
+    [PurchaseReturnDetails].[UOM] AS [UOM], 
+    [PurchaseReturnDetails].[TaxPer] AS [TaxPer], 
+    [PurchaseReturnDetails].[DisPer] AS [DisPer]
+    FROM [dbo].[PurchaseReturnDetails] AS [PurchaseReturnDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Receipt].[ReceiptId] AS [ReceiptId], 
+    [Receipt].[ReceiptCode] AS [ReceiptCode], 
+    [Receipt].[ReceiptDate] AS [ReceiptDate], 
+    [Receipt].[ReceiptFrom] AS [ReceiptFrom], 
+    [Receipt].[LedgerCodeFrom] AS [LedgerCodeFrom], 
+    [Receipt].[ReceiptMode] AS [ReceiptMode], 
+    [Receipt].[ReceiptTo] AS [ReceiptTo], 
+    [Receipt].[ReceiptAmount] AS [ReceiptAmount], 
+    [Receipt].[Narration] AS [Narration], 
+    [Receipt].[RefNo] AS [RefNo], 
+    [Receipt].[Status] AS [Status], 
+    [Receipt].[ExtraCharge] AS [ExtraCharge], 
+    [Receipt].[ChequeNo] AS [ChequeNo], 
+    [Receipt].[ChequeDate] AS [ChequeDate]
+    FROM [dbo].[Receipt] AS [Receipt]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sales" EntityType="Self.Sales" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sales].[SalesId] AS [SalesId], 
+    [Sales].[SalesCode] AS [SalesCode], 
+    [Sales].[SalesDate] AS [SalesDate], 
+    [Sales].[LedgerCode] AS [LedgerCode], 
+    [Sales].[SalesType] AS [SalesType], 
+    [Sales].[Extra] AS [Extra], 
+    [Sales].[DiscountAmount] AS [DiscountAmount], 
+    [Sales].[Narration] AS [Narration], 
+    [Sales].[InvoiceNo] AS [InvoiceNo]
+    FROM [dbo].[Sales] AS [Sales]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesDetails" EntityType="Self.SalesDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesDetails].[SDId] AS [SDId], 
+    [SalesDetails].[SDCode] AS [SDCode], 
+    [SalesDetails].[SalesCode] AS [SalesCode], 
+    [SalesDetails].[SOCode] AS [SOCode], 
+    [SalesDetails].[ProductCode] AS [ProductCode], 
+    [SalesDetails].[Rate] AS [Rate], 
+    [SalesDetails].[Quantity] AS [Quantity], 
+    [SalesDetails].[UOM] AS [UOM], 
+    [SalesDetails].[TaxPer] AS [TaxPer], 
+    [SalesDetails].[DisPer] AS [DisPer]
+    FROM [dbo].[SalesDetails] AS [SalesDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesOrder" EntityType="Self.SalesOrder" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesOrder].[SOId] AS [SOId], 
+    [SalesOrder].[SOCode] AS [SOCode], 
+    [SalesOrder].[SODate] AS [SODate], 
+    [SalesOrder].[LedgerCode] AS [LedgerCode], 
+    [SalesOrder].[Extra] AS [Extra], 
+    [SalesOrder].[DiscountAmount] AS [DiscountAmount], 
+    [SalesOrder].[Narration] AS [Narration]
+    FROM [dbo].[SalesOrder] AS [SalesOrder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesOrderDetails].[SODId] AS [SODId], 
+    [SalesOrderDetails].[SODCode] AS [SODCode], 
+    [SalesOrderDetails].[SOCode] AS [SOCode], 
+    [SalesOrderDetails].[ProductCode] AS [ProductCode], 
+    [SalesOrderDetails].[Rate] AS [Rate], 
+    [SalesOrderDetails].[Quantity] AS [Quantity], 
+    [SalesOrderDetails].[UOM] AS [UOM], 
+    [SalesOrderDetails].[TaxPer] AS [TaxPer], 
+    [SalesOrderDetails].[DisPer] AS [DisPer]
+    FROM [dbo].[SalesOrderDetails] AS [SalesOrderDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesReturn" EntityType="Self.SalesReturn" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesReturn].[SRId] AS [SRId], 
+    [SalesReturn].[SRCode] AS [SRCode], 
+    [SalesReturn].[SRDate] AS [SRDate], 
+    [SalesReturn].[LedgerCode] AS [LedgerCode], 
+    [SalesReturn].[SRType] AS [SRType], 
+    [SalesReturn].[Extra] AS [Extra], 
+    [SalesReturn].[DiscountAmount] AS [DiscountAmount], 
+    [SalesReturn].[Narration] AS [Narration]
+    FROM [dbo].[SalesReturn] AS [SalesReturn]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesReturnDetails" EntityType="Self.SalesReturnDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesReturnDetails].[SRDId] AS [SRDId], 
+    [SalesReturnDetails].[SRDCode] AS [SRDCode], 
+    [SalesReturnDetails].[SRCode] AS [SRCode], 
+    [SalesReturnDetails].[SalesCode] AS [SalesCode], 
+    [SalesReturnDetails].[ProductCode] AS [ProductCode], 
+    [SalesReturnDetails].[Rate] AS [Rate], 
+    [SalesReturnDetails].[Quantity] AS [Quantity], 
+    [SalesReturnDetails].[UOM] AS [UOM], 
+    [SalesReturnDetails].[TaxPer] AS [TaxPer], 
+    [SalesReturnDetails].[DisPer] AS [DisPer]
+    FROM [dbo].[SalesReturnDetails] AS [SalesReturnDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SoftValidation" EntityType="Self.SoftValidation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SoftValidation].[SVId] AS [SVId], 
+    [SoftValidation].[SVCode] AS [SVCode], 
+    [SoftValidation].[AvailableTimes] AS [AvailableTimes]
+    FROM [dbo].[SoftValidation] AS [SoftValidation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Staff" EntityType="Self.Staff" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Staff].[StaffId] AS [StaffId], 
+    [Staff].[StaffCode] AS [StaffCode], 
+    [Staff].[LedgerName] AS [LedgerName], 
+    [Staff].[StaffName] AS [StaffName], 
+    [Staff].[Designation] AS [Designation], 
+    [Staff].[DOJ] AS [DOJ], 
+    [Staff].[Address] AS [Address], 
+    [Staff].[Telephone] AS [Telephone], 
+    [Staff].[ContactNum] AS [ContactNum], 
+    [Staff].[MailId] AS [MailId]
+    FROM [dbo].[Staff] AS [Staff]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StockGroups" EntityType="Self.StockGroups" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StockGroups].[StockGroupId] AS [StockGroupId], 
+    [StockGroups].[StockGroupCode] AS [StockGroupCode], 
+    [StockGroups].[GroupName] AS [GroupName], 
+    [StockGroups].[GroupCode] AS [GroupCode], 
+    [StockGroups].[Under] AS [Under]
+    FROM [dbo].[StockGroups] AS [StockGroups]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StockReport" EntityType="Self.StockReport" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StockReport].[StockId] AS [StockId], 
+    [StockReport].[StockCode] AS [StockCode], 
+    [StockReport].[VoucherNo] AS [VoucherNo], 
+    [StockReport].[VoucherType] AS [VoucherType], 
+    [StockReport].[SDate] AS [SDate], 
+    [StockReport].[ProductCode] AS [ProductCode], 
+    [StockReport].[Qunatity] AS [Qunatity], 
+    [StockReport].[Rate] AS [Rate], 
+    [StockReport].[UOMCode] AS [UOMCode], 
+    [StockReport].[TaxPercentage] AS [TaxPercentage], 
+    [StockReport].[FU1] AS [FU1], 
+    [StockReport].[FU2] AS [FU2], 
+    [StockReport].[FU3] AS [FU3]
+    FROM [dbo].[StockReport] AS [StockReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Supplier].[SupplierId] AS [SupplierId], 
+    [Supplier].[SupplierCode] AS [SupplierCode], 
+    [Supplier].[LedgerName] AS [LedgerName], 
+    [Supplier].[SupplierName] AS [SupplierName], 
+    [Supplier].[AddressLine] AS [AddressLine], 
+    [Supplier].[TelePhoneNo] AS [TelePhoneNo], 
+    [Supplier].[MobileNo] AS [MobileNo], 
+    [Supplier].[EMailId] AS [EMailId], 
+    [Supplier].[TinNo] AS [TinNo], 
+    [Supplier].[CST] AS [CST], 
+    [Supplier].[CreditDays] AS [CreditDays], 
+    [Supplier].[CreditLimits] AS [CreditLimits]
+    FROM [dbo].[Supplier] AS [Supplier]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TaxMaster" EntityType="Self.TaxMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TaxMaster].[TaxId] AS [TaxId], 
+    [TaxMaster].[TaxCode] AS [TaxCode], 
+    [TaxMaster].[TaxValue] AS [TaxValue], 
+    [TaxMaster].[Narration] AS [Narration]
+    FROM [dbo].[TaxMaster] AS [TaxMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TextTranslation" EntityType="Self.TextTranslation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TextTranslation].[TTId] AS [TTId], 
+    [TextTranslation].[TTCode] AS [TTCode], 
+    [TextTranslation].[TTEnglish] AS [TTEnglish], 
+    [TextTranslation].[TTTamil] AS [TTTamil]
+    FROM [dbo].[TextTranslation] AS [TextTranslation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UnitsOfMeasurement" EntityType="Self.UnitsOfMeasurement" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UnitsOfMeasurement].[UOMId] AS [UOMId], 
+    [UnitsOfMeasurement].[UOMCode] AS [UOMCode], 
+    [UnitsOfMeasurement].[UOMSymbol] AS [UOMSymbol], 
+    [UnitsOfMeasurement].[formalname] AS [formalname]
+    FROM [dbo].[UnitsOfMeasurement] AS [UnitsOfMeasurement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserAccount].[UserId] AS [UserId], 
+    [UserAccount].[UserCode] AS [UserCode], 
+    [UserAccount].[CompanyName] AS [CompanyName], 
+    [UserAccount].[UserName] AS [UserName], 
+    [UserAccount].[Password] AS [Password], 
+    [UserAccount].[UserType] AS [UserType]
+    FROM [dbo].[UserAccount] AS [UserAccount]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FMCG_Old01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PhNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="AccountGroupId" />
+          </Key>
+          <Property Name="AccountGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AccountGroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Under" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="ProfitAndLoss" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="AutoGeneration">
+          <Key>
+            <PropertyRef Name="AGNID" />
+          </Key>
+          <Property Name="AGNID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AGNCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KeySize" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="StartFrom" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BankCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="AcType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MCRCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CPerson1" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CPerson2" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CustomerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="Double" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="JournalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ledgerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JournalDate" Type="DateTime" Precision="3" />
+          <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="DrAmt" Type="Double" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="AccCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LedgerReport">
+          <Key>
+            <PropertyRef Name="LReportId" />
+          </Key>
+          <Property Name="LReportId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LReportCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Particulars" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DRAmount" Type="Double" />
+          <Property Name="CRAmount" Type="Double" />
+          <Property Name="FU1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PaymentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCodeTo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMode" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCodeFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Double" />
+          <Property Name="ChequeNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SellingRate" Type="Double" />
+          <Property Name="PurchaseRate" Type="Double" />
+          <Property Name="UOMCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ReOrderLevel" Type="Double" />
+          <Property Name="OpQty" Type="Double" />
+          <Property Name="Tax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PurchaseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PurchaseDetail">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="POCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="POId" />
+          </Key>
+          <Property Name="POId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="POCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PODate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="PODId" />
+          </Key>
+          <Property Name="PODId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PODCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="POCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="PurchaseReturn">
+          <Key>
+            <PropertyRef Name="PRId" />
+          </Key>
+          <Property Name="PRId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PRDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PRType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PurchaseReturnDetail">
+          <Key>
+            <PropertyRef Name="PRDId" />
+          </Key>
+          <Property Name="PRDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PRDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PRCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceiptCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiptFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCodeFrom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptMode" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptTo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Double" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="SalesId" />
+          </Key>
+          <Property Name="SalesId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SalesCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SalesDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SalesType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesDetail">
+          <Key>
+            <PropertyRef Name="SDId" />
+          </Key>
+          <Property Name="SDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SalesCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SOCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="SalesOrder">
+          <Key>
+            <PropertyRef Name="SOId" />
+          </Key>
+          <Property Name="SOId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SOCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SODate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetail">
+          <Key>
+            <PropertyRef Name="SODId" />
+          </Key>
+          <Property Name="SODId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SODCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SOCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="SalesReturn">
+          <Key>
+            <PropertyRef Name="SRId" />
+          </Key>
+          <Property Name="SRId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SRCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SRDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SRType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesReturnDetail">
+          <Key>
+            <PropertyRef Name="SRDId" />
+          </Key>
+          <Property Name="SRDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SRDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SRCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SalesCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="SoftValidation">
+          <Key>
+            <PropertyRef Name="SVId" />
+          </Key>
+          <Property Name="SVId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SVCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AvailableTimes" Type="Double" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="StaffCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DOJ" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StockGroup">
+          <Key>
+            <PropertyRef Name="StockGroupId" />
+          </Key>
+          <Property Name="StockGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="StockGroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Under" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StockReport">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="StockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Qunatity" Type="Double" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="UOMCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPercentage" Type="Double" />
+          <Property Name="FU1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SupplierCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="Double" />
+        </EntityType>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TaxCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TaxValue" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TextTranslation">
+          <Key>
+            <PropertyRef Name="TTId" />
+          </Key>
+          <Property Name="TTId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TTCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TTEnglish" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TTTamil" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UnitsOfMeasurement">
+          <Key>
+            <PropertyRef Name="UOMId" />
+          </Key>
+          <Property Name="UOMId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UOMCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UOMSymbol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="formalname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="FMCG_Old01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetail" />
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
+          <EntitySet Name="AutoGenerations" EntityType="Self.AutoGeneration" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Journals" EntityType="Self.Journal" />
+          <EntitySet Name="Ledgers" EntityType="Self.Ledger" />
+          <EntitySet Name="LedgerReports" EntityType="Self.LedgerReport" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetail" />
+          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
+          <EntitySet Name="PurchaseOrderDetails" EntityType="Self.PurchaseOrderDetail" />
+          <EntitySet Name="PurchaseReturns" EntityType="Self.PurchaseReturn" />
+          <EntitySet Name="PurchaseReturnDetails" EntityType="Self.PurchaseReturnDetail" />
+          <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
+          <EntitySet Name="SalesOrders" EntityType="Self.SalesOrder" />
+          <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetail" />
+          <EntitySet Name="SalesReturns" EntityType="Self.SalesReturn" />
+          <EntitySet Name="SalesReturnDetails" EntityType="Self.SalesReturnDetail" />
+          <EntitySet Name="SoftValidations" EntityType="Self.SoftValidation" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="StockGroups" EntityType="Self.StockGroup" />
+          <EntitySet Name="StockReports" EntityType="Self.StockReport" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="TaxMasters" EntityType="Self.TaxMaster" />
+          <EntitySet Name="TextTranslations" EntityType="Self.TextTranslation" />
+          <EntitySet Name="UnitsOfMeasurements" EntityType="Self.UnitsOfMeasurement" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FMCG_Old01ModelStoreContainer" CdmEntityContainer="FMCG_Old01Entities">
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhNo" ColumnName="PhNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="Tin" ColumnName="Tin" />
+                <ScalarProperty Name="Cst" ColumnName="Cst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroups">
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="AccountGroupCode" ColumnName="AccountGroupCode" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Under" ColumnName="Under" />
+                <ScalarProperty Name="ProfitAndLoss" ColumnName="ProfitAndLoss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoGenerations">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.AutoGeneration">
+              <MappingFragment StoreEntitySet="AutoGeneration">
+                <ScalarProperty Name="AGNID" ColumnName="AGNID" />
+                <ScalarProperty Name="AGNCode" ColumnName="AGNCode" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="KeySize" ColumnName="KeySize" />
+                <ScalarProperty Name="StartFrom" ColumnName="StartFrom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="AcType" ColumnName="AcType" />
+                <ScalarProperty Name="MCRCode" ColumnName="MCRCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CPerson1" ColumnName="CPerson1" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CPerson2" ColumnName="CPerson2" />
+                <ScalarProperty Name="MobileNo2" ColumnName="MobileNo2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="TinNo" ColumnName="TinNo" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimits" ColumnName="CreditLimits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="JournalCode" ColumnName="JournalCode" />
+                <ScalarProperty Name="ledgerCode" ColumnName="ledgerCode" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ledgers">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Ledger">
+              <MappingFragment StoreEntitySet="Ledger">
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="AccCode" ColumnName="AccCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedgerReports">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.LedgerReport">
+              <MappingFragment StoreEntitySet="LedgerReport">
+                <ScalarProperty Name="LReportId" ColumnName="LReportId" />
+                <ScalarProperty Name="LReportCode" ColumnName="LReportCode" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="LDate" ColumnName="LDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DRAmount" ColumnName="DRAmount" />
+                <ScalarProperty Name="CRAmount" ColumnName="CRAmount" />
+                <ScalarProperty Name="FU1" ColumnName="FU1" />
+                <ScalarProperty Name="FU2" ColumnName="FU2" />
+                <ScalarProperty Name="FU3" ColumnName="FU3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentTo" ColumnName="PaymentTo" />
+                <ScalarProperty Name="LedgerCodeTo" ColumnName="LedgerCodeTo" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="LedgerCodeFrom" ColumnName="LedgerCodeFrom" />
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
+                <ScalarProperty Name="PurchaseRate" ColumnName="PurchaseRate" />
+                <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+                <ScalarProperty Name="ReOrderLevel" ColumnName="ReOrderLevel" />
+                <ScalarProperty Name="OpQty" ColumnName="OpQty" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="PurchaseCode" ColumnName="PurchaseCode" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="PurchaseType" ColumnName="PurchaseType" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.PurchaseDetail">
+              <MappingFragment StoreEntitySet="PurchaseDetails">
+                <ScalarProperty Name="PDId" ColumnName="PDId" />
+                <ScalarProperty Name="PDCode" ColumnName="PDCode" />
+                <ScalarProperty Name="PurchaseCode" ColumnName="PurchaseCode" />
+                <ScalarProperty Name="POCode" ColumnName="POCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="POId" ColumnName="POId" />
+                <ScalarProperty Name="POCode" ColumnName="POCode" />
+                <ScalarProperty Name="PODate" ColumnName="PODate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.PurchaseOrderDetail">
+              <MappingFragment StoreEntitySet="PurchaseOrderDetails">
+                <ScalarProperty Name="PODId" ColumnName="PODId" />
+                <ScalarProperty Name="PODCode" ColumnName="PODCode" />
+                <ScalarProperty Name="POCode" ColumnName="POCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReturns">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.PurchaseReturn">
+              <MappingFragment StoreEntitySet="PurchaseReturn">
+                <ScalarProperty Name="PRId" ColumnName="PRId" />
+                <ScalarProperty Name="PRCode" ColumnName="PRCode" />
+                <ScalarProperty Name="PRDate" ColumnName="PRDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="PRType" ColumnName="PRType" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReturnDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.PurchaseReturnDetail">
+              <MappingFragment StoreEntitySet="PurchaseReturnDetails">
+                <ScalarProperty Name="PRDId" ColumnName="PRDId" />
+                <ScalarProperty Name="PRDCode" ColumnName="PRDCode" />
+                <ScalarProperty Name="PRCode" ColumnName="PRCode" />
+                <ScalarProperty Name="PurchaseCode" ColumnName="PurchaseCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipts">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="ReceiptCode" ColumnName="ReceiptCode" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ReceiptFrom" ColumnName="ReceiptFrom" />
+                <ScalarProperty Name="LedgerCodeFrom" ColumnName="LedgerCodeFrom" />
+                <ScalarProperty Name="ReceiptMode" ColumnName="ReceiptMode" />
+                <ScalarProperty Name="ReceiptTo" ColumnName="ReceiptTo" />
+                <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="SalesId" ColumnName="SalesId" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="SalesDate" ColumnName="SalesDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="SalesType" ColumnName="SalesType" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.SalesDetail">
+              <MappingFragment StoreEntitySet="SalesDetails">
+                <ScalarProperty Name="SDId" ColumnName="SDId" />
+                <ScalarProperty Name="SDCode" ColumnName="SDCode" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="SOCode" ColumnName="SOCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrders">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.SalesOrder">
+              <MappingFragment StoreEntitySet="SalesOrder">
+                <ScalarProperty Name="SOId" ColumnName="SOId" />
+                <ScalarProperty Name="SOCode" ColumnName="SOCode" />
+                <ScalarProperty Name="SODate" ColumnName="SODate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.SalesOrderDetail">
+              <MappingFragment StoreEntitySet="SalesOrderDetails">
+                <ScalarProperty Name="SODId" ColumnName="SODId" />
+                <ScalarProperty Name="SODCode" ColumnName="SODCode" />
+                <ScalarProperty Name="SOCode" ColumnName="SOCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReturns">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.SalesReturn">
+              <MappingFragment StoreEntitySet="SalesReturn">
+                <ScalarProperty Name="SRId" ColumnName="SRId" />
+                <ScalarProperty Name="SRCode" ColumnName="SRCode" />
+                <ScalarProperty Name="SRDate" ColumnName="SRDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="SRType" ColumnName="SRType" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReturnDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.SalesReturnDetail">
+              <MappingFragment StoreEntitySet="SalesReturnDetails">
+                <ScalarProperty Name="SRDId" ColumnName="SRDId" />
+                <ScalarProperty Name="SRDCode" ColumnName="SRDCode" />
+                <ScalarProperty Name="SRCode" ColumnName="SRCode" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftValidations">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.SoftValidation">
+              <MappingFragment StoreEntitySet="SoftValidation">
+                <ScalarProperty Name="SVId" ColumnName="SVId" />
+                <ScalarProperty Name="SVCode" ColumnName="SVCode" />
+                <ScalarProperty Name="AvailableTimes" ColumnName="AvailableTimes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="StaffCode" ColumnName="StaffCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockGroups">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.StockGroup">
+              <MappingFragment StoreEntitySet="StockGroups">
+                <ScalarProperty Name="StockGroupId" ColumnName="StockGroupId" />
+                <ScalarProperty Name="StockGroupCode" ColumnName="StockGroupCode" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Under" ColumnName="Under" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockReports">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.StockReport">
+              <MappingFragment StoreEntitySet="StockReport">
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="SDate" ColumnName="SDate" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Qunatity" ColumnName="Qunatity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="FU1" ColumnName="FU1" />
+                <ScalarProperty Name="FU2" ColumnName="FU2" />
+                <ScalarProperty Name="FU3" ColumnName="FU3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="TinNo" ColumnName="TinNo" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimits" ColumnName="CreditLimits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxMasters">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.TaxMaster">
+              <MappingFragment StoreEntitySet="TaxMaster">
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TextTranslations">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.TextTranslation">
+              <MappingFragment StoreEntitySet="TextTranslation">
+                <ScalarProperty Name="TTId" ColumnName="TTId" />
+                <ScalarProperty Name="TTCode" ColumnName="TTCode" />
+                <ScalarProperty Name="TTEnglish" ColumnName="TTEnglish" />
+                <ScalarProperty Name="TTTamil" ColumnName="TTTamil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitsOfMeasurements">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.UnitsOfMeasurement">
+              <MappingFragment StoreEntitySet="UnitsOfMeasurement">
+                <ScalarProperty Name="UOMId" ColumnName="UOMId" />
+                <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+                <ScalarProperty Name="UOMSymbol" ColumnName="UOMSymbol" />
+                <ScalarProperty Name="formalname" ColumnName="formalname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

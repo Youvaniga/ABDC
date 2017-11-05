@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="663910cc9f1a4c57a1d59caf176be79d" Name="Diagram1">
+        <EntityTypeShape EntityType="FMCG_New01Model.AccountGroup" Width="1.5" PointX="0.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Bank" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.CompanyDetail" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.CreditLimitType" Width="1.5" PointX="0.75" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Customer" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.CustomFormat" Width="1.5" PointX="3.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.DataKeyValue" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.EntityType" Width="1.5" PointX="9" PointY="65.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.ErrorLog" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderIssue" Width="1.5" PointX="7.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderIssueDetail" Width="1.5" PointX="9.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderReceived" Width="1.5" PointX="7.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderReceivedDetail" Width="1.5" PointX="12" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobWorker" Width="1.5" PointX="5.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Journal" Width="1.5" PointX="3" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JournalDetail" Width="1.5" PointX="5.25" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Ledger" Width="1.5" PointX="3" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.LogDetail" Width="1.5" PointX="8.25" PointY="57.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.LogDetailType" Width="1.5" PointX="6" PointY="89.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.LogMaster" Width="1.5" PointX="11.25" PointY="57" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Payment" Width="1.5" PointX="5.25" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PaymentDetail" Width="1.5" PointX="7.5" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Product" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.ProductDetail" Width="1.5" PointX="9.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Purchase" Width="1.5" PointX="8.25" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseDetail" Width="1.5" PointX="13.5" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseOrder" Width="1.5" PointX="5.25" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseOrderDetail" Width="1.5" PointX="7.5" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseReturn" Width="1.5" PointX="10.25" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseReturnDetail" Width="1.5" PointX="15.75" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Receipt" Width="1.5" PointX="5.25" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.ReceiptDetail" Width="1.5" PointX="10.5" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Sale" Width="1.5" PointX="8.25" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesDetail" Width="1.5" PointX="10.5" PointY="49.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesOrder" Width="1.5" PointX="5.25" PointY="61.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesOrderDetail" Width="1.5" PointX="7.5" PointY="61.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesReturn" Width="1.5" PointX="13.25" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesReturnDetail" Width="1.5" PointX="16.5" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Staff" Width="1.5" PointX="5.25" PointY="73.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockGroup" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockIn" Width="1.5" PointX="5.25" PointY="79.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockInDetail" Width="1.5" PointX="7.5" PointY="79.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockInProcess" Width="1.5" PointX="7.5" PointY="70.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockInProcessDetail" Width="1.5" PointX="9.75" PointY="70.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockOut" Width="1.5" PointX="5.25" PointY="82.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockOutDetail" Width="1.5" PointX="7.5" PointY="84.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockSeparated" Width="1.5" PointX="7.5" PointY="74.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockSeperatedDetail" Width="1.5" PointX="12" PointY="72.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Supplier" Width="1.5" PointX="5.25" PointY="86.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.TransactionType" Width="1.5" PointX="6" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UOM" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserAccount" Width="1.5" PointX="6" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserType" Width="1.5" PointX="3.75" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserTypeDetail" Width="1.5" PointX="8" PointY="53.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserTypeFormDetail" Width="1.5" PointX="5.75" PointY="66.125" IsExpanded="true" />
+        <AssociationConnector Association="FMCG_New01Model.FK_AccountGroup_AccountGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_AccountGroup_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Ledger_AccountGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Bank_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_CompanyDetail_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_CustomFormat_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_ProductDetail_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockGroup_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_UOM_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_UserType_CompanyDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Ledger_CreditLimitType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Customer_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_LogMaster_EntityType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderIssue_JobWorker" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderIssueDetail_JobOrderIssue" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderIssueDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderIssueDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderReceivedDetail_JobOrderIssueDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderReceived_JobWorker" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderReceivedDetail_JobOrderReceived" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderReceivedDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobOrderReceivedDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JobWorkers_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JournalDetail_Journal" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_JournalDetail_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Payment_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PaymentDetail_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Purchase_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseOrder_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseReturn_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Receipt_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_ReceiptDetail_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Sale_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesOrder_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesReturn_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Staff_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockIn_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockOut_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Supplier_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_LogDetail_LogDetailType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_LogDetail_LogMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_LogDetail_UserAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_LogMaster_UserAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PaymentDetail_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Product_StockGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Product_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_ProductDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseOrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseReturnDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesOrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesReturnDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInProcessDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockOutDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockSeperatedDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Purchase_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseDetail_Purchase" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseDetail_PurchaseOrderDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseReturnDetail_PurchaseDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseOrderDetail_PurchaseOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseOrderDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseReturn_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseReturnDetail_PurchaseReturn" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_PurchaseReturnDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_ReceiptDetail_Receipt" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_Sale_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesDetail_Sale" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesDetail_SalesOrderDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesReturnDetail_SalesDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesOrderDetail_SalesOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesOrderDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesReturn_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesReturnDetail_SalesReturn" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_SalesReturnDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInProcess_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockSeparated_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockGroup_StockGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInDetail_StockIn" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInProcessDetail_StockInProcess" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockInProcessDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockSeperatedDetail_StockInProcessDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockOutDetail_StockOut" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockOutDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockSeperatedDetail_StockSeparated" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_StockSeperatedDetail_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_UserAccount_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_UserTypeDetail_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_UserTypeDetail_UserTypeFormDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
