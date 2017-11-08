@@ -24,8 +24,8 @@ namespace ABDC
     /// </summary>
     public partial class frmNubeAccount : Window
     {
-        DALOldNUBE.nubebfsv1Entities dbOld = new DALOldNUBE.nubebfsv1Entities();
-        DALNewNUBE.nube_newEntities dbNew = new DALNewNUBE.nube_newEntities();
+        DALOldNUBE.nube_old_01Entities dbOld = new DALOldNUBE.nube_old_01Entities();
+        DALNewNUBE.nube_new_01Entities dbNew = new DALNewNUBE.nube_new_01Entities();
         DateTime dtStart, dtEnd;
         private List<DALNewNUBE.EntityType> _entityTypeList;
         private List<DALNewNUBE.LogDetailType> _logDetailTypeList;
@@ -81,7 +81,7 @@ namespace ABDC
                     dbNew.SaveChanges();
 
                     pbrFund.Value += 1;
-                    DALNewNUBE.UserType ut = new DALNewNUBE.UserType() { TypeOfUser = DataKeyValue.Administrator_Key };
+                    DALNewNUBE.UserType ut = new DALNewNUBE.UserType() { TypeOfUser = DataKeyValueNUBE.Administrator_Key };
                     fm.UserTypes.Add(ut);
 
                     foreach (var utfd in lstUserTypeFormDetail)

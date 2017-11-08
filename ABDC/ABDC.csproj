@@ -127,7 +127,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataKeyValue.cs" />
+    <Compile Include="DataKeyValueFMCG.cs" />
+    <Compile Include="DataKeyValueNUBE.cs" />
     <Compile Include="FormPrefix.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,9 +175,17 @@
       <Project>{d0231640-40e6-4627-8541-0a402dd47d08}</Project>
       <Name>ABDC.DALOldNUBE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ABDC.DALNewFMCG\ABDC.DALNewFMCG.csproj">
+      <Project>{49b9a11f-844d-4bfc-9646-0f8a60fdd5e9}</Project>
+      <Name>ABDC.DALNewFMCG</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ABDC.DALNew\ABDC.DALNewNUBE.csproj">
       <Project>{324ff7d4-c2df-4ae4-b7a6-58b5ebe3004a}</Project>
       <Name>ABDC.DALNewNUBE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ABDC.DALOldFMCG\ABDC.DALOldFMCG.csproj">
+      <Project>{52df46f9-a98c-4e7a-be71-c5218188d68b}</Project>
+      <Name>ABDC.DALOldFMCG</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
