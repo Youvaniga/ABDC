@@ -24,6 +24,8 @@ namespace ABDC.DALNewFMCG
         public decimal DiscountAmount { get; set; }
         public decimal GSTAmount { get; set; }
         public decimal Amount { get; set; }
+        public Nullable<bool> IsResale { get; set; }
+        public string Particulars { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual PurchaseDetail PurchaseDetail { get; set; }

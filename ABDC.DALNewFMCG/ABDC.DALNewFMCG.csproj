@@ -214,6 +214,9 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TaxMaster.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TransactionType.cs">
       <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
     </Compile>

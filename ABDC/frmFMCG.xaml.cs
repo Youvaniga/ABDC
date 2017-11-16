@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ABDC.DALNewFMCG;
 
 namespace ABDC
 {
@@ -21,12 +22,20 @@ namespace ABDC
     {
         DALOldFMCG.FMCG_Old01Entities dbOld = new DALOldFMCG.FMCG_Old01Entities();
         DALNewFMCG.FMCG_New01Entities dbNew = new DALNewFMCG.FMCG_New01Entities();
+        List<DataKeyValueFMCG> lstLedgerIds = new List<DataKeyValueFMCG>();
+        List<DataKeyValueFMCG> lstProductIds = new List<DataKeyValueFMCG>();
+
+        List<DALNewFMCG.Purchase> lstPurchaseNew = new List<DALNewFMCG.Purchase>();
+        List<DALNewFMCG.Sale> lstSaleNew = new List<DALNewFMCG.Sale>();
+        List<DALNewFMCG.PurchaseReturn> lstPurchaseReturnNew = new List<DALNewFMCG.PurchaseReturn>();
+        List<DALNewFMCG.SalesReturn> lstSaleReturnNew = new List<DALNewFMCG.SalesReturn>();
 
         DateTime dtStart, dtEnd;
         private List<DALNewFMCG.EntityType> _entityTypeList;
         private List<DALNewFMCG.LogDetailType> _logDetailTypeList;
         
-        int UOMId = 0;
+        int UOMId;
+        int TAXId;
 
         public frmFMCG()
         {
@@ -93,6 +102,7 @@ namespace ABDC
                     dbNew.CustomFormats.Add(cf);
                     dbNew.SaveChanges();
                     WriteMasterData(cm);
+                    WriteTransactionData(cm);
                 }
             }
             catch (Exception ex)
@@ -106,9 +116,69 @@ namespace ABDC
         void WriteMasterData(DALNewFMCG.CompanyDetail cm)
         {
             WriteUnitOfMeasurement(cm); ; dbNew.SaveChanges();
-            UOMId = dbNew.UOMs.FirstOrDefault().Id;
+            WriteTaxMaster(cm); ; dbNew.SaveChanges();
+
+            UOMId = dbNew.UOMs.ToList().LastOrDefault().Id;
+            TAXId = dbNew.TaxMasters.ToList().LastOrDefault().Id;
             WriteAccountGroup(cm, "ACG0001", null); dbNew.SaveChanges();
             WriteStockGroup(cm, "STG001", null); dbNew.SaveChanges();
+
+            var l1 = from LedgerOld in dbOld.Ledgers.ToList()
+                     join LedgerNew in dbNew.Ledgers.ToList() on LedgerOld.LedgerName equals LedgerNew.LedgerName
+                     select new DataKeyValueFMCG() { DataKey=LedgerOld.LedgerCode,DataValue=LedgerNew.Id };
+            lstLedgerIds = l1.ToList();
+
+            var l2 = from ProductOld in dbOld.Products.ToList()
+                     join ProductNew in dbNew.Products.ToList() on ProductOld.ProductName equals ProductNew.ProductName
+                     select new DataKeyValueFMCG() {DataKey=ProductOld.ProductCode,DataValue=ProductNew.Id };
+            lstProductIds = l2.ToList();
+
+        }
+
+        private void WriteTaxMaster(CompanyDetail cm)
+        {
+            WriteLog("Start to store the TAX");
+
+            foreach (var dOld in dbOld.TaxMasters.ToList())
+            {
+                DALNewFMCG.TaxMaster dNew = new DALNewFMCG.TaxMaster()
+                {
+                    TaxName = dOld.Narration,
+                    TaxPercentage=dOld.TaxValue,
+                    CompanyId = cm.Id
+                };
+                cm.TaxMasters.Add(dNew);
+
+                WriteLog(string.Format("Stored TAX : {0}", dNew.TaxName));
+
+            }
+            WriteLog("End to store the UOM");
+        }
+
+        void WriteTransactionData(DALNewFMCG.CompanyDetail cm)
+        {
+
+            lstPurchaseNew = new List<Purchase>();
+            lstSaleNew = new List<Sale>();
+            lstPurchaseReturnNew = new List<PurchaseReturn>();
+            lstSaleReturnNew = new List<SalesReturn>();
+
+            WritePurchase();            
+            dbNew.Purchases.AddRange(lstPurchaseNew);
+            dbNew.SaveChanges();
+
+            WriteSale();
+            dbNew.Sales.AddRange(lstSaleNew);
+            dbNew.SaveChanges();
+
+            WritePurchaseReturn();
+            dbNew.PurchaseReturns.AddRange(lstPurchaseReturnNew);
+            dbNew.SaveChanges();
+
+            WriteSaleReturn();
+            dbNew.SalesReturns.AddRange(lstSaleReturnNew);
+            dbNew.SaveChanges();
+
 
         }
         void WriteAccountGroup(DALNewFMCG.CompanyDetail cm, string AGId, DALNewFMCG.AccountGroup UAG)
@@ -232,233 +302,306 @@ namespace ABDC
             WriteLog("End to store the UOM");
         }
 
-        
+        void WritePurchase()
+        {
+            var lstPurchase = dbOld.Purchases.ToList();
+            var lstpurchaseDetails = dbOld.PurchaseDetails.ToList();
 
-        //void WritePayment(DALNewFMCG.CompanyDetail cm)
-        //{
-        //    WriteLog("Start to store the Payment");
-        //    try
-        //    {
+            foreach(var p in lstPurchase)
+            {
+                try
+                {
+                    var lstDetails = lstpurchaseDetails.Where(x => x.PurchaseCode == p.PurchaseCode).ToList();
+                    var ItemAmt = Convert.ToDecimal(lstDetails.Sum(x => x.Rate * x.Quantity));
+                    var disAmt = Convert.ToDecimal(lstDetails.Sum(x => (x.Rate * x.Quantity) * x.DisPer / 100));
+                    var GSTAmt = Convert.ToDecimal(lstDetails.Sum(x => ((x.Rate * x.Quantity) - ((x.Rate * x.Quantity) * x.DisPer / 100)) * Convert.ToDouble(x.TaxPer != "" ? "6" : "0") / 100));
+                    var ExAmt = Convert.ToDecimal(p.Extra);
+                    var TotAmt = ItemAmt - disAmt + GSTAmt + ExAmt;
 
-        //       pbrPayment.Maximum = lstPayment.Count();
-        //        pbrPayment.Value = 0;
-        //        foreach (var p in lstPayment)
-        //        {
-        //            try
-        //            {
+                    DALNewFMCG.Purchase d = new DALNewFMCG.Purchase()
+                    {
+                        LedgerId = GetLedgerId(p.LedgerCode),
+                        PurchaseDate = p.PurchaseDate.Value,
+                        TransactionTypeId = p.PurchaseType == "Cash" ? 1 : 2,
+                        RefCode = p.InvoiceNo,
+                        RefNo = GetPurchaseRefNo(p.PurchaseDate.Value),
+                        ItemAmount = ItemAmt,
+                        ExtraAmount = ExAmt,
+                        DiscountAmount = disAmt,
+                        GSTAmount = GSTAmt,
+                        TotalAmount = TotAmt
+                    };
 
-        //                DALNewFMCG.Payment pm = new DALNewFMCG.Payment()
-        //                {
-        //                    LedgerId = GetLedgerId(p.l),
-        //                    Amount = Convert.ToDecimal(p.PayAmount),
-        //                    ChequeDate = p.chequeDate,
-        //                    ChequeNo = p.ChequeNo,
-        //                    ClearDate = p.ClearDate,
-        //                    VoucherNo = p.VoucherNo,
-        //                    EntryNo = Payment_NewRefNo(p.PaymentDate.Value),
-        //                    ExtraCharge = Convert.ToDecimal(p.ExtraCharge),
-        //                    Particulars = p.Narration,
-        //                    PaymentDate = p.PaymentDate.Value,
-        //                    PaymentMode = p.PaymentMode,
-        //                    PayTo = p.PayTo,
-        //                    Status = p.Status,
-        //                    RefNo = p.RefNo,
-        //                    RefCode = p.PaymentId.ToString()
-        //                };
+                    foreach (var pd in lstDetails)
+                    {
+                        try
+                        {
+                            d.PurchaseDetails.Add(new DALNewFMCG.PurchaseDetail()
+                            {
+                                ProductId = GetProductId(pd.ProductCode),
+                                UnitPrice = Convert.ToDecimal(pd.Rate),
+                                Quantity = pd.Quantity.Value,
+                                Amount = Convert.ToDecimal(pd.Rate * pd.Quantity.Value),
+                                DiscountAmount = Convert.ToDecimal((pd.Rate * pd.Quantity.Value) * pd.DisPer),
+                                GSTAmount = Convert.ToDecimal(((pd.Rate * pd.Quantity.Value) * pd.DisPer) * Convert.ToDouble(pd.TaxPer != "" ? "6" : "0") / 100),
+                                UOMId = UOMId
+                            });
+                        }
+                        catch(Exception ex)
+                        {
+                            WriteLog(ex.Message);
+                        }
+                       
+                    }
+                    lstPurchaseNew.Add(d);
+                }
+                catch (Exception ex)
+                {
+                    WriteLog(ex.Message);
+                }
+                
+            }            
+        }
+        void WriteSale()
+        {
+            var lstSale = dbOld.Sales.ToList();
+            var lstsaleDetails = dbOld.SalesDetails.ToList();
 
-        //                foreach (var pd in p.PaymentDetails)
-        //                {
-        //                    DALNewFMCG.PaymentDetail pmd = new DALNewFMCG.PaymentDetail()
-        //                    {
-        //                        LedgerId = GetLedgerId(pd.Ledger.LedgerName),
-        //                        Amount = Convert.ToDecimal(pd.Amount),
-        //                        Particular = pd.Narration,
-        //                    };
-        //                    pm.PaymentDetails.Add(pmd);
-        //                }
+            foreach (var p in lstSale)
+            {
+                try
+                {
+                    var lstDetails = lstsaleDetails.Where(x => x.SalesCode == p.SalesCode).ToList();
+                    var ItemAmt = Convert.ToDecimal(lstDetails.Sum(x => x.Rate * x.Quantity));
+                    var disAmt = Convert.ToDecimal(lstDetails.Sum(x => (x.Rate * x.Quantity) * x.DisPer / 100));
+                    var GSTAmt = Convert.ToDecimal(lstDetails.Sum(x => ((x.Rate * x.Quantity) - ((x.Rate * x.Quantity) * x.DisPer / 100)) * Convert.ToDouble(x.TaxPer != "" ? "6" : "0") / 100));
+                    var ExAmt = Convert.ToDecimal(p.Extra);
+                    var TotAmt = ItemAmt - disAmt + GSTAmt + ExAmt;
 
-        //                lstPaymentNew.Add(pm);
+                    DALNewFMCG.Sale d = new DALNewFMCG.Sale()
+                    {
+                        LedgerId = GetLedgerId(p.LedgerCode),
+                        SalesDate = p.SalesDate.Value,
+                        TransactionTypeId = p.SalesType == "Cash" ? 1 : 2,
+                        RefCode = p.InvoiceNo,
+                        RefNo = GetSaleRefNo(p.SalesDate.Value),
+                        ItemAmount = ItemAmt,
+                        ExtraAmount = ExAmt,
+                        DiscountAmount = disAmt,
+                        GSTAmount = GSTAmt,
+                        TotalAmount = TotAmt
+                    };
 
-        //                WriteLog(string.Format("Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}", pm.PaymentDate, pm.EntryNo, pm.VoucherNo));
-        //                pbrPayment.Value += 1;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                WriteLog(string.Format("Error on Stored Payment => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", p.PaymentDate, p.EntryNo, p.VoucherNo, ex.Message));
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        WriteLog(string.Format("Error on Payment: {0}", ex.Message));
-        //    }
-        //    WriteLog("End to Store the Payment");
-        //}
+                    foreach (var pd in lstDetails)
+                    {
+                        try
+                        {
+                            d.SalesDetails.Add(new DALNewFMCG.SalesDetail()
+                            {
+                                ProductId = GetProductId(pd.ProductCode),
+                                UnitPrice = Convert.ToDecimal(pd.Rate),
+                                Quantity = pd.Quantity.Value,
+                                Amount = Convert.ToDecimal(pd.Rate * pd.Quantity.Value),
+                                DiscountAmount = Convert.ToDecimal((pd.Rate * pd.Quantity.Value) * pd.DisPer),
+                                GSTAmount = Convert.ToDecimal(((pd.Rate * pd.Quantity.Value) * pd.DisPer) * Convert.ToDouble(pd.TaxPer != "" ? "6" : "0") / 100),
+                                UOMId = UOMId
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteLog(ex.Message);
+                        }
 
-        //void WriteReceipt(DALNewFMCG.CompanyDetail cm)
-        //{
-        //    WriteLog("Start to store the Receipt");
-        //    try
-        //    {
-        //        var l1 = lstReceipt.Where(x => x.Fund == cm.FundName && x.ReceiptDate >= new DateTime(2016, 4, 1)).ToList();
-        //        pbrReceipt.Maximum = l1.Count();
-        //        pbrReceipt.Value = 0;
-        //        foreach (var r in l1)
-        //        {
+                    }
+                    lstSaleNew.Add(d);
+                }
+                catch (Exception ex)
+                {
+                    WriteLog(ex.Message);
+                }
 
-        //            try
-        //            {
-        //                DALNewFMCG.Receipt rm = new DALNewFMCG.Receipt()
-        //                {
-        //                    LedgerId = GetLedgerId(r.Ledger.LedgerName),
-        //                    Amount = Convert.ToDecimal(r.ReceiptAmount),
-        //                    ChequeDate = r.ChequeDate,
-        //                    ChequeNo = r.ChequeNo,
-        //                    CleareDate = r.ClrDate,
-        //                    VoucherNo = r.VoucherNo,
-        //                    EntryNo = Receipt_NewRefNo(r.ReceiptDate.Value),
-        //                    Extracharge = Convert.ToDecimal(r.ExtraCharge),
-        //                    Particulars = r.Narration,
-        //                    ReceiptDate = r.ReceiptDate.Value,
-        //                    ReceiptMode = r.ReceiptMode,
-        //                    ReceivedFrom = r.ReceivedFrom,
-        //                    Status = r.Status,
-        //                    RefNo = r.RefNo,
-        //                    RefCode = r.ReceiptId.ToString()
-        //                };
+            }
+        }
 
-        //                foreach (var rd in r.ReceiptDetails)
-        //                {
-        //                    DALNewFMCG.ReceiptDetail pmd = new DALNewFMCG.ReceiptDetail()
-        //                    {
-        //                        LedgerId = GetLedgerId(rd.Ledger.LedgerName),
-        //                        Amount = Convert.ToDecimal(rd.Amount),
-        //                        Particulars = rd.Narration,
-        //                    };
-        //                    rm.ReceiptDetails.Add(pmd);
-        //                }
+        void WritePurchaseReturn()
+        {
+            var lstPurchaseReturn = dbOld.PurchaseReturns.ToList();
+            var lstPurchaseReturnDetails = dbOld.PurchaseReturnDetails.ToList();
 
-        //                lstReceiptNew.Add(rm);
-        //                WriteLog(string.Format("Stored Receipt => Date : {0}, Entry No : {1}, Voucher No : {2}", rm.ReceiptDate, rm.EntryNo, rm.VoucherNo));
-        //                pbrReceipt.Value += 1;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                WriteLog(string.Format("Error on Stored Receipt => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", r.ReceiptDate, r.EntryNo, r.VoucherNo, ex.Message));
-        //            }
+            foreach (var p in lstPurchaseReturn)
+            {
+                try
+                {
+                    var lstDetails = lstPurchaseReturnDetails.Where(x => x.PRCode == p.PRCode).ToList();
+                    var ItemAmt = Convert.ToDecimal(lstDetails.Sum(x => x.Rate * x.Quantity));
+                    var disAmt = Convert.ToDecimal(lstDetails.Sum(x => (x.Rate * x.Quantity) * x.DisPer / 100));
+                    var GSTAmt = Convert.ToDecimal(lstDetails.Sum(x => ((x.Rate * x.Quantity) - ((x.Rate * x.Quantity) * x.DisPer / 100)) * Convert.ToDouble(x.TaxPer != "" ? "6" : "0") / 100));
+                    var ExAmt = Convert.ToDecimal(p.Extra);
+                    var TotAmt = ItemAmt - disAmt + GSTAmt + ExAmt;
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        WriteLog(string.Format("Error on Receipt: {0}", ex.Message));
-        //    }
+                    DALNewFMCG.PurchaseReturn d = new DALNewFMCG.PurchaseReturn()
+                    {
+                        LedgerId = GetLedgerId(p.LedgerCode),
+                        PRDate = p.PRDate.Value,
+                        TransactionTypeId = p.PRType == "Cash" ? 1 : 2,
+                        RefCode = p.InvoiceNo,
+                        RefNo = GetPurchaseReturnRefNo(p.PRDate.Value),
+                        ItemAmount = ItemAmt,
+                        ExtraAmount = ExAmt,
+                        DiscountAmount = disAmt,
+                        GSTAmount = GSTAmt,
+                        TotalAmount = TotAmt
+                    };
 
-        //    WriteLog("End to Store the Receipt");
-        //}
+                    foreach (var pd in lstDetails)
+                    {
+                        try
+                        {
+                            d.PurchaseReturnDetails.Add(new DALNewFMCG.PurchaseReturnDetail()
+                            {
+                                ProductId = GetProductId(pd.ProductCode),
+                                UnitPrice = Convert.ToDecimal(pd.Rate),
+                                Quantity = pd.Quantity.Value,
+                                Amount = Convert.ToDecimal(pd.Rate * pd.Quantity.Value),
+                                DiscountAmount = Convert.ToDecimal((pd.Rate * pd.Quantity.Value) * pd.DisPer),
+                                GSTAmount = Convert.ToDecimal(((pd.Rate * pd.Quantity.Value) * pd.DisPer) * Convert.ToDouble(pd.TaxPer != "" ? "6" : "0") / 100),
+                                UOMId = UOMId
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteLog(ex.Message);
+                        }
 
-        //void WriteJournal(DALNewFMCG.CompanyDetail cm)
-        //{
-        //    WriteLog("Start to store the Journal");
-        //    try
-        //    {
-        //        var l1 = lstJournal.Where(x => x.Fund == cm.FundName && x.JournalDate >= new DateTime(2016, 4, 1)).ToList();
-        //        pbrJournal.Maximum = l1.Count();
-        //        pbrJournal.Value = 0;
-        //        foreach (var j in l1)
-        //        {
-        //            try
-        //            {
-        //                DALNewFMCG.Journal jm = new DALNewFMCG.Journal()
-        //                {
-        //                    VoucherNo = j.VoucherNo,
-        //                    EntryNo = Journal_NewRefNo(j.JournalDate.Value),
-        //                    HQNo = j.HQNo,
-        //                    JournalDate = j.JournalDate.Value,
-        //                    Status = j.Status,
-        //                    RefCode = j.JournalId.ToString()
-        //                };
+                    }
+                    lstPurchaseReturnNew.Add(d);
+                }
+                catch (Exception ex)
+                {
+                    WriteLog(ex.Message);
+                }
 
-        //                foreach (var jd in j.JournalDetails)
-        //                {
-        //                    DALNewFMCG.JournalDetail pmd = new DALNewFMCG.JournalDetail()
-        //                    {
-        //                        LedgerId = GetLedgerId(jd.Ledger.LedgerName),
-        //                        CrAmt = Convert.ToDecimal(jd.CrAmt),
-        //                        DrAmt = Convert.ToDecimal(jd.DrAmt),
-        //                        Particulars = jd.Narration,
-        //                    };
-        //                    jm.JournalDetails.Add(pmd);
-        //                }
+            }
+        }
 
-        //                lstJournalNew.Add(jm);
+        void WriteSaleReturn()
+        {
+            var lstSaleReturn = dbOld.SalesReturns.ToList();
+            var lstsaleReturnDetails = dbOld.SalesReturnDetails.ToList();
 
-        //                WriteLog(string.Format("Stored Journal => Date : {0}, Entry No : {1}, Voucher No : {2}", jm.JournalDate, jm.EntryNo, jm.VoucherNo));
-        //                pbrJournal.Value += 1;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                WriteLog(string.Format("Error Stored Journal => Date : {0}, Entry No : {1}, Voucher No : {2}, Error : {3}", j.JournalDate, j.EntryNo, j.VoucherNo, ex.Message));
-        //            }
+            foreach (var p in lstSaleReturn)
+            {
+                try
+                {
+                    var lstDetails = lstsaleReturnDetails.Where(x => x.SRCode == p.SRCode).ToList();
+                    var ItemAmt = Convert.ToDecimal(lstDetails.Sum(x => x.Rate * x.Quantity));
+                    var disAmt = Convert.ToDecimal(lstDetails.Sum(x => (x.Rate * x.Quantity) * x.DisPer / 100));
+                    var GSTAmt = Convert.ToDecimal(lstDetails.Sum(x => ((x.Rate * x.Quantity) - ((x.Rate * x.Quantity) * x.DisPer / 100)) * Convert.ToDouble(x.TaxPer != "" ? "6" : "0") / 100));
+                    var ExAmt = Convert.ToDecimal(p.Extra);
+                    var TotAmt = ItemAmt - disAmt + GSTAmt + ExAmt;
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        WriteLog(string.Format("Error on Journal: {0}", ex.Message));
-        //    }
+                    DALNewFMCG.SalesReturn d = new DALNewFMCG.SalesReturn()
+                    {
+                        LedgerId = GetLedgerId(p.LedgerCode),
+                        SRDate = p.SRDate.Value,
+                        TransactionTypeId = p.SRType == "Cash" ? 1 : 2,                        
+                        RefNo = GetSaleReturnRefNo(p.SRDate.Value),
+                        ItemAmount = ItemAmt,
+                        ExtraAmount = ExAmt,
+                        DiscountAmount = disAmt,
+                        GSTAmount = GSTAmt,
+                        TotalAmount = TotAmt
+                    };
 
-        //    WriteLog("End to Store the Journal");
-        //}
+                    foreach (var pd in lstDetails)
+                    {
+                        try
+                        {
+                            d.SalesReturnDetails.Add(new DALNewFMCG.SalesReturnDetail()
+                            {
+                                ProductId = GetProductId(pd.ProductCode),
+                                UnitPrice = Convert.ToDecimal(pd.Rate),
+                                Quantity = pd.Quantity.Value,
+                                Amount = Convert.ToDecimal(pd.Rate * pd.Quantity.Value),
+                                DiscountAmount = Convert.ToDecimal((pd.Rate * pd.Quantity.Value) * pd.DisPer),
+                                GSTAmount = Convert.ToDecimal(((pd.Rate * pd.Quantity.Value) * pd.DisPer) * Convert.ToDouble(pd.TaxPer != "" ? "6" : "0") / 100),
+                                UOMId = UOMId
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteLog(ex.Message);
+                        }
 
-        //int GetLedgerId(string LedgerName)
-        //{
-        //    return lstLedgerNew.Where(x => x.LedgerName == LedgerName).Select(x => x.Id).FirstOrDefault();
-        //}
+                    }
+                    lstSaleReturnNew.Add(d);
+                }
+                catch (Exception ex)
+                {
+                    WriteLog(ex.Message);
+                }
 
-        
+            }
+        }
 
-        //public string Payment_NewRefNo(DateTime dt)
-        //{
-        //    string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.Payment, dt);
-        //    long No = 0;
 
-        //    var d = lstPaymentNew.Where(x => x.EntryNo.StartsWith(Prefix))
-        //                             .OrderByDescending(x => x.EntryNo)
-        //                             .FirstOrDefault();
 
-        //    if (d != null) No = Convert.ToInt64(d.EntryNo.Substring(Prefix.Length), 10);
+        private string GetPurchaseRefNo(DateTime dt)
+        {
+            string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.Purchase, dt);
+            long No = 0;
 
-        //    return string.Format("{0}{1:d3}", Prefix, No + 1);
-        //}
+            var d = lstPurchaseNew.Where(x => x.RefNo.StartsWith(Prefix))
+                                     .OrderByDescending(x => x.RefNo)
+                                     .FirstOrDefault();
 
-        //public string Receipt_NewRefNo(DateTime dt)
-        //{
-        //    string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.Receipt, dt);
-        //    long No = 0;
+            if (d != null) No = Convert.ToInt64(d.RefNo.Substring(Prefix.Length), 10);
 
-        //    var d = lstReceiptNew.Where(x => x.EntryNo.StartsWith(Prefix))
-        //                             .OrderByDescending(x => x.EntryNo)
-        //                             .FirstOrDefault();
+            return string.Format("{0}{1:d4}", Prefix, No + 1);
+        }
 
-        //    if (d != null) No = Convert.ToInt64(d.EntryNo.Substring(Prefix.Length), 10);
+        private string GetSaleRefNo(DateTime dt)
+        {
+            string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.Sales, dt);
+            long No = 0;
 
-        //    return string.Format("{0}{1:d3}", Prefix, No + 1);
-        //}
+            var d = lstSaleNew.Where(x => x.RefNo.StartsWith(Prefix))
+                                     .OrderByDescending(x => x.RefNo)
+                                     .FirstOrDefault();
 
-        //public string Journal_NewRefNo(DateTime dt)
-        //{
-        //    string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.Journal, dt);
-        //    long No = 0;
+            if (d != null) No = Convert.ToInt64(d.RefNo.Substring(Prefix.Length), 10);
 
-        //    var d = lstJournalNew.Where(x => x.EntryNo.StartsWith(Prefix))
-        //                             .OrderByDescending(x => x.EntryNo)
-        //                             .FirstOrDefault();
+            return string.Format("{0}{1:d4}", Prefix, No + 1);
+        }
 
-        //    if (d != null) No = Convert.ToInt64(d.EntryNo.Substring(Prefix.Length), 10);
+        private string GetPurchaseReturnRefNo(DateTime dt)
+        {
+            string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.PurchaseReturn, dt);
+            long No = 0;
 
-        //    return string.Format("{0}{1:d3}", Prefix, No + 1);
-        //}
+            var d = lstPurchaseReturnNew.Where(x => x.RefNo.StartsWith(Prefix))
+                                     .OrderByDescending(x => x.RefNo)
+                                     .FirstOrDefault();
+
+            if (d != null) No = Convert.ToInt64(d.RefNo.Substring(Prefix.Length), 10);
+
+            return string.Format("{0}{1:d4}", Prefix, No + 1);
+        }
+
+        private string GetSaleReturnRefNo(DateTime dt)
+        {
+            string Prefix = string.Format("{0}{1:yyMM}", FormPrefix.SalesReturn, dt);
+            long No = 0;
+
+            var d = lstSaleReturnNew.Where(x => x.RefNo.StartsWith(Prefix))
+                                     .OrderByDescending(x => x.RefNo)
+                                     .FirstOrDefault();
+
+            if (d != null) No = Convert.ToInt64(d.RefNo.Substring(Prefix.Length), 10);
+
+            return string.Format("{0}{1:d4}", Prefix, No + 1);
+        }
+
 
         void WriteDataKey(DALNewFMCG.CompanyDetail cm)
         {
@@ -470,95 +613,7 @@ namespace ABDC
             }
             dbNew.SaveChanges();
         }
-        //void WriteLogData(DALNewFMCG.CompanyDetail cm)
-        //{
-        //    var ua = cm.UserTypes.FirstOrDefault().UserAccounts.FirstOrDefault();
-        //    var ua1 = new DALNewFMCG.FundMaster() { Id = cm.Id, FundName = cm.FundName, IsActive = cm.IsActive };
-
-        //    var cf = cm.CustomFormats.FirstOrDefault();
-        //    var cf1 = new DALNewFMCG.CustomFormat() { Id = cf.Id, CurrencyCaseSensitive = cf.CurrencyCaseSensitive, CurrencyNegativeSymbolPrefix = cf.CurrencyNegativeSymbolPrefix, CurrencyNegativeSymbolSuffix = cf.CurrencyNegativeSymbolSuffix, CurrencyPositiveSymbolPrefix = cf.CurrencyPositiveSymbolPrefix, CurrencyPositiveSymbolSuffix = cf.CurrencyPositiveSymbolSuffix, CurrencyToWordPrefix = cf.CurrencyToWordPrefix, CurrencyToWordSuffix = cf.CurrencyToWordSuffix, DecimalSymbol = cf.DecimalSymbol, DecimalToWordPrefix = cf.DecimalToWordPrefix, DecimalToWordSuffix = cf.DecimalToWordSuffix, DigitGroupingBy = cf.DigitGroupingBy, DigitGroupingSymbol = cf.DigitGroupingSymbol, FundMasterId = cf.FundMasterId, IsDisplayWithOnlyOnSuffix = cf.IsDisplayWithOnlyOnSuffix, NoOfDigitAfterDecimal = cf.NoOfDigitAfterDecimal };
-
-        //    var ut = cm.UserTypes.FirstOrDefault();
-        //    var ut1 = new DALNewFMCG.UserType() { Id = ut.Id, FundMasterId = ut.FundMasterId, TypeOfUser = ut.TypeOfUser, Description = ut.Description };
-        //    foreach (var utd in ut.UserTypeDetails)
-        //    {
-        //        ut1.UserTypeDetails.Add(new DALNewFMCG.UserTypeDetail() { Id = utd.Id, UserTypeId = utd.UserTypeId, UserTypeFormDetailId = utd.UserTypeFormDetailId, IsViewForm = utd.IsViewForm, AllowInsert = utd.AllowInsert, AllowUpdate = utd.AllowUpdate, AllowDelete = utd.AllowDelete });
-        //    }
-
-        //    var acym = cm.ACYearMasters.FirstOrDefault();
-        //    var acym1 = new DALNewFMCG.ACYearMaster() { Id = acym.Id, ACYear = acym.ACYear, ACYearStatusId = acym.ACYearStatusId, FundMasterId = acym.FundMasterId };
-        //    foreach (var acymlb in acym.ACYearLedgerBalances)
-        //    {
-        //        acym1.ACYearLedgerBalances.Add(new DALNewFMCG.ACYearLedgerBalance() { Id = acymlb.Id, ACYearMasterId = acym.Id, LedgerId = acymlb.LedgerId, DrAmt = acymlb.DrAmt, CrAmt = acymlb.CrAmt });
-        //    }
-
-        //    var fm1 = new DALNewFMCG.FundMaster() { Id = cm.Id, FundName = cm.FundName, IsActive = cm.IsActive };
-
-        //    LogDetailStore(fm1, ua.Id);
-        //    LogDetailStore(cf1, ua.Id);
-        //    LogDetailStore(ut1, ua.Id);
-        //    LogDetailStore(ua1, ua.Id);
-        //    var x1 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of Master");
-        //    LogDetailStore(acym1, ua.Id);
-        //    var x2 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of AccountYearMaster");
-        //    foreach (var ag in cm.AccountGroups)
-        //    {
-        //        LogDetailStore(new DALNewFMCG.AccountGroup() { Id = ag.Id, FundMasterId = cm.Id, GroupCode = ag.GroupCode, UnderGroupId = ag.UnderGroupId, GroupName = ag.GroupName }, ua.Id);
-        //    }
-
-        //    var x3 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of AccountGroup");
-        //    foreach (var ld in lstLedgerNew)
-        //    {
-        //        LogDetailStore(new DALNewFMCG.Ledger() { Id = ld.Id, AccountGroupId = ld.AccountGroupId, LedgerCode = ld.LedgerCode, LedgerName = ld.LedgerName }, ua.Id);
-        //    }
-        //    var n0 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of Ledger");
-        //    int i = 0;
-        //    foreach (var p in lstPaymentNew)
-        //    {
-        //        var p1 = new DALNewFMCG.Payment() { Id = p.Id, Amount = p.Amount, ChequeDate = p.ChequeDate, ChequeNo = p.ChequeNo, ClearDate = p.ClearDate, EntryNo = p.EntryNo, ExtraCharge = p.ExtraCharge, LedgerId = p.LedgerId, Particulars = p.Particulars, PaymentDate = p.PaymentDate, PaymentMode = p.PaymentMode, PayTo = p.PayTo, RefCode = p.RefCode, RefNo = p.RefNo, Status = p.Status, VoucherNo = p.VoucherNo };
-        //        foreach (var pd in p.PaymentDetails)
-        //        {
-        //            p1.PaymentDetails.Add(new DALNewFMCG.PaymentDetail() { Id = pd.Id, Amount = pd.Amount, LedgerId = pd.LedgerId, Particular = pd.Particular, PaymentId = pd.PaymentId });
-        //        }
-
-        //        LogDetailStore(p1, ua.Id);
-        //        if (i++ % 1000 == 0) dbNew.SaveChanges();
-
-        //    }
-        //    var n1 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of Payment");
-        //    foreach (var r in lstReceiptNew)
-        //    {
-        //        var r1 = new DALNewFMCG.Receipt() { Id = r.Id, Amount = r.Amount, ChequeDate = r.ChequeDate, ChequeNo = r.ChequeNo, CleareDate = r.CleareDate, EntryNo = r.EntryNo, Extracharge = r.Extracharge, LedgerId = r.LedgerId, Particulars = r.Particulars, ReceiptDate = r.ReceiptDate, ReceiptMode = r.ReceiptMode, ReceivedFrom = r.ReceivedFrom, RefCode = r.RefCode, RefNo = r.RefNo, Status = r.Status, VoucherNo = r.VoucherNo };
-        //        foreach (var rd in r.ReceiptDetails)
-        //        {
-        //            r1.ReceiptDetails.Add(new DALNewFMCG.ReceiptDetail() { Id = rd.Id, Amount = rd.Amount, LedgerId = rd.LedgerId, Particulars = rd.Particulars, ReceiptId = rd.ReceiptId });
-        //        }
-        //        LogDetailStore(r1, ua.Id);
-
-        //        if (i++ % 1000 == 0) dbNew.SaveChanges();
-        //    }
-        //    var n2 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of Receipt");
-        //    foreach (var j in lstJournalNew)
-        //    {
-        //        var j1 = new DALNewFMCG.Journal() { Id = j.Id, Amount = j.Amount, EntryNo = j.EntryNo, HQNo = j.HQNo, JournalDate = j.JournalDate, Particular = j.Particular, RefCode = j.RefCode, Status = j.Status, VoucherNo = j.VoucherNo };
-        //        foreach (var jd in j.JournalDetails)
-        //        {
-        //            j1.JournalDetails.Add(new DALNewFMCG.JournalDetail() { Id = jd.Id, CrAmt = jd.CrAmt, DrAmt = jd.DrAmt, JournalId = jd.JournalId, LedgerId = jd.LedgerId, Particulars = jd.Particulars });
-        //        }
-        //        LogDetailStore(j1, ua.Id);
-        //        if (i++ % 1000 == 0) dbNew.SaveChanges();
-        //    }
-
-        //    var n3 = dbNew.SaveChanges();
-        //    WriteLog("Log Data Finished of Journal");
-        //}
-
+       
         public void WriteLog(String str)
         {
             using (StreamWriter writer = new StreamWriter(System.IO.Path.GetTempPath() + "ABDC_log.txt", true))
@@ -570,6 +625,17 @@ namespace ABDC
             lblStatus.Text = string.Format("Start Time : {0:hh:mm:ss}, End Time : {1:hh:mm:ss}, Work on Mins : {2}\r\nMessage : {3}", dtStart, dtEnd, ts.TotalMinutes, str);
             DoEvents();
         }
+
+        public int GetLedgerId(string LedgerCode)
+        {
+            return lstLedgerIds.Where(x => x.DataKey == LedgerCode).FirstOrDefault().DataValue;
+        }
+
+        public int GetProductId(string ProductCode)
+        {
+            return lstProductIds.Where(x => x.DataKey == ProductCode).FirstOrDefault().DataValue;
+        }
+
         public static void DoEvents()
         {
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new Action(delegate { }));

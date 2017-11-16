@@ -80,5 +80,6 @@ namespace ABDC.DALNewFMCG
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<UserTypeDetail> UserTypeDetails { get; set; }
         public virtual DbSet<UserTypeFormDetail> UserTypeFormDetails { get; set; }
+        public virtual DbSet<TaxMaster> TaxMasters { get; set; }
     }
 }

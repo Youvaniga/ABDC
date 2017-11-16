@@ -184,10 +184,10 @@
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="JournalDate" Type="date" Nullable="false" />
           <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="Particular" Type="nvarchar(max)" />
           <Property Name="HQNo" Type="nvarchar" MaxLength="50" />
           <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="JournalDetail">
           <Key>
@@ -199,6 +199,13 @@
           <Property Name="DrAmt" Type="money" Nullable="false" />
           <Property Name="CrAmt" Type="money" Nullable="false" />
           <Property Name="Particulars" Type="nvarchar" MaxLength="500" />
+          <Property Name="TransactionMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="money" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="ClearDate" Type="date" />
         </EntityType>
         <EntityType Name="Ledger">
           <Key>
@@ -321,6 +328,9 @@
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="LedgerId" Type="int" Nullable="false" />
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="ItemAmount" Type="money" Nullable="false" />
           <Property Name="DiscountAmount" Type="money" Nullable="false" />
           <Property Name="GSTAmount" Type="money" Nullable="false" />
@@ -383,6 +393,9 @@
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="LedgerId" Type="int" Nullable="false" />
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="ItemAmount" Type="money" Nullable="false" />
           <Property Name="DiscountAmount" Type="money" Nullable="false" />
           <Property Name="GSTAmount" Type="money" Nullable="false" />
@@ -404,6 +417,8 @@
           <Property Name="DiscountAmount" Type="money" Nullable="false" />
           <Property Name="GSTAmount" Type="money" Nullable="false" />
           <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="IsResale" Type="bit" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
@@ -446,6 +461,9 @@
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="LedgerId" Type="int" Nullable="false" />
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="ItemAmount" Type="money" Nullable="false" />
           <Property Name="DiscountAmount" Type="money" Nullable="false" />
           <Property Name="GSTAmount" Type="money" Nullable="false" />
@@ -508,6 +526,9 @@
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="LedgerId" Type="int" Nullable="false" />
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="ItemAmount" Type="money" Nullable="false" />
           <Property Name="DiscountAmount" Type="money" Nullable="false" />
           <Property Name="GSTAmount" Type="money" Nullable="false" />
@@ -529,6 +550,8 @@
           <Property Name="DiscountAmount" Type="money" Nullable="false" />
           <Property Name="GSTAmount" Type="money" Nullable="false" />
           <Property Name="Amount" Type="money" />
+          <Property Name="IsResale" Type="bit" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -674,6 +697,15 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LedgerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="500" />
+          <Property Name="TaxPercentage" Type="float" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionType">
           <Key>
@@ -1805,6 +1837,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TaxMaster_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="TaxMaster" Type="Self.TaxMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaxMaster">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UOM_CompanyDetail">
           <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
           <End Role="UOM" Type="Self.UOM" Multiplicity="*" />
@@ -1915,6 +1959,7 @@
           <EntitySet Name="StockSeparated" EntityType="Self.StockSeparated" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockSeperatedDetail" EntityType="Self.StockSeperatedDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxMaster" EntityType="Self.TaxMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UOM" EntityType="Self.UOM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
@@ -2277,6 +2322,10 @@
             <End Role="Ledger" EntitySet="Ledger" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
+          <AssociationSet Name="FK_TaxMaster_CompanyDetail" Association="Self.FK_TaxMaster_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="TaxMaster" EntitySet="TaxMaster" />
+          </AssociationSet>
           <AssociationSet Name="FK_UOM_CompanyDetail" Association="Self.FK_UOM_CompanyDetail">
             <End Role="CompanyDetail" EntitySet="CompanyDetail" />
             <End Role="UOM" EntitySet="UOM" />
@@ -2353,6 +2402,7 @@
           <NavigationProperty Name="UOMs" Relationship="Self.FK_UOM_CompanyDetail" FromRole="CompanyDetail" ToRole="UOM" />
           <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_CompanyDetail" FromRole="CompanyDetail" ToRole="UserType" />
           <NavigationProperty Name="DataKeyValues" Relationship="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" FromRole="CompanyDetail" ToRole="DataKeyValue" />
+          <NavigationProperty Name="TaxMasters" Relationship="FMCG_New01Model.FK_TaxMaster_CompanyDetail" FromRole="CompanyDetail" ToRole="TaxMaster" />
         </EntityType>
         <EntityType Name="CreditLimitType">
           <Key>
@@ -2533,6 +2583,13 @@
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Journal" Relationship="Self.FK_JournalDetail_Journal" FromRole="JournalDetail" ToRole="Journal" />
           <NavigationProperty Name="Ledger" Relationship="Self.FK_JournalDetail_Ledger" FromRole="JournalDetail" ToRole="Ledger" />
+          <Property Name="TransactionMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="ClearDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Ledger">
           <Key>
@@ -2712,6 +2769,9 @@
           <NavigationProperty Name="Ledger" Relationship="Self.FK_Purchase_Ledger" FromRole="Purchase" ToRole="Ledger" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_Purchase_TransactionType" FromRole="Purchase" ToRole="TransactionType" />
           <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetail_Purchase" FromRole="Purchase" ToRole="PurchaseDetail" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PurchaseDetail">
           <Key>
@@ -2788,6 +2848,9 @@
           <NavigationProperty Name="Ledger" Relationship="Self.FK_PurchaseReturn_Ledger" FromRole="PurchaseReturn" ToRole="Ledger" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_PurchaseReturn_TransactionType" FromRole="PurchaseReturn" ToRole="TransactionType" />
           <NavigationProperty Name="PurchaseReturnDetails" Relationship="Self.FK_PurchaseReturnDetail_PurchaseReturn" FromRole="PurchaseReturn" ToRole="PurchaseReturnDetail" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PurchaseReturnDetail">
           <Key>
@@ -2807,6 +2870,8 @@
           <NavigationProperty Name="PurchaseDetail" Relationship="Self.FK_PurchaseReturnDetail_PurchaseDetail" FromRole="PurchaseReturnDetail" ToRole="PurchaseDetail" />
           <NavigationProperty Name="PurchaseReturn" Relationship="Self.FK_PurchaseReturnDetail_PurchaseReturn" FromRole="PurchaseReturnDetail" ToRole="PurchaseReturn" />
           <NavigationProperty Name="UOM" Relationship="Self.FK_PurchaseReturnDetail_UOM" FromRole="PurchaseReturnDetail" ToRole="UOM" />
+          <Property Name="IsResale" Type="Boolean" />
+          <Property Name="Particulars" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
@@ -2862,6 +2927,9 @@
           <NavigationProperty Name="Ledger" Relationship="Self.FK_Sale_Ledger" FromRole="Sale" ToRole="Ledger" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_Sale_TransactionType" FromRole="Sale" ToRole="TransactionType" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_Sale" FromRole="Sale" ToRole="SalesDetail" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SalesDetail">
           <Key>
@@ -2938,6 +3006,9 @@
           <NavigationProperty Name="Ledger" Relationship="Self.FK_SalesReturn_Ledger" FromRole="SalesReturn" ToRole="Ledger" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_SalesReturn_TransactionType" FromRole="SalesReturn" ToRole="TransactionType" />
           <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK_SalesReturnDetail_SalesReturn" FromRole="SalesReturn" ToRole="SalesReturnDetail" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SalesReturnDetail">
           <Key>
@@ -2957,6 +3028,8 @@
           <NavigationProperty Name="SalesDetail" Relationship="Self.FK_SalesReturnDetail_SalesDetail" FromRole="SalesReturnDetail" ToRole="SalesDetail" />
           <NavigationProperty Name="SalesReturn" Relationship="Self.FK_SalesReturnDetail_SalesReturn" FromRole="SalesReturnDetail" ToRole="SalesReturn" />
           <NavigationProperty Name="UOM" Relationship="Self.FK_SalesReturnDetail_UOM" FromRole="SalesReturnDetail" ToRole="UOM" />
+          <Property Name="IsResale" Type="Boolean" />
+          <Property Name="Particulars" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -4770,6 +4843,11 @@
             <End Role="CompanyDetail" EntitySet="CompanyDetails" />
             <End Role="DataKeyValue" EntitySet="DataKeyValues" />
           </AssociationSet>
+          <EntitySet Name="TaxMasters" EntityType="FMCG_New01Model.TaxMaster" />
+          <AssociationSet Name="FK_TaxMaster_CompanyDetail" Association="FMCG_New01Model.FK_TaxMaster_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="TaxMaster" EntitySet="TaxMasters" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_DataKeyValue_CompanyDetail">
           <End Type="FMCG_New01Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
@@ -4779,6 +4857,28 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DataKeyValue">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPercentage" Type="Double" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="FMCG_New01Model.FK_TaxMaster_CompanyDetail" FromRole="TaxMaster" ToRole="CompanyDetail" />
+        </EntityType>
+        <Association Name="FK_TaxMaster_CompanyDetail">
+          <End Type="FMCG_New01Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="FMCG_New01Model.TaxMaster" Role="TaxMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaxMaster">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4991,6 +5091,13 @@
           <EntitySetMapping Name="JournalDetails">
             <EntityTypeMapping TypeName="FMCG_New01Model.JournalDetail">
               <MappingFragment StoreEntitySet="JournalDetail">
+                <ScalarProperty Name="ClearDate" ColumnName="ClearDate" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="TransactionMode" ColumnName="TransactionMode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="JournalId" ColumnName="JournalId" />
                 <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
@@ -5122,6 +5229,9 @@
           <EntitySetMapping Name="Purchases">
             <EntityTypeMapping TypeName="FMCG_New01Model.Purchase">
               <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
                 <ScalarProperty Name="RefNo" ColumnName="RefNo" />
@@ -5188,6 +5298,9 @@
           <EntitySetMapping Name="PurchaseReturns">
             <EntityTypeMapping TypeName="FMCG_New01Model.PurchaseReturn">
               <MappingFragment StoreEntitySet="PurchaseReturn">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PRDate" ColumnName="PRDate" />
                 <ScalarProperty Name="RefNo" ColumnName="RefNo" />
@@ -5206,6 +5319,8 @@
           <EntitySetMapping Name="PurchaseReturnDetails">
             <EntityTypeMapping TypeName="FMCG_New01Model.PurchaseReturnDetail">
               <MappingFragment StoreEntitySet="PurchaseReturnDetail">
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="IsResale" ColumnName="IsResale" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PRId" ColumnName="PRId" />
                 <ScalarProperty Name="PDId" ColumnName="PDId" />
@@ -5255,6 +5370,9 @@
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="FMCG_New01Model.Sale">
               <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SalesDate" ColumnName="SalesDate" />
                 <ScalarProperty Name="RefNo" ColumnName="RefNo" />
@@ -5321,6 +5439,9 @@
           <EntitySetMapping Name="SalesReturns">
             <EntityTypeMapping TypeName="FMCG_New01Model.SalesReturn">
               <MappingFragment StoreEntitySet="SalesReturn">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SRDate" ColumnName="SRDate" />
                 <ScalarProperty Name="RefNo" ColumnName="RefNo" />
@@ -5339,6 +5460,8 @@
           <EntitySetMapping Name="SalesReturnDetails">
             <EntityTypeMapping TypeName="FMCG_New01Model.SalesReturnDetail">
               <MappingFragment StoreEntitySet="SalesReturnDetail">
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="IsResale" ColumnName="IsResale" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SRId" ColumnName="SRId" />
                 <ScalarProperty Name="SDId" ColumnName="SDId" />
@@ -5573,6 +5696,16 @@
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxMasters">
+            <EntityTypeMapping TypeName="FMCG_New01Model.TaxMaster">
+              <MappingFragment StoreEntitySet="TaxMaster">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

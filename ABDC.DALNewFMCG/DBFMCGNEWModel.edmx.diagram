@@ -154,6 +154,8 @@
         <AssociationConnector Association="FMCG_New01Model.FK_UserTypeDetail_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="FMCG_New01Model.FK_UserTypeDetail_UserTypeFormDetail" ManuallyRouted="false" />
         <AssociationConnector Association="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" />
+        <EntityTypeShape EntityType="FMCG_New01Model.TaxMaster" Width="1.5" PointX="3.75" PointY="70.375" />
+        <AssociationConnector Association="FMCG_New01Model.FK_TaxMaster_CompanyDetail" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
