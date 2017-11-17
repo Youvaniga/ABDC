@@ -24,12 +24,14 @@ namespace ABDC.DALNewNUBE
         public int Id { get; set; }
         public string TypeOfUser { get; set; }
         public string Description { get; set; }
+        public int CompanyId { get; set; }
         public int FundMasterId { get; set; }
     
-        public virtual FundMaster FundMaster { get; set; }
+        public virtual CompanyDetail CompanyDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccount> UserAccounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTypeDetail> UserTypeDetails { get; set; }
+        public virtual FundMaster FundMaster { get; set; }
     }
 }

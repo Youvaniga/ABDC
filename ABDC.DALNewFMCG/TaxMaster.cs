@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDC.DALNewFMCG
+namespace ABDB.DALNewFMCG
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace ABDC.DALNewFMCG
     {
         public int Id { get; set; }
         public string TaxName { get; set; }
-        public Nullable<double> TaxPercentage { get; set; }
-        public int CompanyId { get; set; }
+        public Nullable<decimal> TaxPercentage { get; set; }
+        public Nullable<int> CompanyId { get; set; }
     
         public virtual CompanyDetail CompanyDetail { get; set; }
     }

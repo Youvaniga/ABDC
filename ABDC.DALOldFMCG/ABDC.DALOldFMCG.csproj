@@ -84,6 +84,12 @@
     <Compile Include="Journal.cs">
       <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="JournalDetail.cs">
+      <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JournalMaster.cs">
+      <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ledger.cs">
       <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
     </Compile>
@@ -91,6 +97,9 @@
       <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">
+      <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetail.cs">
       <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
@@ -116,6 +125,9 @@
       <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Receipt.cs">
+      <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptDetail.cs">
       <DependentUpon>DMFMCGOLDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Sale.cs">

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDC.DALOldFMCG
+namespace ABDB.DALOldFMCG
 {
     using System;
     using System.Collections.Generic;

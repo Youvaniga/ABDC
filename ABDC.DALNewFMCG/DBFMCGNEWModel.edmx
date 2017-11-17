@@ -702,10 +702,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaxName" Type="nvarchar" MaxLength="500" />
-          <Property Name="TaxPercentage" Type="float" />
-          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CompanyId" Type="int" />
         </EntityType>
         <EntityType Name="TransactionType">
           <Key>
@@ -837,18 +837,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CustomFormat">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DataKeyValue_CompanyDetail">
-          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
-          <End Role="DataKeyValue" Type="Self.DataKeyValue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CompanyDetail">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DataKeyValue">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1837,8 +1825,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TaxMaster_CompanyDetail">
-          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+        <Association Name="FK_TaxMaster_TaxMaster">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="0..1" />
           <End Role="TaxMaster" Type="Self.TaxMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyDetail">
@@ -1989,10 +1977,6 @@
           <AssociationSet Name="FK_CustomFormat_CompanyDetail" Association="Self.FK_CustomFormat_CompanyDetail">
             <End Role="CompanyDetail" EntitySet="CompanyDetail" />
             <End Role="CustomFormat" EntitySet="CustomFormat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DataKeyValue_CompanyDetail" Association="Self.FK_DataKeyValue_CompanyDetail">
-            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
-            <End Role="DataKeyValue" EntitySet="DataKeyValue" />
           </AssociationSet>
           <AssociationSet Name="FK_JobOrderIssue_JobWorker" Association="Self.FK_JobOrderIssue_JobWorker">
             <End Role="JobWorker" EntitySet="JobWorker" />
@@ -2322,7 +2306,7 @@
             <End Role="Ledger" EntitySet="Ledger" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK_TaxMaster_CompanyDetail" Association="Self.FK_TaxMaster_CompanyDetail">
+          <AssociationSet Name="FK_TaxMaster_TaxMaster" Association="Self.FK_TaxMaster_TaxMaster">
             <End Role="CompanyDetail" EntitySet="CompanyDetail" />
             <End Role="TaxMaster" EntitySet="TaxMaster" />
           </AssociationSet>
@@ -2402,7 +2386,7 @@
           <NavigationProperty Name="UOMs" Relationship="Self.FK_UOM_CompanyDetail" FromRole="CompanyDetail" ToRole="UOM" />
           <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_CompanyDetail" FromRole="CompanyDetail" ToRole="UserType" />
           <NavigationProperty Name="DataKeyValues" Relationship="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" FromRole="CompanyDetail" ToRole="DataKeyValue" />
-          <NavigationProperty Name="TaxMasters" Relationship="FMCG_New01Model.FK_TaxMaster_CompanyDetail" FromRole="CompanyDetail" ToRole="TaxMaster" />
+          <NavigationProperty Name="TaxMasters" Relationship="FMCG_New01Model.FK_TaxMaster_TaxMaster" FromRole="CompanyDetail" ToRole="TaxMaster" />
         </EntityType>
         <EntityType Name="CreditLimitType">
           <Key>
@@ -4844,7 +4828,7 @@
             <End Role="DataKeyValue" EntitySet="DataKeyValues" />
           </AssociationSet>
           <EntitySet Name="TaxMasters" EntityType="FMCG_New01Model.TaxMaster" />
-          <AssociationSet Name="FK_TaxMaster_CompanyDetail" Association="FMCG_New01Model.FK_TaxMaster_CompanyDetail">
+          <AssociationSet Name="FK_TaxMaster_TaxMaster" Association="FMCG_New01Model.FK_TaxMaster_TaxMaster">
             <End Role="CompanyDetail" EntitySet="CompanyDetails" />
             <End Role="TaxMaster" EntitySet="TaxMasters" />
           </AssociationSet>
@@ -4865,14 +4849,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaxName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="TaxPercentage" Type="Double" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CompanyDetail" Relationship="FMCG_New01Model.FK_TaxMaster_CompanyDetail" FromRole="TaxMaster" ToRole="CompanyDetail" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPercentage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CompanyId" Type="Int32" />
+          <NavigationProperty Name="CompanyDetail" Relationship="FMCG_New01Model.FK_TaxMaster_TaxMaster" FromRole="TaxMaster" ToRole="CompanyDetail" />
         </EntityType>
-        <Association Name="FK_TaxMaster_CompanyDetail">
-          <End Type="FMCG_New01Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+        <Association Name="FK_TaxMaster_TaxMaster">
+          <End Type="FMCG_New01Model.CompanyDetail" Role="CompanyDetail" Multiplicity="0..1" />
           <End Type="FMCG_New01Model.TaxMaster" Role="TaxMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyDetail">
