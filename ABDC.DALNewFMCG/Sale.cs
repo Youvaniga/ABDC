@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDC.DALNewFMCG
+namespace ABDB.DALNewFMCG
 {
     using System;
     using System.Collections.Generic;
@@ -35,6 +35,9 @@ namespace ABDC.DALNewFMCG
         public decimal ExtraAmount { get; set; }
         public decimal TotalAmount { get; set; }
         public string Narration { get; set; }
+        public string ChequeNo { get; set; }
+        public Nullable<System.DateTime> ChequeDate { get; set; }
+        public string BankName { get; set; }
     
         public virtual Ledger Ledger { get; set; }
         public virtual TransactionType TransactionType { get; set; }

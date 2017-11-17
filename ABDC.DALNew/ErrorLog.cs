@@ -16,6 +16,7 @@ namespace ABDC.DALNewNUBE
     {
         public int Id { get; set; }
         public Nullable<int> EntityTypeId { get; set; }
+        public Nullable<int> CompanyId { get; set; }
         public Nullable<int> ErrorBy { get; set; }
         public Nullable<System.DateTime> ErrorAt { get; set; }
         public string ErrorMessage { get; set; }

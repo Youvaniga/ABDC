@@ -25,10 +25,10 @@ namespace ABDC.DALNewNUBE
         public string RefCode { get; set; }
         public System.DateTime JournalDate { get; set; }
         public decimal Amount { get; set; }
+        public string Status { get; set; }
         public string Particular { get; set; }
         public string HQNo { get; set; }
         public string VoucherNo { get; set; }
-        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JournalDetail> JournalDetails { get; set; }

@@ -187,6 +187,7 @@
     <None Include="DMFMCGOLDModel.edmx.diagram">
       <DependentUpon>DMFMCGOLDModel.edmx</DependentUpon>
     </None>
+    <None Include="FMCG_Old_20171116" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
