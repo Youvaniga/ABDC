@@ -26,6 +26,9 @@ namespace ABDC.DALNewFMCG
         public string RefCode { get; set; }
         public int LedgerId { get; set; }
         public int TransactionTypeId { get; set; }
+        public string ChequeNo { get; set; }
+        public Nullable<System.DateTime> ChequeDate { get; set; }
+        public string BankName { get; set; }
         public decimal ItemAmount { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal GSTAmount { get; set; }

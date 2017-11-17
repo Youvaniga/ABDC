@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FMCG_Old01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FMCG_Old01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FMCG_Old01.dbo.AccountGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AccountGroups">
@@ -68,6 +68,8 @@ warning 6013: The table/view 'FMCG_Old01.dbo.ColorSchema' does not have a primar
           <Property Name="GridHeading" Type="nvarchar" MaxLength="30" />
           <Property Name="lbltitle" Type="nvarchar" MaxLength="30" />
         </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FMCG_Old01.dbo.CompanyDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CompanyDetails">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -116,25 +118,27 @@ warning 6002: The table/view 'FMCG_Old01.dbo.Journal' does not have a primary ke
           <Property Name="CrAmt" Type="float" />
           <Property Name="DrAmt" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FMCG_Old01.dbo.JournalDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="JournalDetails">
-          <Property Name="JDId" Type="decimal" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="JDId" />
+          </Key>
+          <Property Name="JDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="JDCode" Type="nvarchar" MaxLength="50" />
           <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="LedgerCode" Type="nvarchar" MaxLength="50" />
           <Property Name="DrAmt" Type="float" />
           <Property Name="CrAmt" Type="float" />
           <Property Name="Narration" Type="nvarchar" MaxLength="150" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FMCG_Old01.dbo.JournalMaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="JournalMaster">
-          <Property Name="JournalId" Type="decimal" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="EntryNo" Type="nvarchar" MaxLength="50" />
           <Property Name="JournalDate" Type="datetime" />
-        </EntityType>-->
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FMCG_Old01.dbo.Ledger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Ledger">
@@ -177,8 +181,6 @@ warning 6002: The table/view 'FMCG_Old01.dbo.LedgerReport' does not have a prima
           <Property Name="FU2" Type="nvarchar" MaxLength="100" />
           <Property Name="FU3" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'FMCG_Old01.dbo.Payment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Payment">
           <Key>
             <PropertyRef Name="PaymentId" />
@@ -198,16 +200,17 @@ warning 6002: The table/view 'FMCG_Old01.dbo.Payment' does not have a primary ke
           <Property Name="ChequeNo" Type="nvarchar" MaxLength="150" />
           <Property Name="ChequeDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FMCG_Old01.dbo.PaymentDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PaymentDetails">
-          <Property Name="PDId" Type="decimal" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PDCode" Type="nvarchar" MaxLength="50" />
           <Property Name="PaymentCode" Type="nvarchar" MaxLength="50" />
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="RefType" Type="nvarchar" MaxLength="50" />
           <Property Name="Amount" Type="float" />
-        </EntityType>-->
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FMCG_Old01.dbo.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Products">
@@ -323,8 +326,6 @@ warning 6002: The table/view 'FMCG_Old01.dbo.PurchaseReturnDetails' does not hav
           <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
           <Property Name="DisPer" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'FMCG_Old01.dbo.Receipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Receipt">
           <Key>
             <PropertyRef Name="ReceiptId" />
@@ -344,16 +345,17 @@ warning 6002: The table/view 'FMCG_Old01.dbo.Receipt' does not have a primary ke
           <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="ChequeDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FMCG_Old01.dbo.ReceiptDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="ReceiptDetails">
-          <Property Name="RDId" Type="decimal" Precision="18" Scale="0" />
+          <Key>
+            <PropertyRef Name="RDId" />
+          </Key>
+          <Property Name="RDId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="RDCode" Type="nvarchar" MaxLength="50" />
           <Property Name="ReceiptCode" Type="nvarchar" MaxLength="50" />
           <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
           <Property Name="RefType" Type="nvarchar" MaxLength="50" />
           <Property Name="Amount" Type="float" />
-        </EntityType>-->
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FMCG_Old01.dbo.Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Sales">
@@ -574,7 +576,12 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
           <Property Name="UserType" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityContainer Name="FMCG_Old01ModelStoreContainer">
-          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalDetails" EntityType="Self.JournalDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalMaster" EntityType="Self.JournalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [AccountGroups].[AccountGroupId] AS [AccountGroupId], 
@@ -610,6 +617,19 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
     [Banks].[CPerson2] AS [CPerson2], 
     [Banks].[MobileNo2] AS [MobileNo2]
     FROM [dbo].[Banks] AS [Banks]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompanyDetails].[CompanyId] AS [CompanyId], 
+    [CompanyDetails].[CompanyCode] AS [CompanyCode], 
+    [CompanyDetails].[CompanyName] AS [CompanyName], 
+    [CompanyDetails].[Address] AS [Address], 
+    [CompanyDetails].[PhNo] AS [PhNo], 
+    [CompanyDetails].[MobileNo] AS [MobileNo], 
+    [CompanyDetails].[MailId] AS [MailId], 
+    [CompanyDetails].[Tin] AS [Tin], 
+    [CompanyDetails].[Cst] AS [Cst]
+    FROM [dbo].[CompanyDetails] AS [CompanyDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -674,24 +694,6 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
     [LedgerReport].[FU2] AS [FU2], 
     [LedgerReport].[FU3] AS [FU3]
     FROM [dbo].[LedgerReport] AS [LedgerReport]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Payment" EntityType="Self.Payment" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Payment].[PaymentId] AS [PaymentId], 
-    [Payment].[PaymentCode] AS [PaymentCode], 
-    [Payment].[PaymentDate] AS [PaymentDate], 
-    [Payment].[PaymentTo] AS [PaymentTo], 
-    [Payment].[LedgerCodeTo] AS [LedgerCodeTo], 
-    [Payment].[PaymentMode] AS [PaymentMode], 
-    [Payment].[LedgerCodeFrom] AS [LedgerCodeFrom], 
-    [Payment].[PayAmount] AS [PayAmount], 
-    [Payment].[Narration] AS [Narration], 
-    [Payment].[RefNo] AS [RefNo], 
-    [Payment].[Status] AS [Status], 
-    [Payment].[ExtraCharge] AS [ExtraCharge], 
-    [Payment].[ChequeNo] AS [ChequeNo], 
-    [Payment].[ChequeDate] AS [ChequeDate]
-    FROM [dbo].[Payment] AS [Payment]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -786,24 +788,6 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
     [PurchaseReturnDetails].[TaxPer] AS [TaxPer], 
     [PurchaseReturnDetails].[DisPer] AS [DisPer]
     FROM [dbo].[PurchaseReturnDetails] AS [PurchaseReturnDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Receipt" EntityType="Self.Receipt" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Receipt].[ReceiptId] AS [ReceiptId], 
-    [Receipt].[ReceiptCode] AS [ReceiptCode], 
-    [Receipt].[ReceiptDate] AS [ReceiptDate], 
-    [Receipt].[ReceiptFrom] AS [ReceiptFrom], 
-    [Receipt].[LedgerCodeFrom] AS [LedgerCodeFrom], 
-    [Receipt].[ReceiptMode] AS [ReceiptMode], 
-    [Receipt].[ReceiptTo] AS [ReceiptTo], 
-    [Receipt].[ReceiptAmount] AS [ReceiptAmount], 
-    [Receipt].[Narration] AS [Narration], 
-    [Receipt].[RefNo] AS [RefNo], 
-    [Receipt].[Status] AS [Status], 
-    [Receipt].[ExtraCharge] AS [ExtraCharge], 
-    [Receipt].[ChequeNo] AS [ChequeNo], 
-    [Receipt].[ChequeDate] AS [ChequeDate]
-    FROM [dbo].[Receipt] AS [Receipt]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Sales" EntityType="Self.Sales" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -980,8 +964,7 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
     FROM [dbo].[UserAccount] AS [UserAccount]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FMCG_Old01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1467,7 +1450,54 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
           <EntitySet Name="TextTranslations" EntityType="Self.TextTranslation" />
           <EntitySet Name="UnitsOfMeasurements" EntityType="Self.UnitsOfMeasurement" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="JournalDetails" EntityType="FMCG_Old01Model.JournalDetail" />
+          <EntitySet Name="JournalMasters" EntityType="FMCG_Old01Model.JournalMaster" />
+          <EntitySet Name="PaymentDetails" EntityType="FMCG_Old01Model.PaymentDetail" />
+          <EntitySet Name="ReceiptDetails" EntityType="FMCG_Old01Model.ReceiptDetail" />
         </EntityContainer>
+        <EntityType Name="JournalDetail">
+          <Key>
+            <PropertyRef Name="JDId" />
+          </Key>
+          <Property Name="JDId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="JDCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JournalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="JournalMaster">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="JournalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JournalDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PDCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="RDId" />
+          </Key>
+          <Property Name="RDId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="RDCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1952,6 +1982,53 @@ warning 6002: The table/view 'FMCG_Old01.dbo.UserAccount' does not have a primar
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.JournalDetail">
+              <MappingFragment StoreEntitySet="JournalDetails">
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="JournalCode" ColumnName="JournalCode" />
+                <ScalarProperty Name="JDCode" ColumnName="JDCode" />
+                <ScalarProperty Name="JDId" ColumnName="JDId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalMasters">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.JournalMaster">
+              <MappingFragment StoreEntitySet="JournalMaster">
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="JournalCode" ColumnName="JournalCode" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="RefType" ColumnName="RefType" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+                <ScalarProperty Name="PDCode" ColumnName="PDCode" />
+                <ScalarProperty Name="PDId" ColumnName="PDId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="FMCG_Old01Model.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="RefType" ColumnName="RefType" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="ReceiptCode" ColumnName="ReceiptCode" />
+                <ScalarProperty Name="RDCode" ColumnName="RDCode" />
+                <ScalarProperty Name="RDId" ColumnName="RDId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

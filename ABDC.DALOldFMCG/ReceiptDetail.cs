@@ -12,11 +12,13 @@ namespace ABDB.DALOldFMCG
     using System;
     using System.Collections.Generic;
     
-    public partial class TextTranslation
+    public partial class ReceiptDetail
     {
-        public decimal TTId { get; set; }
-        public string TTCode { get; set; }
-        public string TTEnglish { get; set; }
-        public string TTTamil { get; set; }
+        public decimal RDId { get; set; }
+        public string RDCode { get; set; }
+        public string ReceiptCode { get; set; }
+        public string RefCode { get; set; }
+        public string RefType { get; set; }
+        public Nullable<double> Amount { get; set; }
     }
 }

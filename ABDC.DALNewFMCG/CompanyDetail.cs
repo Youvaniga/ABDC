@@ -22,6 +22,7 @@ namespace ABDC.DALNewFMCG
             this.CustomFormats = new HashSet<CustomFormat>();
             this.ProductDetails = new HashSet<ProductDetail>();
             this.StockGroups = new HashSet<StockGroup>();
+            this.TaxMasters = new HashSet<TaxMaster>();
             this.UOMs = new HashSet<UOM>();
             this.UserTypes = new HashSet<UserType>();
             this.DataKeyValues = new HashSet<DataKeyValue>();
@@ -53,6 +54,8 @@ namespace ABDC.DALNewFMCG
         public virtual ICollection<ProductDetail> ProductDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockGroup> StockGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TaxMaster> TaxMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UOM> UOMs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

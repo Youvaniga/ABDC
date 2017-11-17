@@ -7,8 +7,8 @@
     <ProjectGuid>{49B9A11F-844D-4BFC-9646-0F8A60FDD5E9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ABDB.DALNewFMCG</RootNamespace>
-    <AssemblyName>ABDB.DALNewFMCG</AssemblyName>
+    <RootNamespace>ABDC.DALNewFMCG</RootNamespace>
+    <AssemblyName>ABDC.DALNewFMCG</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -212,6 +212,9 @@
       <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
+      <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxMaster.cs">
       <DependentUpon>DBFMCGNEWModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TransactionType.cs">

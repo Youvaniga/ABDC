@@ -12,11 +12,11 @@ namespace ABDB.DALOldFMCG
     using System;
     using System.Collections.Generic;
     
-    public partial class TextTranslation
+    public partial class JournalMaster
     {
-        public decimal TTId { get; set; }
-        public string TTCode { get; set; }
-        public string TTEnglish { get; set; }
-        public string TTTamil { get; set; }
+        public decimal JournalId { get; set; }
+        public string JournalCode { get; set; }
+        public string EntryNo { get; set; }
+        public Nullable<System.DateTime> JournalDate { get; set; }
     }
 }

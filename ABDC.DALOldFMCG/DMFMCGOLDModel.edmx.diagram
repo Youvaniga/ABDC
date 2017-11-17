@@ -37,6 +37,10 @@
         <EntityTypeShape EntityType="FMCG_Old01Model.TextTranslation" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FMCG_Old01Model.UnitsOfMeasurement" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FMCG_Old01Model.UserAccount" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMCG_Old01Model.JournalDetail" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="FMCG_Old01Model.JournalMaster" Width="1.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="FMCG_Old01Model.PaymentDetail" Width="1.5" PointX="4.75" PointY="17.75" />
+        <EntityTypeShape EntityType="FMCG_Old01Model.ReceiptDetail" Width="1.5" PointX="6.75" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

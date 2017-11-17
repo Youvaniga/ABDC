@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDC.DALOldFMCG
+namespace ABDB.DALOldFMCG
 {
     using System;
     using System.Data.Entity;
@@ -57,5 +57,9 @@ namespace ABDC.DALOldFMCG
         public virtual DbSet<TextTranslation> TextTranslations { get; set; }
         public virtual DbSet<UnitsOfMeasurement> UnitsOfMeasurements { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
+        public virtual DbSet<JournalDetail> JournalDetails { get; set; }
+        public virtual DbSet<JournalMaster> JournalMasters { get; set; }
+        public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
     }
 }

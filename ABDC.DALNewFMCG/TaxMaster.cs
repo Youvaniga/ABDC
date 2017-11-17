@@ -7,16 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDB.DALOldFMCG
+namespace ABDC.DALNewFMCG
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TextTranslation
+    public partial class TaxMaster
     {
-        public decimal TTId { get; set; }
-        public string TTCode { get; set; }
-        public string TTEnglish { get; set; }
-        public string TTTamil { get; set; }
+        public int Id { get; set; }
+        public string TaxName { get; set; }
+        public Nullable<decimal> TaxPercentage { get; set; }
+        public Nullable<int> CompanyId { get; set; }
+    
+        public virtual CompanyDetail CompanyDetail { get; set; }
     }
 }
