@@ -5,67 +5,69 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="663910cc9f1a4c57a1d59caf176be79d" Name="Diagram1">
-        <EntityTypeShape EntityType="FMCG_New01Model.AccountGroup" Width="1.5" PointX="0.75" PointY="36.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Bank" Width="1.5" PointX="5.25" PointY="87.5" />
+        <EntityTypeShape EntityType="FMCG_New01Model.AccountGroup" Width="1.5" PointX="0.75" PointY="36.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Bank" Width="1.5" PointX="5.25" PointY="72.125" />
         <EntityTypeShape EntityType="FMCG_New01Model.CompanyDetail" Width="1.5" PointX="1.5" PointY="30.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.CreditLimitType" Width="1.5" PointX="0.75" PointY="42.25" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Customer" Width="1.5" PointX="5.25" PointY="57.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.CustomFormat" Width="1.5" PointX="3.75" PointY="51.125" />
-        <EntityTypeShape EntityType="FMCG_New01Model.EntityType" Width="1.5" PointX="9" PointY="46.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.ErrorLog" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderIssue" Width="1.5" PointX="7.5" PointY="18" />
-        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderIssueDetail" Width="1.5" PointX="9.75" PointY="18" />
-        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderReceived" Width="1.5" PointX="7.5" PointY="22.25" />
-        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderReceivedDetail" Width="1.5" PointX="12" PointY="20.125" />
-        <EntityTypeShape EntityType="FMCG_New01Model.JobWorker" Width="1.5" PointX="5.25" PointY="20.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Journal" Width="1.5" PointX="6" PointY="48.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.JournalDetail" Width="1.5" PointX="8.25" PointY="36.125" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Ledger" Width="1.5" PointX="3" PointY="39" />
-        <EntityTypeShape EntityType="FMCG_New01Model.LogDetail" Width="1.5" PointX="8.25" PointY="1.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.LogDetailType" Width="1.5" PointX="6" PointY="1.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.LogMaster" Width="1.5" PointX="11.25" PointY="4" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Payment" Width="1.5" PointX="5.25" PointY="82.25" />
-        <EntityTypeShape EntityType="FMCG_New01Model.PaymentDetail" Width="1.5" PointX="7.5" PointY="61.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Product" Width="1.5" PointX="7.5" PointY="9.75" />
-        <EntityTypeShape EntityType="FMCG_New01Model.ProductDetail" Width="1.5" PointX="9.75" PointY="22.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Purchase" Width="1.5" PointX="8.25" PointY="40.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseDetail" Width="1.5" PointX="10.5" PointY="55.5" />
-        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseOrder" Width="1.5" PointX="5.25" PointY="70.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseOrderDetail" Width="1.5" PointX="7.5" PointY="70.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseReturn" Width="1.5" PointX="5.25" PointY="34.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseReturnDetail" Width="1.5" PointX="12.75" PointY="46.125" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Receipt" Width="1.5" PointX="5.25" PointY="65.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.ReceiptDetail" Width="1.5" PointX="7.5" PointY="53.25" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Sale" Width="1.5" PointX="11.25" PointY="40.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.SalesDetail" Width="1.5" PointX="13.5" PointY="65.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.SalesOrder" Width="1.5" PointX="5.25" PointY="90.25" />
-        <EntityTypeShape EntityType="FMCG_New01Model.SalesOrderDetail" Width="1.5" PointX="7.5" PointY="90.25" />
-        <EntityTypeShape EntityType="FMCG_New01Model.SalesReturn" Width="1.5" PointX="5.25" PointY="42.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.SalesReturnDetail" Width="1.5" PointX="15.75" PointY="54" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Staff" Width="1.5" PointX="5.25" PointY="29.125" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockGroup" Width="1.5" PointX="5.25" PointY="8.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockIn" Width="1.5" PointX="5.25" PointY="78.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockInDetail" Width="1.5" PointX="7.5" PointY="80.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockInProcess" Width="1.5" PointX="7.5" PointY="30.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockInProcessDetail" Width="1.5" PointX="9.75" PointY="30.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockOut" Width="1.5" PointX="5.25" PointY="74.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockOutDetail" Width="1.5" PointX="7.5" PointY="75.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockSeparated" Width="1.5" PointX="7.5" PointY="26.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.StockSeperatedDetail" Width="1.5" PointX="12" PointY="28.625" />
-        <EntityTypeShape EntityType="FMCG_New01Model.Supplier" Width="1.5" PointX="5.25" PointY="40.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.TaxMaster" Width="1.5" PointX="3.75" PointY="48.375" />
-        <EntityTypeShape EntityType="FMCG_New01Model.TransactionType" Width="1.5" PointX="3" PointY="27" />
-        <EntityTypeShape EntityType="FMCG_New01Model.UOM" Width="1.5" PointX="5.25" PointY="12.5" />
-        <EntityTypeShape EntityType="FMCG_New01Model.UserAccount" Width="1.5" PointX="6" PointY="4.375" />
+        <EntityTypeShape EntityType="FMCG_New01Model.CreditLimitType" Width="1.5" PointX="0.75" PointY="42.375" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Customer" Width="1.5" PointX="5.25" PointY="65.5" />
+        <EntityTypeShape EntityType="FMCG_New01Model.CustomFormat" Width="1.5" PointX="3.75" PointY="48.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.DataKeyValue" Width="1.5" PointX="3.75" PointY="31.125" />
+        <EntityTypeShape EntityType="FMCG_New01Model.EntityType" Width="1.5" PointX="6" PointY="27.375" />
+        <EntityTypeShape EntityType="FMCG_New01Model.ErrorLog" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderIssue" Width="1.5" PointX="7.5" PointY="36.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderIssueDetail" Width="1.5" PointX="9.75" PointY="36.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderReceived" Width="1.5" PointX="7.5" PointY="40.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobOrderReceivedDetail" Width="1.5" PointX="13" PointY="38.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JobWorker" Width="1.5" PointX="5.25" PointY="39.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Journal" Width="1.5" PointX="3" PointY="25.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.JournalDetail" Width="1.5" PointX="5.25" PointY="34.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Ledger" Width="1.5" PointX="3" PointY="39.125" />
+        <EntityTypeShape EntityType="FMCG_New01Model.LogDetail" Width="1.5" PointX="10.5" PointY="4.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.LogDetailType" Width="1.5" PointX="8.25" PointY="1.125" />
+        <EntityTypeShape EntityType="FMCG_New01Model.LogMaster" Width="1.5" PointX="8.25" PointY="4.5" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Payment" Width="1.5" PointX="5.25" PointY="60.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PaymentDetail" Width="1.5" PointX="7.5" PointY="52.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Product" Width="1.5" PointX="5.25" PointY="9.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.ProductDetail" Width="1.5" PointX="10.5" PointY="21.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Purchase" Width="1.5" PointX="8.25" PointY="47" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseDetail" Width="1.5" PointX="12.5" PointY="33.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseOrder" Width="1.5" PointX="5.25" PointY="21.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseOrderDetail" Width="1.5" PointX="7.5" PointY="22.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseReturn" Width="1.5" PointX="11.25" PointY="47" />
+        <EntityTypeShape EntityType="FMCG_New01Model.PurchaseReturnDetail" Width="1.5" PointX="15.75" PointY="40.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Receipt" Width="1.5" PointX="5.25" PointY="74.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.ReceiptDetail" Width="1.5" PointX="7.5" PointY="58" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Sale" Width="1.5" PointX="5.25" PointY="43" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesDetail" Width="1.5" PointX="9.75" PointY="55.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesOrder" Width="1.5" PointX="5.25" PointY="67.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesOrderDetail" Width="1.5" PointX="7.5" PointY="67.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesReturn" Width="1.5" PointX="10.25" PointY="41" />
+        <EntityTypeShape EntityType="FMCG_New01Model.SalesReturnDetail" Width="1.5" PointX="13.5" PointY="48" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Staff" Width="1.5" PointX="5.25" PointY="82.5" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockGroup" Width="1.5" PointX="3" PointY="13.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockIn" Width="1.5" PointX="5.25" PointY="18.125" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockInDetail" Width="1.5" PointX="7.5" PointY="18" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockInProcess" Width="1.5" PointX="7.5" PointY="80" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockInProcessDetail" Width="1.5" PointX="9.75" PointY="80" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockOut" Width="1.5" PointX="5.25" PointY="90.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockOutDetail" Width="1.5" PointX="7.5" PointY="90.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockSeparated" Width="1.5" PointX="7.5" PointY="84.25" />
+        <EntityTypeShape EntityType="FMCG_New01Model.StockSeperatedDetail" Width="1.5" PointX="12" PointY="82.125" />
+        <EntityTypeShape EntityType="FMCG_New01Model.Supplier" Width="1.5" PointX="5.25" PointY="88.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.TaxMaster" Width="1.5" PointX="3.75" PointY="53.875" />
+        <EntityTypeShape EntityType="FMCG_New01Model.TransactionType" Width="1.5" PointX="8" PointY="33.125" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UOM" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserAccount" Width="1.5" PointX="6" PointY="4.875" />
         <EntityTypeShape EntityType="FMCG_New01Model.UserType" Width="1.5" PointX="3.75" PointY="5" />
-        <EntityTypeShape EntityType="FMCG_New01Model.UserTypeDetail" Width="1.5" PointX="9" PointY="4.875" />
-        <EntityTypeShape EntityType="FMCG_New01Model.UserTypeFormDetail" Width="1.5" PointX="6.75" PointY="94.625" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserTypeDetail" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="FMCG_New01Model.UserTypeFormDetail" Width="1.5" PointX="3.75" PointY="1" />
         <AssociationConnector Association="FMCG_New01Model.FK_AccountGroup_AccountGroup" />
         <AssociationConnector Association="FMCG_New01Model.FK_AccountGroup_CompanyDetail" />
         <AssociationConnector Association="FMCG_New01Model.FK_Ledger_AccountGroup" />
         <AssociationConnector Association="FMCG_New01Model.FK_Bank_Ledger" />
         <AssociationConnector Association="FMCG_New01Model.FK_CompanyDetail_CompanyDetail" />
         <AssociationConnector Association="FMCG_New01Model.FK_CustomFormat_CompanyDetail" />
+        <AssociationConnector Association="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" />
         <AssociationConnector Association="FMCG_New01Model.FK_ProductDetail_CompanyDetail" />
         <AssociationConnector Association="FMCG_New01Model.FK_StockGroup_CompanyDetail" />
         <AssociationConnector Association="FMCG_New01Model.FK_TaxMaster_TaxMaster" />
@@ -154,8 +156,6 @@
         <AssociationConnector Association="FMCG_New01Model.FK_UserAccount_UserType" />
         <AssociationConnector Association="FMCG_New01Model.FK_UserTypeDetail_UserType" />
         <AssociationConnector Association="FMCG_New01Model.FK_UserTypeDetail_UserTypeFormDetail" />
-        <EntityTypeShape EntityType="FMCG_New01Model.DataKeyValue" Width="1.5" PointX="3.75" PointY="24.25" />
-        <AssociationConnector Association="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

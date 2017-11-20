@@ -127,6 +127,8 @@ namespace ABDC
             UOMId = dbNew.UOMs.ToList().LastOrDefault().Id;
             TAXId = dbNew.TaxMasters.ToList().LastOrDefault().Id;
             WriteAccountGroup(cm, "ACG0001", null); dbNew.SaveChanges();
+
+            
             WriteStockGroup(cm, "STG001", null); dbNew.SaveChanges();
 
             var l1 = from LedgerOld in dbOld.Ledgers.ToList()
@@ -173,28 +175,28 @@ namespace ABDC
             dbNew.Purchases.AddRange(lstPurchaseNew);
             dbNew.SaveChanges();
 
-            WriteSale();
-            dbNew.Sales.AddRange(lstSaleNew);
-            dbNew.SaveChanges();
+            //WriteSale();
+            //dbNew.Sales.AddRange(lstSaleNew);
+            //dbNew.SaveChanges();
 
-            WritePurchaseReturn();
-            dbNew.PurchaseReturns.AddRange(lstPurchaseReturnNew);
-            dbNew.SaveChanges();
+            //WritePurchaseReturn();
+            //dbNew.PurchaseReturns.AddRange(lstPurchaseReturnNew);
+            //dbNew.SaveChanges();
 
-            WriteSaleReturn();
-            dbNew.SalesReturns.AddRange(lstSaleReturnNew);
-            dbNew.SaveChanges();
+            //WriteSaleReturn();
+            //dbNew.SalesReturns.AddRange(lstSaleReturnNew);
+            //dbNew.SaveChanges();
 
 
-            WritePayment();
-            dbNew.Payments.AddRange(lstPaymentNew);
-            dbNew.SaveChanges();
+            //WritePayment();
+            //dbNew.Payments.AddRange(lstPaymentNew);
+            //dbNew.SaveChanges();
 
-            WriteReceipt();
-            dbNew.Receipts.AddRange(lstReceiptNew);
-            dbNew.SaveChanges();
+            //WriteReceipt();
+            //dbNew.Receipts.AddRange(lstReceiptNew);
+            //dbNew.SaveChanges();
 
-            WriteJournal();
+            //WriteJournal();
             dbNew.Journals.AddRange(lstJournalNew);
             dbNew.SaveChanges();
 
@@ -204,7 +206,7 @@ namespace ABDC
         {
             WriteLog("Start to store the Accounts Group");
 
-            foreach (var ag in dbOld.AccountGroups.Where(x => x.Under == AGId && x.AccountGroupCode != AGId).ToList())
+            foreach (var ag in dbOld.AccountGroups.Where(x => x.Under == AGId && x.AccountGroupCode != AGId).OrderBy(x=>x.GroupName).ToList())
             {
                 DALNewFMCG.AccountGroup d = new DALNewFMCG.AccountGroup()
                 {
@@ -265,7 +267,7 @@ namespace ABDC
                         dbNew.Banks.Add(new DALNewFMCG.Bank() { Ledger = l, BankAccountName = b.BankName });
                     }
                 }
-                if (d.GroupName == "Cash-in-hand")
+               else if (d.GroupName == "Cash-in-hand")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -278,7 +280,7 @@ namespace ABDC
                     d.Ledgers.Add(l);
                   
                 }
-                if (d.GroupName == "Duties & Taxes")
+               else if (d.GroupName == "Duties & Taxes")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -288,12 +290,7 @@ namespace ABDC
                         TelephoneNo = "",
                         MobileNo = ""
                     };
-                    d.Ledgers.Add(l);
-                   
-                }
-                if (d.GroupName == "Duties & Taxes")
-                {
-                    DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
+                    l = new DALNewFMCG.Ledger()
                     {
                         LedgerName = "Output Tax",
                         PersonIncharge = "",
@@ -302,9 +299,11 @@ namespace ABDC
                         MobileNo = ""
                     };
                     d.Ledgers.Add(l);
-                    
+                    d.Ledgers.Add(l);
+                   
                 }
-                if (d.GroupName == "Sales Accounts")
+            
+               else if (d.GroupName == "Sales Accounts")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -325,9 +324,9 @@ namespace ABDC
                         MobileNo = ""
                     };
                     d.Ledgers.Add(l);
-                  
+                   
                 }
-                if (d.GroupName == "Purchase Account")
+              else if (d.GroupName == "Purchase Accounts")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -350,6 +349,7 @@ namespace ABDC
                     d.Ledgers.Add(l);
                     
                 }
+                
                 WriteLog(string.Format("Stored Account Group : {0}", d.GroupName));
                 WriteAccountGroup(cm, ag.AccountGroupCode, d);
             }
@@ -1032,7 +1032,7 @@ namespace ABDC
             {
                 j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
                 {
-                    LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Cash Ledger").Select(x => x.Id).FirstOrDefault(),
+                    LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Cash Ledger").FirstOrDefault().Id,
                     CrAmt = P.TotalAmount,
                     Particulars = P.Narration,
                     TransactionMode = "Cash"
@@ -1052,7 +1052,7 @@ namespace ABDC
             {
                 j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
                 {
-                    LedgerId = dbNew.Banks.FirstOrDefault().LedgerId,
+                    LedgerId = dbNew.Banks.FirstOrDefault().Id,
                     CrAmt = P.TotalAmount,
                     TransactionMode = "Cheque",
                     Particulars = P.Narration,
@@ -1064,7 +1064,7 @@ namespace ABDC
             }
             j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
             {
-                LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Purchase Return A/C").Select(x => x.Id).FirstOrDefault(),
+                LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Purchase A/C").FirstOrDefault().Id,
 
                 DrAmt = P.ItemAmount - P.DiscountAmount + P.ExtraAmount,
                 Particulars = P.Narration,
@@ -1086,6 +1086,9 @@ namespace ABDC
                 ChequeNo = P.ChequeNo,
                 Status = status
             });
+            WriteLog(string.Format("Purchase_Journal:Purchase Id:{0}, LedgerId:{1}", P.RefNo, String.Join("\n", j.JournalDetails.Select(x => x.LedgerId).ToList())));
+           lstJournalNew.Add(j);
+
 
 
         }

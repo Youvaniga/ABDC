@@ -2358,6 +2358,7 @@
           <EntitySet Name="CreditLimitTypes" EntityType="FMCG_New01Model.CreditLimitType" />
           <EntitySet Name="Customers" EntityType="FMCG_New01Model.Customer" />
           <EntitySet Name="CustomFormats" EntityType="FMCG_New01Model.CustomFormat" />
+          <EntitySet Name="DataKeyValues" EntityType="FMCG_New01Model.DataKeyValue" />
           <EntitySet Name="EntityTypes" EntityType="FMCG_New01Model.EntityType" />
           <EntitySet Name="ErrorLogs" EntityType="FMCG_New01Model.ErrorLog" />
           <EntitySet Name="JobOrderIssues" EntityType="FMCG_New01Model.JobOrderIssue" />
@@ -2430,6 +2431,10 @@
           <AssociationSet Name="FK_CustomFormat_CompanyDetail" Association="FMCG_New01Model.FK_CustomFormat_CompanyDetail">
             <End Role="CompanyDetail" EntitySet="CompanyDetails" />
             <End Role="CustomFormat" EntitySet="CustomFormats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataKeyValue_CompanyDetail" Association="FMCG_New01Model.FK_DataKeyValue_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="DataKeyValue" EntitySet="DataKeyValues" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductDetail_CompanyDetail" Association="FMCG_New01Model.FK_ProductDetail_CompanyDetail">
             <End Role="CompanyDetail" EntitySet="CompanyDetails" />
@@ -2783,11 +2788,6 @@
             <End Role="UserTypeFormDetail" EntitySet="UserTypeFormDetails" />
             <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
           </AssociationSet>
-          <EntitySet Name="DataKeyValues" EntityType="FMCG_New01Model.DataKeyValue" />
-          <AssociationSet Name="FK_DataKeyValue_CompanyDetail" Association="FMCG_New01Model.FK_DataKeyValue_CompanyDetail">
-            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
-            <End Role="DataKeyValue" EntitySet="DataKeyValues" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountGroup">
           <Key>
@@ -2835,12 +2835,12 @@
           <NavigationProperty Name="CompanyDetail1" Relationship="FMCG_New01Model.FK_CompanyDetail_CompanyDetail" FromRole="CompanyDetail" ToRole="CompanyDetail1" />
           <NavigationProperty Name="CompanyDetail2" Relationship="FMCG_New01Model.FK_CompanyDetail_CompanyDetail" FromRole="CompanyDetail1" ToRole="CompanyDetail" />
           <NavigationProperty Name="CustomFormats" Relationship="FMCG_New01Model.FK_CustomFormat_CompanyDetail" FromRole="CompanyDetail" ToRole="CustomFormat" />
+          <NavigationProperty Name="DataKeyValues" Relationship="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" FromRole="CompanyDetail" ToRole="DataKeyValue" />
           <NavigationProperty Name="ProductDetails" Relationship="FMCG_New01Model.FK_ProductDetail_CompanyDetail" FromRole="CompanyDetail" ToRole="ProductDetail" />
           <NavigationProperty Name="StockGroups" Relationship="FMCG_New01Model.FK_StockGroup_CompanyDetail" FromRole="CompanyDetail" ToRole="StockGroup" />
           <NavigationProperty Name="TaxMasters" Relationship="FMCG_New01Model.FK_TaxMaster_TaxMaster" FromRole="CompanyDetail" ToRole="TaxMaster" />
           <NavigationProperty Name="UOMs" Relationship="FMCG_New01Model.FK_UOM_CompanyDetail" FromRole="CompanyDetail" ToRole="UOM" />
           <NavigationProperty Name="UserTypes" Relationship="FMCG_New01Model.FK_UserType_CompanyDetail" FromRole="CompanyDetail" ToRole="UserType" />
-          <NavigationProperty Name="DataKeyValues" Relationship="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" FromRole="CompanyDetail" ToRole="DataKeyValue" />
         </EntityType>
         <EntityType Name="CreditLimitType">
           <Key>
@@ -2879,6 +2879,16 @@
           <Property Name="IsDisplayWithOnlyOnSuffix" Type="Boolean" />
           <Property Name="CompanyId" Type="Int32" />
           <NavigationProperty Name="CompanyDetail" Relationship="FMCG_New01Model.FK_CustomFormat_CompanyDetail" FromRole="CustomFormat" ToRole="CompanyDetail" />
+        </EntityType>
+        <EntityType Name="DataKeyValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataKey" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DataValue" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" FromRole="DataKeyValue" ToRole="CompanyDetail" />
         </EntityType>
         <EntityType Name="EntityType">
           <Key>
@@ -3801,6 +3811,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CustomFormat">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataKeyValue_CompanyDetail">
+          <End Type="FMCG_New01Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="FMCG_New01Model.DataKeyValue" Role="DataKeyValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DataKeyValue">
               <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4861,29 +4883,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="DataKeyValue">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DataKey" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="DataValue" Type="Int32" Nullable="false" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CompanyDetail" Relationship="FMCG_New01Model.FK_DataKeyValue_CompanyDetail" FromRole="DataKeyValue" ToRole="CompanyDetail" />
-        </EntityType>
-        <Association Name="FK_DataKeyValue_CompanyDetail">
-          <End Type="FMCG_New01Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
-          <End Type="FMCG_New01Model.DataKeyValue" Role="DataKeyValue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CompanyDetail">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DataKeyValue">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -4964,6 +4964,16 @@
                 <ScalarProperty Name="CurrencyNegativeSymbolPrefix" ColumnName="CurrencyNegativeSymbolPrefix" />
                 <ScalarProperty Name="CurrencyPositiveSymbolSuffix" ColumnName="CurrencyPositiveSymbolSuffix" />
                 <ScalarProperty Name="CurrencyPositiveSymbolPrefix" ColumnName="CurrencyPositiveSymbolPrefix" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataKeyValues">
+            <EntityTypeMapping TypeName="FMCG_New01Model.DataKeyValue">
+              <MappingFragment StoreEntitySet="DataKeyValue">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
+                <ScalarProperty Name="DataKey" ColumnName="DataKey" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -5695,16 +5705,6 @@
                 <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
                 <ScalarProperty Name="FormType" ColumnName="FormType" />
                 <ScalarProperty Name="FormName" ColumnName="FormName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DataKeyValues">
-            <EntityTypeMapping TypeName="FMCG_New01Model.DataKeyValue">
-              <MappingFragment StoreEntitySet="DataKeyValue">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
-                <ScalarProperty Name="DataKey" ColumnName="DataKey" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

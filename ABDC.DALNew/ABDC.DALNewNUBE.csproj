@@ -99,18 +99,6 @@
     <Compile Include="ACYearStatu.cs">
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Bank.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CompanyDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CreditLimitType.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CustomFormat.cs">
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
@@ -124,21 +112,6 @@
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FundMaster.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JobOrderIssue.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JobOrderIssueDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JobOrderReceived.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JobOrderReceivedDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JobWorker.cs">
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Journal.cs">
@@ -180,95 +153,11 @@
     <Compile Include="PaymentDetail.cs">
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Purchase.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseOrder.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseOrderDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReturn.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReturnDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Receipt.cs">
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ReceiptDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sale.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesOrder.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesOrderDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesReturn.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SalesReturnDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Staff.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockGroup.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockIn.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockInDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockInProcess.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockInProcessDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockOut.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockOutDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockSeparated.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StockSeperatedDetail.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Supplier.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TaxMaster.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TransactionType.cs">
-      <DependentUpon>NubeNewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UOM.cs">
       <DependentUpon>NubeNewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserAccount.cs">

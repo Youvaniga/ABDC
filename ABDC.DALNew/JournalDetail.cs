@@ -20,13 +20,6 @@ namespace ABDC.DALNewNUBE
         public decimal DrAmt { get; set; }
         public decimal CrAmt { get; set; }
         public string Particulars { get; set; }
-        public string TransactionMode { get; set; }
-        public string RefNo { get; set; }
-        public string Status { get; set; }
-        public Nullable<decimal> ExtraCharge { get; set; }
-        public string ChequeNo { get; set; }
-        public Nullable<System.DateTime> ChequeDate { get; set; }
-        public Nullable<System.DateTime> ClearDate { get; set; }
     
         public virtual Journal Journal { get; set; }
         public virtual Ledger Ledger { get; set; }

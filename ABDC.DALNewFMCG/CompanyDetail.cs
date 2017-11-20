@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABDB.DALNewFMCG
+namespace ABDC.DALNewFMCG
 {
     using System;
     using System.Collections.Generic;
@@ -20,13 +20,12 @@ namespace ABDB.DALNewFMCG
             this.AccountGroups = new HashSet<AccountGroup>();
             this.CompanyDetail1 = new HashSet<CompanyDetail>();
             this.CustomFormats = new HashSet<CustomFormat>();
+            this.DataKeyValues = new HashSet<DataKeyValue>();
             this.ProductDetails = new HashSet<ProductDetail>();
             this.StockGroups = new HashSet<StockGroup>();
             this.TaxMasters = new HashSet<TaxMaster>();
             this.UOMs = new HashSet<UOM>();
             this.UserTypes = new HashSet<UserType>();
-            this.DataKeyValues = new HashSet<DataKeyValue>();
-            this.TaxMasters = new HashSet<TaxMaster>();
         }
     
         public int Id { get; set; }
@@ -52,6 +51,8 @@ namespace ABDB.DALNewFMCG
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomFormat> CustomFormats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DataKeyValue> DataKeyValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductDetail> ProductDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockGroup> StockGroups { get; set; }
@@ -61,9 +62,5 @@ namespace ABDB.DALNewFMCG
         public virtual ICollection<UOM> UOMs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserType> UserTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DataKeyValue> DataKeyValues { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaxMaster> TaxMasters { get; set; }
     }
 }

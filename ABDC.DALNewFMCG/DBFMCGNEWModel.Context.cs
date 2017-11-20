@@ -31,6 +31,7 @@ namespace ABDC.DALNewFMCG
         public virtual DbSet<CreditLimitType> CreditLimitTypes { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomFormat> CustomFormats { get; set; }
+        public virtual DbSet<DataKeyValue> DataKeyValues { get; set; }
         public virtual DbSet<EntityType> EntityTypes { get; set; }
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<JobOrderIssue> JobOrderIssues { get; set; }
@@ -80,6 +81,5 @@ namespace ABDC.DALNewFMCG
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<UserTypeDetail> UserTypeDetails { get; set; }
         public virtual DbSet<UserTypeFormDetail> UserTypeFormDetails { get; set; }
-        public virtual DbSet<DataKeyValue> DataKeyValues { get; set; }
     }
 }

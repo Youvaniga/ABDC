@@ -935,13 +935,13 @@ namespace ABDC
 
         public static void Write(String Key, int Value)
         {
-            using (var db = new DALNewNUBE.nube_new_01Entities())
+            using (var db = new DALNewFMCG.FMCG_New01Entities())
             {
-                var dv = new DALNewNUBE.DataKeyValue()
+                var dv = new DALNewFMCG.DataKeyValue()
                 {
                     DataKey = Key,
                     DataValue = Value,
-                    FundMasterId = CompanyId
+                    CompanyId = CompanyId
                 };
                 db.DataKeyValues.Add(dv);
                 db.SaveChanges();
