@@ -35,7 +35,7 @@ namespace ABDC
         List<DALNewFMCG.Receipt> lstReceiptNew = new List<DALNewFMCG.Receipt>();
 
 
-    
+
         DateTime dtStart, dtEnd;
         private List<DALNewFMCG.EntityType> _entityTypeList;
         private List<DALNewFMCG.LogDetailType> _logDetailTypeList;
@@ -128,7 +128,7 @@ namespace ABDC
             TAXId = dbNew.TaxMasters.ToList().LastOrDefault().Id;
             WriteAccountGroup(cm, "ACG0001", null); dbNew.SaveChanges();
 
-            
+
             WriteStockGroup(cm, "STG001", null); dbNew.SaveChanges();
 
             var l1 = from LedgerOld in dbOld.Ledgers.ToList()
@@ -171,17 +171,17 @@ namespace ABDC
             lstPurchaseReturnNew = new List<DALNewFMCG.PurchaseReturn>();
             lstSaleReturnNew = new List<DALNewFMCG.SalesReturn>();
 
-            WritePurchase();
-            dbNew.Purchases.AddRange(lstPurchaseNew);
-            dbNew.SaveChanges();
+            //WritePurchase();
+            //dbNew.Purchases.AddRange(lstPurchaseNew);
+            //dbNew.SaveChanges();
 
             //WriteSale();
             //dbNew.Sales.AddRange(lstSaleNew);
             //dbNew.SaveChanges();
 
             //WritePurchaseReturn();
-            //dbNew.PurchaseReturns.AddRange(lstPurchaseReturnNew);
-            //dbNew.SaveChanges();
+            // dbNew.PurchaseReturns.AddRange(lstPurchaseReturnNew);
+            // dbNew.SaveChanges();
 
             //WriteSaleReturn();
             //dbNew.SalesReturns.AddRange(lstSaleReturnNew);
@@ -196,7 +196,7 @@ namespace ABDC
             //dbNew.Receipts.AddRange(lstReceiptNew);
             //dbNew.SaveChanges();
 
-            //WriteJournal();
+            WriteJournal();
             dbNew.Journals.AddRange(lstJournalNew);
             dbNew.SaveChanges();
 
@@ -206,7 +206,7 @@ namespace ABDC
         {
             WriteLog("Start to store the Accounts Group");
 
-            foreach (var ag in dbOld.AccountGroups.Where(x => x.Under == AGId && x.AccountGroupCode != AGId).OrderBy(x=>x.GroupName).ToList())
+            foreach (var ag in dbOld.AccountGroups.Where(x => x.Under == AGId && x.AccountGroupCode != AGId).OrderBy(x => x.GroupName).ToList())
             {
                 DALNewFMCG.AccountGroup d = new DALNewFMCG.AccountGroup()
                 {
@@ -267,7 +267,7 @@ namespace ABDC
                         dbNew.Banks.Add(new DALNewFMCG.Bank() { Ledger = l, BankAccountName = b.BankName });
                     }
                 }
-               else if (d.GroupName == "Cash-in-hand")
+                else if (d.GroupName == "Cash-in-hand")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -278,9 +278,9 @@ namespace ABDC
                         MobileNo = ""
                     };
                     d.Ledgers.Add(l);
-                  
+
                 }
-               else if (d.GroupName == "Duties & Taxes")
+                else if (d.GroupName == "Duties & Taxes")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -290,6 +290,7 @@ namespace ABDC
                         TelephoneNo = "",
                         MobileNo = ""
                     };
+                    d.Ledgers.Add(l);
                     l = new DALNewFMCG.Ledger()
                     {
                         LedgerName = "Output Tax",
@@ -299,11 +300,11 @@ namespace ABDC
                         MobileNo = ""
                     };
                     d.Ledgers.Add(l);
-                    d.Ledgers.Add(l);
-                   
+
+
                 }
-            
-               else if (d.GroupName == "Sales Accounts")
+
+                else if (d.GroupName == "Sales Accounts")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -324,9 +325,9 @@ namespace ABDC
                         MobileNo = ""
                     };
                     d.Ledgers.Add(l);
-                   
+
                 }
-              else if (d.GroupName == "Purchase Accounts")
+                else if (d.GroupName == "Purchase Accounts")
                 {
                     DALNewFMCG.Ledger l = new DALNewFMCG.Ledger()
                     {
@@ -347,9 +348,9 @@ namespace ABDC
                         MobileNo = ""
                     };
                     d.Ledgers.Add(l);
-                    
+
                 }
-                
+
                 WriteLog(string.Format("Stored Account Group : {0}", d.GroupName));
                 WriteAccountGroup(cm, ag.AccountGroupCode, d);
             }
@@ -459,7 +460,7 @@ namespace ABDC
                     }
                     lstPurchaseNew.Add(d);
                     WriteJournal_Purchase(d);
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -510,8 +511,8 @@ namespace ABDC
                                 Amount = Convert.ToDecimal(pd.Rate * pd.Quantity.Value),
                                 DiscountAmount = Convert.ToDecimal((pd.Rate * pd.Quantity.Value) * pd.DisPer),
                                 GSTAmount = Convert.ToDecimal(((pd.Rate * pd.Quantity.Value) * pd.DisPer) * Convert.ToDouble(pd.TaxPer != "" ? "6" : "0") / 100),
-                                UOMId = UOMId, 
-                                
+                                UOMId = UOMId,
+
 
                             });
                         }
@@ -523,7 +524,7 @@ namespace ABDC
                     }
                     lstSaleNew.Add(d);
                     WriteJournal_Sales(d);
-                 
+
                 }
                 catch (Exception ex)
                 {
@@ -586,7 +587,7 @@ namespace ABDC
                     }
                     lstPurchaseReturnNew.Add(d);
                     WriteJournal_Purchase_Return(d);
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -648,7 +649,7 @@ namespace ABDC
                     }
                     lstSaleReturnNew.Add(d);
                     WriteJournal_Sales_Return(d);
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -685,7 +686,7 @@ namespace ABDC
                         LedgerId = GetLedgerId(p.LedgerCodeFrom)
                     };
 
-                    foreach (var pd in lstPDetails)
+                    foreach (var pd in lstDetails)
                     {
                         try
                         {
@@ -693,7 +694,7 @@ namespace ABDC
                             {
                                 LedgerId = GetLedgerId(p.LedgerCodeTo),
                                 Amount = (decimal)pd.Amount,
-                                PaymentId = Convert.ToInt64(pd.PaymentCode.ToString()),
+                               // PaymentId = Convert.ToInt64(pd.PaymentCode),
                             });
                         }
                         catch (Exception ex)
@@ -720,40 +721,45 @@ namespace ABDC
                 try
                 {
                     var lstDetails = lstRDetails.Where(x => x.ReceiptCode == p.ReceiptCode).ToList();
-                    DALNewFMCG.Receipt d = new DALNewFMCG.Receipt()
-                    {
-                        RefCode = p.ReceiptCode,
-                        EntryNo = GetReceiptEntryNo(p.ReceiptDate.Value),
-                        Amount = (decimal)p.ReceiptAmount,
-                        ReceiptDate = p.ReceiptDate.Value,
-                        Particulars = p.Narration,
-                        Status = p.Status,
-                        ChequeDate = p.ChequeDate,
-                        ChequeNo = p.ChequeNo,
-                        Extracharge = (decimal)p.ExtraCharge.Value,
-                        ReceiptMode = p.ReceiptMode,
-                        ReceivedFrom = p.ReceiptFrom,
-                        RefNo = p.RefNo,
-                        LedgerId = GetLedgerId(p.LedgerCodeFrom)
-                    };
 
-                    foreach (var pd in lstRDetails)
+                    if (lstDetails.Count != 0)
                     {
-                        try
+
+                        DALNewFMCG.Receipt d = new DALNewFMCG.Receipt()
                         {
-                            d.ReceiptDetails.Add(new DALNewFMCG.ReceiptDetail()
+                            RefCode = p.ReceiptCode,
+                            EntryNo = GetReceiptEntryNo(p.ReceiptDate.Value),
+                            Amount = (decimal)p.ReceiptAmount,
+                            ReceiptDate = p.ReceiptDate.Value,
+                            Particulars = p.Narration,
+                            Status = p.Status,
+                            ChequeDate = p.ChequeDate,
+                            ChequeNo = p.ChequeNo,
+                            Extracharge = (decimal)p.ExtraCharge.Value,
+                            ReceiptMode = p.ReceiptMode,
+                            ReceivedFrom = p.ReceiptFrom,
+                            RefNo = p.RefNo,
+                            LedgerId = GetLedgerId(p.LedgerCodeFrom)
+                        };
+
+                        foreach (var pd in lstDetails)
+                        {
+                            try
                             {
-                                LedgerId = GetLedgerId(p.ReceiptTo),
-                                Amount = (decimal)pd.Amount,
-                                ReceiptId = Convert.ToInt64(pd.ReceiptCode.ToString()),
-                            });
+                                d.ReceiptDetails.Add(new DALNewFMCG.ReceiptDetail()
+                                {
+                                    LedgerId = GetLedgerId(p.ReceiptTo),
+                                    Amount = (decimal)pd.Amount,
+
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                WriteLog(ex.Message);
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            WriteLog(ex.Message);
-                        }
+                        lstReceiptNew.Add(d);
                     }
-                    lstReceiptNew.Add(d);
                 }
                 catch (Exception ex)
                 {
@@ -839,76 +845,68 @@ namespace ABDC
                 Mode = "Cheque";
                 status = "Process";
             }
-            foreach (var pd in S.SalesDetails)
+            if (S.TransactionTypeId == 1)
             {
-                try
+                j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
                 {
-                    if (S.TransactionTypeId == 1)
-                    {
-                        j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
-                        {
-                            LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Cash Ledger").Select(x => x.Id).FirstOrDefault(),
-                            CrAmt = S.TotalAmount,
-                            Particulars = S.Narration,
-                            TransactionMode = "Cash"
-                        });
-                    }
-                    else if (S.TransactionTypeId == 2)
-                    {
-                        j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
-                        {
-                            LedgerId = S.LedgerId,
-                            CrAmt = S.TotalAmount,
-                            Particulars = S.Narration,
-                            TransactionMode = "Credit"
-                        });
-                    }
-                    else
-                    {
-                        j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
-                        {
-                            LedgerId = dbNew.Banks.FirstOrDefault().LedgerId,
-                            CrAmt = S.TotalAmount,
-                            TransactionMode = "Cheque",
-                            Particulars = S.Narration,
-                            ChequeDate = S.ChequeDate,
-                            ChequeNo = S.ChequeNo,
-                            Status = "Process"
-
-                        });
-                    }
-                    j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
-                    {
-                        LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Sales Return A/C").Select(x => x.Id).FirstOrDefault(),
-                        DrAmt = S.ItemAmount - S.DiscountAmount + S.ExtraAmount,
-                        Particulars = S.Narration,
-                        TransactionMode = Mode,
-                        ChequeDate = S.ChequeDate,
-                        ChequeNo = S.ChequeNo,
-                        Status = status
-
-                    });
-
-                    j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
-                    {
-                        LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Output Tax").Select(x => x.Id).FirstOrDefault(),
-                        DrAmt = S.GSTAmount,
-                        Particulars = S.Narration,
-                        TransactionMode = Mode,
-                        ChequeDate = S.ChequeDate,
-                        ChequeNo = S.ChequeNo,
-                        Status = status
-                    });
-
-                    lstJournalNew.Add(j);
-
-                }
-
-                catch (Exception ex)
-                {
-                    WriteLog(ex.Message);
-                }
+                    LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Cash Ledger").FirstOrDefault().Id,
+                    CrAmt = S.TotalAmount,
+                    Particulars = S.Narration,
+                    TransactionMode = "Cash"
+                });
             }
+            else if (S.TransactionTypeId == 2)
+            {
+                j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
+                {
+                    LedgerId = S.LedgerId,
+                    CrAmt = S.TotalAmount,
+                    Particulars = S.Narration,
+                    TransactionMode = "Credit"
+                });
+            }
+            else
+            {
+                j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
+                {
+                    LedgerId = dbNew.Banks.FirstOrDefault().LedgerId,
+                    CrAmt = S.TotalAmount,
+                    TransactionMode = "Cheque",
+                    Particulars = S.Narration,
+                    ChequeDate = S.ChequeDate,
+                    ChequeNo = S.ChequeNo,
+                    Status = "Process"
+
+                });
+            }
+            j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
+            {
+                LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Sales A/C").FirstOrDefault().Id,
+                DrAmt = S.ItemAmount - S.DiscountAmount + S.ExtraAmount,
+                Particulars = S.Narration,
+                TransactionMode = Mode,
+                ChequeDate = S.ChequeDate,
+                ChequeNo = S.ChequeNo,
+                Status = status
+
+            });
+
+            j.JournalDetails.Add(new DALNewFMCG.JournalDetail()
+            {
+                LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Output Tax").FirstOrDefault().Id,
+                DrAmt = S.GSTAmount,
+                Particulars = S.Narration,
+                TransactionMode = Mode,
+                ChequeDate = S.ChequeDate,
+                ChequeNo = S.ChequeNo,
+                Status = status
+            });
+            lstJournalNew.Add(j);
+            WriteLog(string.Format("Sales_Journal:Sales Id:{0}, LedgerId:{1}", S.RefNo, String.Join("\n", j.JournalDetails.Select(x => x.LedgerId).ToList())));
+
+
+
+
         }
         #endregion
 
@@ -945,7 +943,7 @@ namespace ABDC
                     LedgerId = dbNew.Ledgers.Where(x => x.LedgerName == "Cash Ledger").Select(x => x.Id).FirstOrDefault(),
                     DrAmt = P.TotalAmount,
                     Particulars = P.Narration,
-                    TransactionMode = "Cash", 
+                    TransactionMode = "Cash",
 
                 });
             }
@@ -997,6 +995,8 @@ namespace ABDC
                 ChequeNo = P.ChequeNo,
                 Status = status
             });
+            lstJournalNew.Add(j);
+            WriteLog(string.Format("Purchase_Return_Journal:Purchase_Return Id:{0}, LedgerId:{1}", P.RefNo, String.Join("\t", j.JournalDetails.Select(x => x.LedgerId).ToList())));
 
 
         }
@@ -1087,7 +1087,7 @@ namespace ABDC
                 Status = status
             });
             WriteLog(string.Format("Purchase_Journal:Purchase Id:{0}, LedgerId:{1}", P.RefNo, String.Join("\n", j.JournalDetails.Select(x => x.LedgerId).ToList())));
-           lstJournalNew.Add(j);
+            lstJournalNew.Add(j);
 
 
 
@@ -1177,7 +1177,8 @@ namespace ABDC
                 ChequeNo = SR.ChequeNo,
                 Status = status
             });
-
+            lstJournalNew.Add(j);
+            WriteLog(string.Format("Sales_Return_Journal:Sales_Return Id:{0}, LedgerId:{1}",SR.RefNo, String.Join("\t", j.JournalDetails.Select(x => x.LedgerId).ToList())));
 
         }
         #endregion
@@ -1305,7 +1306,8 @@ namespace ABDC
 
         public int GetLedgerId(string LedgerCode)
         {
-            return lstLedgerIds.Where(x => x.DataKey == LedgerCode).FirstOrDefault().DataValue;
+          var lID= lstLedgerIds.Where(x => x.DataKey == LedgerCode).FirstOrDefault().DataValue;
+            return lID;
         }
 
         public int GetProductId(string ProductCode)
